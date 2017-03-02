@@ -13,6 +13,7 @@
 		A902A1411E68561500E792D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A902A13F1E68561500E792D3 /* Main.storyboard */; };
 		A902A1431E68561500E792D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A902A1421E68561500E792D3 /* Assets.xcassets */; };
 		A902A1461E68561500E792D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A902A1441E68561500E792D3 /* LaunchScreen.storyboard */; };
+		A902A14F1E685B6500E792D3 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A902A14E1E685B6500E792D3 /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		A902A1421E68561500E792D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A902A1451E68561500E792D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A902A1471E68561500E792D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A902A14E1E685B6500E792D3 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A902A14F1E685B6500E792D3 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +45,7 @@
 			children = (
 				A902A1381E68561500E792D3 /* dbmeinv-ios */,
 				A902A1371E68561500E792D3 /* Products */,
+				A902A14D1E685B6500E792D3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +71,14 @@
 			path = "dbmeinv-ios";
 			sourceTree = "<group>";
 		};
+		A902A14D1E685B6500E792D3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A902A14E1E685B6500E792D3 /* Alamofire.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,6 +89,7 @@
 				A902A1321E68561500E792D3 /* Sources */,
 				A902A1331E68561500E792D3 /* Frameworks */,
 				A902A1341E68561500E792D3 /* Resources */,
+				A902A1501E685BA200E792D3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -133,6 +146,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A902A1501E685BA200E792D3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A902A1321E68561500E792D3 /* Sources */ = {
@@ -262,6 +292,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "dbmeinv-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "annatarhe.com.dbmeinv-ios";
@@ -274,6 +308,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "dbmeinv-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "annatarhe.com.dbmeinv-ios";

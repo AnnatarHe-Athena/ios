@@ -7,12 +7,23 @@
 //
 
 import UIKit
+import Alamofire
 
 class FirstViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.requestAllCategroies()
+    }
+    
+    func requestAllCategroies() {
+        print("start request")
+        Alamofire.request("https://db.annatarhe.com/api/meinv/categories").responseJSON { response in
+            print("requst end")
+            print(response.result.value!)
+        }
+        print("requesting")
     }
 
     override func didReceiveMemoryWarning() {
