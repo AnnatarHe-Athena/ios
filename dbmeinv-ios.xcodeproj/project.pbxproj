@@ -9,23 +9,27 @@
 /* Begin PBXBuildFile section */
 		A902A13A1E68561500E792D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A902A1391E68561500E792D3 /* AppDelegate.swift */; };
 		A902A13C1E68561500E792D3 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A902A13B1E68561500E792D3 /* FirstViewController.swift */; };
-		A902A13E1E68561500E792D3 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A902A13D1E68561500E792D3 /* SecondViewController.swift */; };
+		A902A13E1E68561500E792D3 /* CategoryItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A902A13D1E68561500E792D3 /* CategoryItemViewController.swift */; };
 		A902A1411E68561500E792D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A902A13F1E68561500E792D3 /* Main.storyboard */; };
 		A902A1431E68561500E792D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A902A1421E68561500E792D3 /* Assets.xcassets */; };
 		A902A1461E68561500E792D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A902A1441E68561500E792D3 /* LaunchScreen.storyboard */; };
 		A902A14F1E685B6500E792D3 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A902A14E1E685B6500E792D3 /* Alamofire.framework */; };
+		A911A4481EC738CF00FE2126 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A911A4471EC738CF00FE2126 /* AlamofireImage.framework */; };
+		A911A44A1EC74F2C00FE2126 /* CategorListViewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A911A4491EC74F2C00FE2126 /* CategorListViewTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A902A1361E68561500E792D3 /* dbmeinv-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dbmeinv-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A902A1391E68561500E792D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A902A13B1E68561500E792D3 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		A902A13D1E68561500E792D3 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		A902A13D1E68561500E792D3 /* CategoryItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemViewController.swift; sourceTree = "<group>"; };
 		A902A1401E68561500E792D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A902A1421E68561500E792D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A902A1451E68561500E792D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A902A1471E68561500E792D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A902A14E1E685B6500E792D3 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		A911A4471EC738CF00FE2126 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
+		A911A4491EC74F2C00FE2126 /* CategorListViewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorListViewTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +38,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A902A14F1E685B6500E792D3 /* Alamofire.framework in Frameworks */,
+				A911A4481EC738CF00FE2126 /* AlamofireImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,8 +67,9 @@
 			children = (
 				A902A1391E68561500E792D3 /* AppDelegate.swift */,
 				A902A13B1E68561500E792D3 /* FirstViewController.swift */,
-				A902A13D1E68561500E792D3 /* SecondViewController.swift */,
+				A902A13D1E68561500E792D3 /* CategoryItemViewController.swift */,
 				A902A13F1E68561500E792D3 /* Main.storyboard */,
+				A911A4491EC74F2C00FE2126 /* CategorListViewTableViewController.swift */,
 				A902A1421E68561500E792D3 /* Assets.xcassets */,
 				A902A1441E68561500E792D3 /* LaunchScreen.storyboard */,
 				A902A1471E68561500E792D3 /* Info.plist */,
@@ -74,6 +80,7 @@
 		A902A14D1E685B6500E792D3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A911A4471EC738CF00FE2126 /* AlamofireImage.framework */,
 				A902A14E1E685B6500E792D3 /* Alamofire.framework */,
 			);
 			name = Frameworks;
@@ -155,6 +162,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
 			);
 			outputPaths = (
 			);
@@ -169,8 +177,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A902A13E1E68561500E792D3 /* SecondViewController.swift in Sources */,
+				A902A13E1E68561500E792D3 /* CategoryItemViewController.swift in Sources */,
 				A902A13A1E68561500E792D3 /* AppDelegate.swift in Sources */,
+				A911A44A1EC74F2C00FE2126 /* CategorListViewTableViewController.swift in Sources */,
 				A902A13C1E68561500E792D3 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,6 +348,7 @@
 				A902A14C1E68561500E792D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
