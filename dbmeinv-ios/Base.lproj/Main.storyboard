@@ -81,10 +81,10 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="246"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u4w-Cl-9Ta" id="xSV-Bo-3ps">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="245.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="246"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9qj-3E-2XC">
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9qj-3E-2XC">
                                             <rect key="frame" x="8" y="8" width="359" height="229.5"/>
                                         </imageView>
                                     </subviews>

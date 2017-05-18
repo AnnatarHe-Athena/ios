@@ -64,7 +64,8 @@ class CategorListViewTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categroyNameCell", for: indexPath)
         if let name = categories[indexPath.row]?.name {
-            cell.textLabel?.text = name
+            // TODO: 必须换成 name
+            cell.textLabel?.text = "😀"
         } else {
             cell.textLabel?.text = "nil"
         }

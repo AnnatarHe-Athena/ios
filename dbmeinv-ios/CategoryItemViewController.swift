@@ -20,13 +20,12 @@ struct Plato {
 
 class CategoryItemViewController: UITableViewController {
     
+    private var isLoading = false
+    
     private var selectedIndex: Int = 0
     private var offset: Int = 0
     var platos: [Plato?] = []
-    
-    var task: URLSessionDownloadTask!
     var session: URLSession!
-    var cache: NSCache<NSString, UIImage>!
     
     
     let prefixer = "https://ww4.sinaimg.cn/bmiddle/"
@@ -35,7 +34,7 @@ class CategoryItemViewController: UITableViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         self.loadDataFromServer()
-        navigationController?.title = "Hello "
+        title = "helle"
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -44,6 +43,7 @@ class CategoryItemViewController: UITableViewController {
     }
     
     func loadDataFromServer() {
+        self.isLoading = true
         Alamofire.request("https://db.annatarhe.com/api/meinv/\(self.selectedIndex)/2/" + String(self.offset)).responseJSON{ response in
             if let result = response.result.value {
                 if let datas = result as? [NSDictionary] {
@@ -55,8 +55,8 @@ class CategoryItemViewController: UITableViewController {
                         self.platos.append(Plato(cate: cate, id: id, img: img, text: text))
                     }
                     self.offset += 2
+                    self.isLoading = false
                     self.tableView.reloadData()
-                    print(self.platos)
                 }
             }
         }
@@ -74,11 +74,9 @@ class CategoryItemViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemImageCell", for: indexPath)
         if let img = platos[indexPath.row]?.img {
-            Alamofire.request(self.prefixer + img).responseImage(completionHandler: { res in
-                let updateCell = tableView.cellForRow(at: indexPath)
-                updateCell?.imageView!.image = res.result.value
-                self.tableView.reloadData()
-            })
+            let url = URL.init(string: self.prefixer + img)
+            // load image from remote cdn server
+            cell.imageView?.af_setImage(withURL: url!)
         } else {
             print("hello world")
         }
@@ -87,6 +85,13 @@ class CategoryItemViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return platos.count
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard self.isLoading else {
+            return
+        }
+        self.loadDataFromServer()
     }
 
 }

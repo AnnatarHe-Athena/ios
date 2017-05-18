@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A902A13A1E68561500E792D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A902A1391E68561500E792D3 /* AppDelegate.swift */; };
-		A902A13C1E68561500E792D3 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A902A13B1E68561500E792D3 /* FirstViewController.swift */; };
 		A902A13E1E68561500E792D3 /* CategoryItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A902A13D1E68561500E792D3 /* CategoryItemViewController.swift */; };
 		A902A1411E68561500E792D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A902A13F1E68561500E792D3 /* Main.storyboard */; };
 		A902A1431E68561500E792D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A902A1421E68561500E792D3 /* Assets.xcassets */; };
@@ -21,7 +20,6 @@
 /* Begin PBXFileReference section */
 		A902A1361E68561500E792D3 /* dbmeinv-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dbmeinv-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A902A1391E68561500E792D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A902A13B1E68561500E792D3 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		A902A13D1E68561500E792D3 /* CategoryItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemViewController.swift; sourceTree = "<group>"; };
 		A902A1401E68561500E792D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A902A1421E68561500E792D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -66,7 +64,6 @@
 			isa = PBXGroup;
 			children = (
 				A902A1391E68561500E792D3 /* AppDelegate.swift */,
-				A902A13B1E68561500E792D3 /* FirstViewController.swift */,
 				A902A13D1E68561500E792D3 /* CategoryItemViewController.swift */,
 				A902A13F1E68561500E792D3 /* Main.storyboard */,
 				A911A4491EC74F2C00FE2126 /* CategorListViewTableViewController.swift */,
@@ -115,7 +112,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0820;
-				ORGANIZATIONNAME = "贺乐";
+				ORGANIZATIONNAME = AnnatarHe;
 				TargetAttributes = {
 					A902A1351E68561500E792D3 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -180,7 +177,6 @@
 				A902A13E1E68561500E792D3 /* CategoryItemViewController.swift in Sources */,
 				A902A13A1E68561500E792D3 /* AppDelegate.swift in Sources */,
 				A911A44A1EC74F2C00FE2126 /* CategorListViewTableViewController.swift in Sources */,
-				A902A13C1E68561500E792D3 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
