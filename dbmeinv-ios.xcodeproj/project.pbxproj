@@ -15,6 +15,11 @@
 		A902A14F1E685B6500E792D3 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A902A14E1E685B6500E792D3 /* Alamofire.framework */; };
 		A911A4481EC738CF00FE2126 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A911A4471EC738CF00FE2126 /* AlamofireImage.framework */; };
 		A911A44A1EC74F2C00FE2126 /* CategorListViewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A911A4491EC74F2C00FE2126 /* CategorListViewTableViewController.swift */; };
+		DC54B07B1EDBBE8F00CF750E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC54B07A1EDBBE8F00CF750E /* ProfileViewController.swift */; };
+		DC54B07E1EDBC03C00CF750E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC54B07D1EDBC03C00CF750E /* User.swift */; };
+		DC54B0801EDBC0E800CF750E /* Plato.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC54B07F1EDBC0E800CF750E /* Plato.swift */; };
+		DC54B0821EDBC33200CF750E /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC54B0811EDBC33200CF750E /* Config.swift */; };
+		DC54B0841EDBC82100CF750E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC54B0831EDBC82100CF750E /* SwiftyJSON.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +33,11 @@
 		A902A14E1E685B6500E792D3 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		A911A4471EC738CF00FE2126 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		A911A4491EC74F2C00FE2126 /* CategorListViewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorListViewTableViewController.swift; sourceTree = "<group>"; };
+		DC54B07A1EDBBE8F00CF750E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		DC54B07D1EDBC03C00CF750E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DC54B07F1EDBC0E800CF750E /* Plato.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plato.swift; sourceTree = "<group>"; };
+		DC54B0811EDBC33200CF750E /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		DC54B0831EDBC82100CF750E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +47,7 @@
 			files = (
 				A902A14F1E685B6500E792D3 /* Alamofire.framework in Frameworks */,
 				A911A4481EC738CF00FE2126 /* AlamofireImage.framework in Frameworks */,
+				DC54B0841EDBC82100CF750E /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,9 +74,11 @@
 		A902A1381E68561500E792D3 /* dbmeinv-ios */ = {
 			isa = PBXGroup;
 			children = (
+				DC54B07C1EDBC01C00CF750E /* Modal */,
 				A902A1391E68561500E792D3 /* AppDelegate.swift */,
 				A902A13D1E68561500E792D3 /* CategoryItemViewController.swift */,
 				A902A13F1E68561500E792D3 /* Main.storyboard */,
+				DC54B07A1EDBBE8F00CF750E /* ProfileViewController.swift */,
 				A911A4491EC74F2C00FE2126 /* CategorListViewTableViewController.swift */,
 				A902A1421E68561500E792D3 /* Assets.xcassets */,
 				A902A1441E68561500E792D3 /* LaunchScreen.storyboard */,
@@ -77,10 +90,21 @@
 		A902A14D1E685B6500E792D3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DC54B0831EDBC82100CF750E /* SwiftyJSON.framework */,
 				A911A4471EC738CF00FE2126 /* AlamofireImage.framework */,
 				A902A14E1E685B6500E792D3 /* Alamofire.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DC54B07C1EDBC01C00CF750E /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				DC54B07D1EDBC03C00CF750E /* User.swift */,
+				DC54B07F1EDBC0E800CF750E /* Plato.swift */,
+				DC54B0811EDBC33200CF750E /* Config.swift */,
+			);
+			name = Modal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,8 +198,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC54B0801EDBC0E800CF750E /* Plato.swift in Sources */,
 				A902A13E1E68561500E792D3 /* CategoryItemViewController.swift in Sources */,
 				A902A13A1E68561500E792D3 /* AppDelegate.swift in Sources */,
+				DC54B0821EDBC33200CF750E /* Config.swift in Sources */,
+				DC54B07B1EDBBE8F00CF750E /* ProfileViewController.swift in Sources */,
+				DC54B07E1EDBC03C00CF750E /* User.swift in Sources */,
 				A911A44A1EC74F2C00FE2126 /* CategorListViewTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

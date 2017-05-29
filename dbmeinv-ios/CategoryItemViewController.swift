@@ -8,33 +8,25 @@
 
 import UIKit
 import Alamofire
-import AlamofireImage
-
-struct Plato {
-    let cate: Int
-    let id: Int
-    let img: String
-    let text: String
-}
-
 
 class CategoryItemViewController: UITableViewController {
-    
     private var isLoading = false
+    private var navigationTitle = "详情页"
     
     private var selectedIndex: Int = 0
     private var offset: Int = 0
     var platos: [Plato?] = []
-    var session: URLSession!
     
+    private var lastTap: TimeInterval = 0.0
+    private var lastIndexPath: IndexPath = []
     
-    let prefixer = "https://ww4.sinaimg.cn/bmiddle/"
+    let prefixer = Config.imageBmiddleServer + "/"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         self.loadDataFromServer()
-        title = "helle"
+        title = navigationTitle
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -43,8 +35,12 @@ class CategoryItemViewController: UITableViewController {
     }
     
     func loadDataFromServer() {
+        // guard 取反
+        guard !self.isLoading else {
+            return
+        }
         self.isLoading = true
-        Alamofire.request("https://db.annatarhe.com/api/meinv/\(self.selectedIndex)/2/" + String(self.offset)).responseJSON{ response in
+        Alamofire.request("\(Config.apiServer)/meinv/\(self.selectedIndex)/2/" + String(self.offset)).responseJSON{ response in
             if let result = response.result.value {
                 if let datas = result as? [NSDictionary] {
                     for i in 0..<datas.count {
@@ -54,7 +50,7 @@ class CategoryItemViewController: UITableViewController {
                         let text = datas[i]["text"]! as! String
                         self.platos.append(Plato(cate: cate, id: id, img: img, text: text))
                     }
-                    self.offset += 2
+                    self.offset = self.offset + 2
                     self.isLoading = false
                     self.tableView.reloadData()
                 }
@@ -76,7 +72,19 @@ class CategoryItemViewController: UITableViewController {
         if let img = platos[indexPath.row]?.img {
             let url = URL.init(string: self.prefixer + img)
             // load image from remote cdn server
-            cell.imageView?.af_setImage(withURL: url!)
+//            cell.imageView?.af_setImage(withURL: url!)
+            URLSession.shared.dataTask(with: url!, completionHandler: { (data, resp, err) -> Void in
+                if err != nil {
+                    print(err)
+                    return
+                }
+                DispatchQueue.main.async(execute: { () -> Void in
+                    let image = UIImage(data: data!)
+                    
+                    
+                    cell.imageView?.image = image
+                })
+            }).resume()
         } else {
             print("hello world")
         }
@@ -87,11 +95,52 @@ class CategoryItemViewController: UITableViewController {
         return platos.count
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard self.isLoading else {
-            return
+    func setTitle(myTitle: String) -> Void {
+        self.navigationTitle = myTitle
+    }
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let offset = scrollView.contentOffset
+        let bounds = scrollView.bounds
+        let size = scrollView.contentSize
+        let inset = scrollView.contentInset
+        let scrollViewHeight = bounds.size.height
+        let currentOffset = offset.y + scrollViewHeight - inset.bottom
+        let maxOffset = size.height
+        
+        let minSpace: CGFloat = 5
+        let maxSpace: CGFloat = 10
+        
+        var shouldToLoad = false
+        
+        // 上拉刷新
+        if scrollViewHeight >= maxOffset {
+            let space = currentOffset - scrollViewHeight
+            if space > minSpace && space < maxSpace {
+                self.offset = 0
+                shouldToLoad = true
+            }
+            
+        } else {
+            let space = currentOffset - maxOffset
+            if space > minSpace && space < maxSpace {
+                shouldToLoad = true
+            }
         }
-        self.loadDataFromServer()
+        
+        if shouldToLoad {
+            self.loadDataFromServer()
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let now = Date().timeIntervalSince1970
+        if (now - lastTap) < 0.3 && indexPath.elementsEqual(self.lastIndexPath) {
+            print("double tap")
+        }
+        self.lastTap = now
+        self.lastIndexPath = indexPath
     }
 
 }
