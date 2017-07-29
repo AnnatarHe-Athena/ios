@@ -12,14 +12,19 @@
 		A902A1411E68561500E792D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A902A13F1E68561500E792D3 /* Main.storyboard */; };
 		A902A1431E68561500E792D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A902A1421E68561500E792D3 /* Assets.xcassets */; };
 		A902A1461E68561500E792D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A902A1441E68561500E792D3 /* LaunchScreen.storyboard */; };
-		A902A14F1E685B6500E792D3 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A902A14E1E685B6500E792D3 /* Alamofire.framework */; };
-		A911A4481EC738CF00FE2126 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A911A4471EC738CF00FE2126 /* AlamofireImage.framework */; };
+		A902A14F1E685B6500E792D3 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A902A14E1E685B6500E792D3 /* Alamofire.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		A911A4481EC738CF00FE2126 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A911A4471EC738CF00FE2126 /* AlamofireImage.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		A911A44A1EC74F2C00FE2126 /* CategorListViewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A911A4491EC74F2C00FE2126 /* CategorListViewTableViewController.swift */; };
+		DC1D4D8D1EF428B7005F4181 /* ProfileSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1D4D8C1EF428B7005F4181 /* ProfileSectionViewController.swift */; };
+		DC4C642C1F2AD9CF00AB1126 /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC4C642B1F2AD9CF00AB1126 /* Apollo.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		DC4C64311F2AE2F200AB1126 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4C64301F2AE2F200AB1126 /* API.swift */; };
+		DC4C64331F2AE50900AB1126 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = DC4C64321F2AE50900AB1126 /* schema.json */; };
+		DC4C64351F2AE7EE00AB1126 /* hello.graphql in Resources */ = {isa = PBXBuildFile; fileRef = DC4C64341F2AE7EE00AB1126 /* hello.graphql */; };
 		DC54B07B1EDBBE8F00CF750E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC54B07A1EDBBE8F00CF750E /* ProfileViewController.swift */; };
 		DC54B07E1EDBC03C00CF750E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC54B07D1EDBC03C00CF750E /* User.swift */; };
 		DC54B0801EDBC0E800CF750E /* Plato.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC54B07F1EDBC0E800CF750E /* Plato.swift */; };
 		DC54B0821EDBC33200CF750E /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC54B0811EDBC33200CF750E /* Config.swift */; };
-		DC54B0841EDBC82100CF750E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC54B0831EDBC82100CF750E /* SwiftyJSON.framework */; };
+		DC54B0841EDBC82100CF750E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC54B0831EDBC82100CF750E /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +38,12 @@
 		A902A14E1E685B6500E792D3 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		A911A4471EC738CF00FE2126 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		A911A4491EC74F2C00FE2126 /* CategorListViewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorListViewTableViewController.swift; sourceTree = "<group>"; };
+		DC1D4D8C1EF428B7005F4181 /* ProfileSectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSectionViewController.swift; sourceTree = "<group>"; };
+		DC4C64291F2AD9BF00AB1126 /* Apollo.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Apollo.framework.dSYM; path = Carthage/Build/iOS/Apollo.framework.dSYM; sourceTree = "<group>"; };
+		DC4C642B1F2AD9CF00AB1126 /* Apollo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Apollo.framework; path = Carthage/Build/iOS/Apollo.framework; sourceTree = "<group>"; };
+		DC4C64301F2AE2F200AB1126 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		DC4C64321F2AE50900AB1126 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		DC4C64341F2AE7EE00AB1126 /* hello.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hello.graphql; path = graphql/hello.graphql; sourceTree = "<group>"; };
 		DC54B07A1EDBBE8F00CF750E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		DC54B07D1EDBC03C00CF750E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DC54B07F1EDBC0E800CF750E /* Plato.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plato.swift; sourceTree = "<group>"; };
@@ -48,6 +59,7 @@
 				A902A14F1E685B6500E792D3 /* Alamofire.framework in Frameworks */,
 				A911A4481EC738CF00FE2126 /* AlamofireImage.framework in Frameworks */,
 				DC54B0841EDBC82100CF750E /* SwiftyJSON.framework in Frameworks */,
+				DC4C642C1F2AD9CF00AB1126 /* Apollo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,8 +90,10 @@
 				A902A1391E68561500E792D3 /* AppDelegate.swift */,
 				A902A13D1E68561500E792D3 /* CategoryItemViewController.swift */,
 				A902A13F1E68561500E792D3 /* Main.storyboard */,
+				DC1D4D8C1EF428B7005F4181 /* ProfileSectionViewController.swift */,
 				DC54B07A1EDBBE8F00CF750E /* ProfileViewController.swift */,
 				A911A4491EC74F2C00FE2126 /* CategorListViewTableViewController.swift */,
+				DC4C64321F2AE50900AB1126 /* schema.json */,
 				A902A1421E68561500E792D3 /* Assets.xcassets */,
 				A902A1441E68561500E792D3 /* LaunchScreen.storyboard */,
 				A902A1471E68561500E792D3 /* Info.plist */,
@@ -90,6 +104,8 @@
 		A902A14D1E685B6500E792D3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DC4C642B1F2AD9CF00AB1126 /* Apollo.framework */,
+				DC4C64291F2AD9BF00AB1126 /* Apollo.framework.dSYM */,
 				DC54B0831EDBC82100CF750E /* SwiftyJSON.framework */,
 				A911A4471EC738CF00FE2126 /* AlamofireImage.framework */,
 				A902A14E1E685B6500E792D3 /* Alamofire.framework */,
@@ -100,9 +116,11 @@
 		DC54B07C1EDBC01C00CF750E /* Modal */ = {
 			isa = PBXGroup;
 			children = (
+				DC4C64301F2AE2F200AB1126 /* API.swift */,
 				DC54B07D1EDBC03C00CF750E /* User.swift */,
 				DC54B07F1EDBC0E800CF750E /* Plato.swift */,
 				DC54B0811EDBC33200CF750E /* Config.swift */,
+				DC4C64341F2AE7EE00AB1126 /* hello.graphql */,
 			);
 			name = Modal;
 			sourceTree = "<group>";
@@ -118,6 +136,7 @@
 				A902A1331E68561500E792D3 /* Frameworks */,
 				A902A1341E68561500E792D3 /* Resources */,
 				A902A1501E685BA200E792D3 /* ShellScript */,
+				DC4C642D1F2ADB8600AB1126 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -167,6 +186,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC4C64351F2AE7EE00AB1126 /* hello.graphql in Resources */,
+				DC4C64331F2AE50900AB1126 /* schema.json in Resources */,
 				A902A1461E68561500E792D3 /* LaunchScreen.storyboard in Resources */,
 				A902A1431E68561500E792D3 /* Assets.xcassets in Resources */,
 				A902A1411E68561500E792D3 /* Main.storyboard in Resources */,
@@ -184,12 +205,26 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Apollo.framework",
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		DC4C642D1F2ADB8600AB1126 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APOLLO_FRAMEWORK_PATH=\"$(eval find $FRAMEWORK_SEARCH_PATHS -name \"Apollo.framework\" -maxdepth 1)\"\n\nif [ -z \"$APOLLO_FRAMEWORK_PATH\" ]; then\necho \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\nexit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n$APOLLO_FRAMEWORK_PATH/check-and-run-apollo-codegen.sh generate $(find . -name '*.graphql') --schema schema.json --output API.swift";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -200,7 +235,9 @@
 			files = (
 				DC54B0801EDBC0E800CF750E /* Plato.swift in Sources */,
 				A902A13E1E68561500E792D3 /* CategoryItemViewController.swift in Sources */,
+				DC1D4D8D1EF428B7005F4181 /* ProfileSectionViewController.swift in Sources */,
 				A902A13A1E68561500E792D3 /* AppDelegate.swift in Sources */,
+				DC4C64311F2AE2F200AB1126 /* API.swift in Sources */,
 				DC54B0821EDBC33200CF750E /* Config.swift in Sources */,
 				DC54B07B1EDBBE8F00CF750E /* ProfileViewController.swift in Sources */,
 				DC54B07E1EDBC03C00CF750E /* User.swift in Sources */,

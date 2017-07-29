@@ -8,6 +8,19 @@
 
 import UIKit
 
+import Apollo
+
+let apollo: ApolloClient = {
+    let configuration = URLSessionConfiguration.default
+    // Add additional headers as needed
+    configuration.httpAdditionalHeaders = ["Authorization": "Bearer \(Config.token)"]
+    
+    let url = URL(string: "http://localhost:9000/graphql")!
+    
+    return ApolloClient(networkTransport: HTTPNetworkTransport(url: url, configuration: configuration))
+}()
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

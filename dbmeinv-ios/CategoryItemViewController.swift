@@ -40,22 +40,22 @@ class CategoryItemViewController: UITableViewController {
             return
         }
         self.isLoading = true
-        Alamofire.request("\(Config.apiServer)/meinv/\(self.selectedIndex)/2/" + String(self.offset)).responseJSON{ response in
-            if let result = response.result.value {
-                if let datas = result as? [NSDictionary] {
-                    for i in 0..<datas.count {
-                        let cate = datas[i]["cate"]! as! Int
-                        let id = datas[i]["id"]! as! Int
-                        let img = datas[i]["img"]! as! String
-                        let text = datas[i]["text"]! as! String
-                        self.platos.append(Plato(cate: cate, id: id, img: img, text: text))
-                    }
-                    self.offset = self.offset + 2
-                    self.isLoading = false
-                    self.tableView.reloadData()
-                }
-            }
-        }
+//        Alamofire.request("\(Config.apiServer)/girls/\(self.selectedIndex)/2/" + String(self.offset)).responseJSON{ response in
+//            if let result = response.result.value {
+//                if let datas = result as? [NSDictionary] {
+//                    for i in 0..<datas.count {
+//                        let cate = datas[i]["cate"]! as! Int
+//                        let id = datas[i]["id"]! as! Int
+//                        let img = datas[i]["img"]! as! String
+//                        let text = datas[i]["text"]! as! String
+//                        self.platos.append(Plato(cate: cate, id: id, img: img, text: text))
+//                    }
+//                    self.offset = self.offset + 2
+//                    self.isLoading = false
+//                    self.tableView.reloadData()
+//                }
+//            }
+//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,18 +73,18 @@ class CategoryItemViewController: UITableViewController {
             let url = URL.init(string: self.prefixer + img)
             // load image from remote cdn server
 //            cell.imageView?.af_setImage(withURL: url!)
-            URLSession.shared.dataTask(with: url!, completionHandler: { (data, resp, err) -> Void in
-                if err != nil {
-                    print(err)
-                    return
-                }
-                DispatchQueue.main.async(execute: { () -> Void in
-                    let image = UIImage(data: data!)
-                    
-                    
-                    cell.imageView?.image = image
-                })
-            }).resume()
+//            URLSession.shared.dataTask(with: url!, completionHandler: { (data, resp, err) -> Void in
+//                if err != nil {
+//                    print(err!)
+//                    return
+//                }
+//                DispatchQueue.main.async(execute: { () -> Void in
+//                    let image = UIImage(data: data!)
+//                    
+//                    
+//                    cell.imageView?.image = image
+//                })
+//            }).resume()
         } else {
             print("hello world")
         }

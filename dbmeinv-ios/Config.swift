@@ -9,7 +9,7 @@
 import Foundation
 
 class Config {
-    static let apiServer = "https://db.annatarhe.com/api"
+    static let apiServer = "https://api.dbg.annatarhe.com/api"
     static let imageBmiddleServer = "https://ww4.sinaimg.cn/bmiddle"
     static var token = ""
 }

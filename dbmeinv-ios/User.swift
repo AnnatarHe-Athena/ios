@@ -19,13 +19,14 @@ struct UserProfile {
 
 class User {
     
-    var user: UserProfile?
+    static var user: UserProfile?
     
     static func auth(email:String, pwd: String) {
         let authUrl = URL.init(string: "\(Config.apiServer)/auth")
         Alamofire.request(authUrl!, method: .post).responseJSON { response in
             let json = JSON(data: response.result.value as! Data)
-            
+            User.user = UserProfile(id: json["id"].int!, username: json["username"].string!, avatarUrl: json["pwd"].string!, collections: [])
+            Config.token = json["token"].string!
         }
     }
 }

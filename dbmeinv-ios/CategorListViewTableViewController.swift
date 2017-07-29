@@ -46,19 +46,32 @@ class CategorListViewTableViewController: UITableViewController {
     }
 
     func requestAllCategroies() {
-        Alamofire.request("\(Config.apiServer)/meinv/categories").responseJSON { response in
-            if let result = response.result.value {
-                if let categories = result as? [NSDictionary] {
-                    for i in 0..<categories.count {
-                        let id = categories[i]["id"]! as! Int
-                        let name = categories[i]["name"]! as! String
-                        let src = categories[i]["src"]! as! Int
-                        self.categories.append(CategoryItem(id: id, name: name, src: src))
-                    }
-                    self.tableView.reloadData()
-                }
+        apollo.fetch(query: HelloQuery()) { (result, error) in
+            
+            if error != nil {
+                print(error!)
             }
+            
+            guard let hello = result?.data?.hello else {
+                print("no data here")
+                return
+            }
+            
+            print(hello)
         }
+//        Alamofire.request("\(Config.apiServer)/meinv/categories").responseJSON { response in
+//            if let result = response.result.value {
+//                if let categories = result as? [NSDictionary] {
+//                    for i in 0..<categories.count {
+//                        let id = categories[i]["id"]! as! Int
+//                        let name = categories[i]["name"]! as! String
+//                        let src = categories[i]["src"]! as! Int
+//                        self.categories.append(CategoryItem(id: id, name: name, src: src))
+//                    }
+//                    self.tableView.reloadData()
+//                }
+//            }
+//        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
