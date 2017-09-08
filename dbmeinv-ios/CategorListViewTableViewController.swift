@@ -46,19 +46,7 @@ class CategorListViewTableViewController: UITableViewController {
     }
 
     func requestAllCategroies() {
-        apollo.fetch(query: HelloQuery()) { (result, error) in
-            
-            if error != nil {
-                print(error!)
-            }
-            
-            guard let hello = result?.data?.hello else {
-                print("no data here")
-                return
-            }
-            
-            print(hello)
-        }
+        
 //        Alamofire.request("\(Config.apiServer)/meinv/categories").responseJSON { response in
 //            if let result = response.result.value {
 //                if let categories = result as? [NSDictionary] {

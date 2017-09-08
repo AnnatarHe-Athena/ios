@@ -1,0 +1,6 @@
+
+fragment fetchCategories on Query {
+    categories {
+        id, name, src, count
+    }
+}

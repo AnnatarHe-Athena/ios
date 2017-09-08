@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SDWebImage
 
 class CategoryItemViewController: UITableViewController {
     private var isLoading = false
@@ -71,6 +72,7 @@ class CategoryItemViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemImageCell", for: indexPath)
         if let img = platos[indexPath.row]?.img {
             let url = URL.init(string: self.prefixer + img)
+            
             // load image from remote cdn server
 //            cell.imageView?.af_setImage(withURL: url!)
 //            URLSession.shared.dataTask(with: url!, completionHandler: { (data, resp, err) -> Void in

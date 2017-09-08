@@ -19,12 +19,17 @@
 		DC4C642C1F2AD9CF00AB1126 /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC4C642B1F2AD9CF00AB1126 /* Apollo.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		DC4C64311F2AE2F200AB1126 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4C64301F2AE2F200AB1126 /* API.swift */; };
 		DC4C64331F2AE50900AB1126 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = DC4C64321F2AE50900AB1126 /* schema.json */; };
-		DC4C64351F2AE7EE00AB1126 /* hello.graphql in Resources */ = {isa = PBXBuildFile; fileRef = DC4C64341F2AE7EE00AB1126 /* hello.graphql */; };
+		DC4C64351F2AE7EE00AB1126 /* initial.graphql in Resources */ = {isa = PBXBuildFile; fileRef = DC4C64341F2AE7EE00AB1126 /* initial.graphql */; };
 		DC54B07B1EDBBE8F00CF750E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC54B07A1EDBBE8F00CF750E /* ProfileViewController.swift */; };
 		DC54B07E1EDBC03C00CF750E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC54B07D1EDBC03C00CF750E /* User.swift */; };
 		DC54B0801EDBC0E800CF750E /* Plato.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC54B07F1EDBC0E800CF750E /* Plato.swift */; };
 		DC54B0821EDBC33200CF750E /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC54B0811EDBC33200CF750E /* Config.swift */; };
 		DC54B0841EDBC82100CF750E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC54B0831EDBC82100CF750E /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		DC624F3A1F5FE4A600C885B4 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC624F391F5FE4A600C885B4 /* SDWebImage.framework */; };
+		DC9CA94E1F5E97BC00F435FA /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9CA94D1F5E97BC00F435FA /* CollectionViewController.swift */; };
+		DCE75FA11F612378007E34BC /* fetchGirlsFragment.graphql in Resources */ = {isa = PBXBuildFile; fileRef = DCE75FA01F612378007E34BC /* fetchGirlsFragment.graphql */; };
+		DCE75FA31F61238F007E34BC /* fetchCategoriesFragment.graphql in Resources */ = {isa = PBXBuildFile; fileRef = DCE75FA21F61238F007E34BC /* fetchCategoriesFragment.graphql */; };
+		DCFF198C1F62A7DF00346DA7 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFF198B1F62A7DF00346DA7 /* AuthViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,12 +48,18 @@
 		DC4C642B1F2AD9CF00AB1126 /* Apollo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Apollo.framework; path = Carthage/Build/iOS/Apollo.framework; sourceTree = "<group>"; };
 		DC4C64301F2AE2F200AB1126 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		DC4C64321F2AE50900AB1126 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
-		DC4C64341F2AE7EE00AB1126 /* hello.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hello.graphql; path = graphql/hello.graphql; sourceTree = "<group>"; };
+		DC4C64341F2AE7EE00AB1126 /* initial.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = initial.graphql; path = graphql/initial.graphql; sourceTree = "<group>"; };
 		DC54B07A1EDBBE8F00CF750E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		DC54B07D1EDBC03C00CF750E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DC54B07F1EDBC0E800CF750E /* Plato.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plato.swift; sourceTree = "<group>"; };
 		DC54B0811EDBC33200CF750E /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		DC54B0831EDBC82100CF750E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		DC624F371F5FE48C00C885B4 /* SDWebImage.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SDWebImage.framework.dSYM; path = Carthage/Build/iOS/SDWebImage.framework.dSYM; sourceTree = "<group>"; };
+		DC624F391F5FE4A600C885B4 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
+		DC9CA94D1F5E97BC00F435FA /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		DCE75FA01F612378007E34BC /* fetchGirlsFragment.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fetchGirlsFragment.graphql; path = graphql/fetchGirlsFragment.graphql; sourceTree = "<group>"; };
+		DCE75FA21F61238F007E34BC /* fetchCategoriesFragment.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fetchCategoriesFragment.graphql; path = graphql/fetchCategoriesFragment.graphql; sourceTree = "<group>"; };
+		DCFF198B1F62A7DF00346DA7 /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +69,7 @@
 			files = (
 				A902A14F1E685B6500E792D3 /* Alamofire.framework in Frameworks */,
 				A911A4481EC738CF00FE2126 /* AlamofireImage.framework in Frameworks */,
+				DC624F3A1F5FE4A600C885B4 /* SDWebImage.framework in Frameworks */,
 				DC54B0841EDBC82100CF750E /* SwiftyJSON.framework in Frameworks */,
 				DC4C642C1F2AD9CF00AB1126 /* Apollo.framework in Frameworks */,
 			);
@@ -88,11 +100,8 @@
 			children = (
 				DC54B07C1EDBC01C00CF750E /* Modal */,
 				A902A1391E68561500E792D3 /* AppDelegate.swift */,
-				A902A13D1E68561500E792D3 /* CategoryItemViewController.swift */,
+				DC9CA94C1F5E977900F435FA /* Controllers */,
 				A902A13F1E68561500E792D3 /* Main.storyboard */,
-				DC1D4D8C1EF428B7005F4181 /* ProfileSectionViewController.swift */,
-				DC54B07A1EDBBE8F00CF750E /* ProfileViewController.swift */,
-				A911A4491EC74F2C00FE2126 /* CategorListViewTableViewController.swift */,
 				DC4C64321F2AE50900AB1126 /* schema.json */,
 				A902A1421E68561500E792D3 /* Assets.xcassets */,
 				A902A1441E68561500E792D3 /* LaunchScreen.storyboard */,
@@ -104,6 +113,8 @@
 		A902A14D1E685B6500E792D3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DC624F391F5FE4A600C885B4 /* SDWebImage.framework */,
+				DC624F371F5FE48C00C885B4 /* SDWebImage.framework.dSYM */,
 				DC4C642B1F2AD9CF00AB1126 /* Apollo.framework */,
 				DC4C64291F2AD9BF00AB1126 /* Apollo.framework.dSYM */,
 				DC54B0831EDBC82100CF750E /* SwiftyJSON.framework */,
@@ -120,9 +131,24 @@
 				DC54B07D1EDBC03C00CF750E /* User.swift */,
 				DC54B07F1EDBC0E800CF750E /* Plato.swift */,
 				DC54B0811EDBC33200CF750E /* Config.swift */,
-				DC4C64341F2AE7EE00AB1126 /* hello.graphql */,
+				DC4C64341F2AE7EE00AB1126 /* initial.graphql */,
+				DCE75FA01F612378007E34BC /* fetchGirlsFragment.graphql */,
+				DCE75FA21F61238F007E34BC /* fetchCategoriesFragment.graphql */,
 			);
 			name = Modal;
+			sourceTree = "<group>";
+		};
+		DC9CA94C1F5E977900F435FA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DC1D4D8C1EF428B7005F4181 /* ProfileSectionViewController.swift */,
+				DCFF198B1F62A7DF00346DA7 /* AuthViewController.swift */,
+				DC9CA94D1F5E97BC00F435FA /* CollectionViewController.swift */,
+				DC54B07A1EDBBE8F00CF750E /* ProfileViewController.swift */,
+				A911A4491EC74F2C00FE2126 /* CategorListViewTableViewController.swift */,
+				A902A13D1E68561500E792D3 /* CategoryItemViewController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,7 +212,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC4C64351F2AE7EE00AB1126 /* hello.graphql in Resources */,
+				DCE75FA11F612378007E34BC /* fetchGirlsFragment.graphql in Resources */,
+				DC4C64351F2AE7EE00AB1126 /* initial.graphql in Resources */,
+				DCE75FA31F61238F007E34BC /* fetchCategoriesFragment.graphql in Resources */,
 				DC4C64331F2AE50900AB1126 /* schema.json in Resources */,
 				A902A1461E68561500E792D3 /* LaunchScreen.storyboard in Resources */,
 				A902A1431E68561500E792D3 /* Assets.xcassets in Resources */,
@@ -206,6 +234,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Apollo.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SDWebImage.framework",
 			);
 			outputPaths = (
 			);
@@ -233,10 +262,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCFF198C1F62A7DF00346DA7 /* AuthViewController.swift in Sources */,
 				DC54B0801EDBC0E800CF750E /* Plato.swift in Sources */,
 				A902A13E1E68561500E792D3 /* CategoryItemViewController.swift in Sources */,
 				DC1D4D8D1EF428B7005F4181 /* ProfileSectionViewController.swift in Sources */,
 				A902A13A1E68561500E792D3 /* AppDelegate.swift in Sources */,
+				DC9CA94E1F5E97BC00F435FA /* CollectionViewController.swift in Sources */,
 				DC4C64311F2AE2F200AB1126 /* API.swift in Sources */,
 				DC54B0821EDBC33200CF750E /* Config.swift in Sources */,
 				DC54B07B1EDBBE8F00CF750E /* ProfileViewController.swift in Sources */,
