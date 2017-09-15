@@ -1,25 +1,12 @@
 //
 //  AppDelegate.swift
-//  dbmeinv-ios
+//  athena-ios
 //
-//  Created by 贺乐 on 02/03/2017.
-//  Copyright © 2017 贺乐. All rights reserved.
+//  Created by AnnatarHe on 15/09/2017.
+//  Copyright © 2017 AnnatarHe. All rights reserved.
 //
 
 import UIKit
-
-import Apollo
-
-let apollo: ApolloClient = {
-    let configuration = URLSessionConfiguration.default
-    // Add additional headers as needed
-    configuration.httpAdditionalHeaders = ["Authorization": "Bearer \(Config.token)"]
-    
-    let url = URL(string: "http://localhost:9000/graphql")!
-    
-    return ApolloClient(networkTransport: HTTPNetworkTransport(url: url, configuration: configuration))
-}()
-
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
