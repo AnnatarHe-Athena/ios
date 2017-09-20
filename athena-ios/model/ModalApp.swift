@@ -8,6 +8,6 @@
 
 
 class ModalApp {
-    static var categories: [String] = [""]
+    static var categories: [InitCategoriesQuery.Data.Category?] = []
 }
 

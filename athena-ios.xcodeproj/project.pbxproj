@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DC8DFE0F1F728F8000F442DE /* ModalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DFE0E1F728F8000F442DE /* ModalApp.swift */; };
 		DC8DFE111F728FFC00F442DE /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DFE101F728FFC00F442DE /* Config.swift */; };
+		DC8DFE141F72A0EE00F442DE /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DFE131F72A0EE00F442DE /* AuthViewController.swift */; };
 		DCCBB1C71F6BAC8300D5ED23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCBB1C61F6BAC8300D5ED23 /* AppDelegate.swift */; };
 		DCCBB1C91F6BAC8300D5ED23 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCBB1C81F6BAC8300D5ED23 /* IndexViewController.swift */; };
 		DCCBB1CB1F6BAC8300D5ED23 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCBB1CA1F6BAC8300D5ED23 /* ProfileViewController.swift */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		DC8DFE0E1F728F8000F442DE /* ModalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalApp.swift; sourceTree = "<group>"; };
 		DC8DFE101F728FFC00F442DE /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		DC8DFE131F72A0EE00F442DE /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		DCCBB1C31F6BAC8300D5ED23 /* athena-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "athena-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCCBB1C61F6BAC8300D5ED23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCCBB1C81F6BAC8300D5ED23 /* IndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +72,14 @@
 			path = model;
 			sourceTree = "<group>";
 		};
+		DC8DFE121F72A0D900F442DE /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DC8DFE131F72A0EE00F442DE /* AuthViewController.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
 		DCCBB1BA1F6BAC8300D5ED23 = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +100,7 @@
 		DCCBB1C51F6BAC8300D5ED23 /* athena-ios */ = {
 			isa = PBXGroup;
 			children = (
+				DC8DFE121F72A0D900F442DE /* controllers */,
 				DC8DFE0D1F728F4000F442DE /* model */,
 				DCCBB1EA1F6BAE9000D5ED23 /* API.swift */,
 				DCCBB1C61F6BAC8300D5ED23 /* AppDelegate.swift */,
@@ -226,6 +237,7 @@
 				DCCBB1CB1F6BAC8300D5ED23 /* ProfileViewController.swift in Sources */,
 				DCCBB1C71F6BAC8300D5ED23 /* AppDelegate.swift in Sources */,
 				DCCBB1EB1F6BAE9000D5ED23 /* API.swift in Sources */,
+				DC8DFE141F72A0EE00F442DE /* AuthViewController.swift in Sources */,
 				DC8DFE0F1F728F8000F442DE /* ModalApp.swift in Sources */,
 				DCCBB1C91F6BAC8300D5ED23 /* IndexViewController.swift in Sources */,
 				DC8DFE111F728FFC00F442DE /* Config.swift in Sources */,

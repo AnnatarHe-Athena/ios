@@ -99,6 +99,40 @@
             </objects>
             <point key="canvasLocation" x="750" y="360"/>
         </scene>
+        <!--Auth View Controller-->
+        <scene sceneID="3U9-np-eJj">
+            <objects>
+                <viewController id="vLR-gb-ZGO" customClass="AuthViewController" customModule="athena_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5cf-da-BQ3"/>
+                        <viewControllerLayoutGuide type="bottom" id="TQC-S5-apD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rfU-UA-yjY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Auth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUr-IM-JYr">
+                                <rect key="frame" x="99" y="224" width="36" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Pnn-MX-kmU">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="mof-EW-3ue">
+                            <connections>
+                                <action selector="cancel:" destination="vLR-gb-ZGO" id="Qbs-pL-9Ct"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r6w-9y-iM7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1529" y="1366"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -135,6 +169,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J0Y-xU-yqp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="748.79999999999995" y="-320.23988005997006"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="GAS-ie-7me">
+            <objects>
+                <navigationController storyboardIdentifier="authView" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ywa-FD-U5f" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jmH-Bz-rF7">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vLR-gb-ZGO" kind="relationship" relationship="rootViewController" id="IKw-UC-c8U"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Br-I0-r8P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="723.20000000000005" y="1366.4167916041979"/>
         </scene>
     </scenes>
     <resources>

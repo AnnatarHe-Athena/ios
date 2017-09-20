@@ -6,6 +6,10 @@
 //  Copyright © 2017 AnnatarHe. All rights reserved.
 //
 
+let devServer = "http://localhost:9000/graphql/v1"
+
+let prodServer = "https://api.dbg.annatarhe.com/graphql/v1"
+
 import Apollo
 
 class Config {
@@ -17,7 +21,7 @@ class Config {
             // Add additional headers as needed
         configuration.httpAdditionalHeaders = ["athena-token": Config.token]
             
-        let url = URL(string: "http://localhost:9000/graphql/v1")!
+        let url = URL(string: prodServer)!
             
         return ApolloClient(networkTransport: HTTPNetworkTransport(url: url, configuration: configuration))
     }
