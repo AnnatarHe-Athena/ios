@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC8DFE0F1F728F8000F442DE /* ModalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DFE0E1F728F8000F442DE /* ModalApp.swift */; };
+		DC8DFE111F728FFC00F442DE /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DFE101F728FFC00F442DE /* Config.swift */; };
 		DCCBB1C71F6BAC8300D5ED23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCBB1C61F6BAC8300D5ED23 /* AppDelegate.swift */; };
-		DCCBB1C91F6BAC8300D5ED23 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCBB1C81F6BAC8300D5ED23 /* FirstViewController.swift */; };
-		DCCBB1CB1F6BAC8300D5ED23 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCBB1CA1F6BAC8300D5ED23 /* SecondViewController.swift */; };
+		DCCBB1C91F6BAC8300D5ED23 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCBB1C81F6BAC8300D5ED23 /* IndexViewController.swift */; };
+		DCCBB1CB1F6BAC8300D5ED23 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCBB1CA1F6BAC8300D5ED23 /* ProfileViewController.swift */; };
 		DCCBB1CE1F6BAC8300D5ED23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCCBB1CC1F6BAC8300D5ED23 /* Main.storyboard */; };
 		DCCBB1D01F6BAC8300D5ED23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCCBB1CF1F6BAC8300D5ED23 /* Assets.xcassets */; };
 		DCCBB1D31F6BAC8300D5ED23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCCBB1D11F6BAC8300D5ED23 /* LaunchScreen.storyboard */; };
@@ -23,10 +25,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DC8DFE0E1F728F8000F442DE /* ModalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalApp.swift; sourceTree = "<group>"; };
+		DC8DFE101F728FFC00F442DE /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		DCCBB1C31F6BAC8300D5ED23 /* athena-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "athena-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCCBB1C61F6BAC8300D5ED23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DCCBB1C81F6BAC8300D5ED23 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		DCCBB1CA1F6BAC8300D5ED23 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		DCCBB1C81F6BAC8300D5ED23 /* IndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
+		DCCBB1CA1F6BAC8300D5ED23 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		DCCBB1CD1F6BAC8300D5ED23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DCCBB1CF1F6BAC8300D5ED23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCCBB1D21F6BAC8300D5ED23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,6 +61,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DC8DFE0D1F728F4000F442DE /* model */ = {
+			isa = PBXGroup;
+			children = (
+				DC8DFE0E1F728F8000F442DE /* ModalApp.swift */,
+				DC8DFE101F728FFC00F442DE /* Config.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		DCCBB1BA1F6BAC8300D5ED23 = {
 			isa = PBXGroup;
 			children = (
@@ -77,10 +90,11 @@
 		DCCBB1C51F6BAC8300D5ED23 /* athena-ios */ = {
 			isa = PBXGroup;
 			children = (
+				DC8DFE0D1F728F4000F442DE /* model */,
 				DCCBB1EA1F6BAE9000D5ED23 /* API.swift */,
 				DCCBB1C61F6BAC8300D5ED23 /* AppDelegate.swift */,
-				DCCBB1C81F6BAC8300D5ED23 /* FirstViewController.swift */,
-				DCCBB1CA1F6BAC8300D5ED23 /* SecondViewController.swift */,
+				DCCBB1C81F6BAC8300D5ED23 /* IndexViewController.swift */,
+				DCCBB1CA1F6BAC8300D5ED23 /* ProfileViewController.swift */,
 				DCCBB1CC1F6BAC8300D5ED23 /* Main.storyboard */,
 				DCCBB1CF1F6BAC8300D5ED23 /* Assets.xcassets */,
 				DCCBB1D11F6BAC8300D5ED23 /* LaunchScreen.storyboard */,
@@ -131,7 +145,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = AnnatarHe;
 				TargetAttributes = {
 					DCCBB1C21F6BAC8300D5ED23 = {
@@ -209,10 +223,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCCBB1CB1F6BAC8300D5ED23 /* SecondViewController.swift in Sources */,
+				DCCBB1CB1F6BAC8300D5ED23 /* ProfileViewController.swift in Sources */,
 				DCCBB1C71F6BAC8300D5ED23 /* AppDelegate.swift in Sources */,
 				DCCBB1EB1F6BAE9000D5ED23 /* API.swift in Sources */,
-				DCCBB1C91F6BAC8300D5ED23 /* FirstViewController.swift in Sources */,
+				DC8DFE0F1F728F8000F442DE /* ModalApp.swift in Sources */,
+				DCCBB1C91F6BAC8300D5ED23 /* IndexViewController.swift in Sources */,
+				DC8DFE111F728FFC00F442DE /* Config.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,7 +264,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -256,7 +274,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -279,7 +301,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -298,7 +320,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -306,7 +330,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -323,7 +351,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -343,7 +371,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.annatarhe.athena-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -359,7 +387,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.annatarhe.athena-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -382,6 +410,7 @@
 				DCCBB1D91F6BAC8300D5ED23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
