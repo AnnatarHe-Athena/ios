@@ -45,6 +45,7 @@ public final class InitCategoriesQuery: GraphQLQuery {
     "    id" +
     "    name" +
     "    src" +
+    "    count" +
     "  }" +
     "}"
 
@@ -86,6 +87,7 @@ public final class InitCategoriesQuery: GraphQLQuery {
         GraphQLField("id", type: .scalar(GraphQLID.self)),
         GraphQLField("name", type: .scalar(String.self)),
         GraphQLField("src", type: .scalar(Int.self)),
+        GraphQLField("count", type: .scalar(Int.self)),
       ]
 
       public var snapshot: Snapshot
@@ -94,8 +96,8 @@ public final class InitCategoriesQuery: GraphQLQuery {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID? = nil, name: String? = nil, src: Int? = nil) {
-        self.init(snapshot: ["__typename": "category", "id": id, "name": name, "src": src])
+      public init(id: GraphQLID? = nil, name: String? = nil, src: Int? = nil, count: Int? = nil) {
+        self.init(snapshot: ["__typename": "category", "id": id, "name": name, "src": src, "count": count])
       }
 
       public var __typename: String {
@@ -131,6 +133,15 @@ public final class InitCategoriesQuery: GraphQLQuery {
         }
         set {
           snapshot.updateValue(newValue, forKey: "src")
+        }
+      }
+
+      public var count: Int? {
+        get {
+          return snapshot["count"]! as! Int?
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "count")
         }
       }
     }
