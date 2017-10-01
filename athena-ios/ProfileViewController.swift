@@ -14,7 +14,6 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.checkLogin()
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,10 +21,17 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.checkLogin()
+    }
+    
     func checkLogin() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "authView")
         
-        self.present(vc!, animated: true, completion: nil)
+        performSegue(withIdentifier: "toAuth", sender: nil)
+        
+//        let vc = storyboard?.instantiateViewController(withIdentifier: "authView")
+//
+//        self.present(vc!, animated: true, completion: nil)
     }
 
 }
