@@ -18,6 +18,7 @@ class AuthViewController: UIViewController {
     }
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
+    
     @IBAction func login(_ sender: Any) {
 
         if (self.loading) {
@@ -52,9 +53,11 @@ class AuthViewController: UIViewController {
             }
 
             Config.token = token
+            print(token)
 
             self.indicator.stopAnimating()
             self.loading = false
+            self.dismiss(animated: true, completion: nil)
         }
     }
     

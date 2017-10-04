@@ -13,6 +13,7 @@ let prodServer = "https://api.dbg.annatarhe.com/graphql/v1"
 import Apollo
 
 class Config {
+    
     static var token: String = ""
     
     static func getApolloClient() -> ApolloClient {

@@ -26,12 +26,11 @@ class ProfileViewController: UIViewController {
     }
     
     func checkLogin() {
+        if Config.token == "" {
+            
+            performSegue(withIdentifier: "toAuth", sender: nil)
+        }
         
-        performSegue(withIdentifier: "toAuth", sender: nil)
-        
-//        let vc = storyboard?.instantiateViewController(withIdentifier: "authView")
-//
-//        self.present(vc!, animated: true, completion: nil)
     }
 
 }

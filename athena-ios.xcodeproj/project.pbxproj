@@ -23,6 +23,8 @@
 		DCCBB1E71F6BADA700D5ED23 /* SKPhotoBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBB1E61F6BADA700D5ED23 /* SKPhotoBrowser.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DCCBB1E91F6BADAC00D5ED23 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBB1E81F6BADAC00D5ED23 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DCCBB1EB1F6BAE9000D5ED23 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCBB1EA1F6BAE9000D5ED23 /* API.swift */; };
+		DCD6B0931F81C6FF002E810C /* GirlCellOfTableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD6B0921F81C6FF002E810C /* GirlCellOfTableTableViewCell.swift */; };
+		DCD6B09A1F81CF3B002E810C /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD6B0991F81CF3B002E810C /* utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		DCCBB1E61F6BADA700D5ED23 /* SKPhotoBrowser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SKPhotoBrowser.framework; path = Carthage/Build/iOS/SKPhotoBrowser.framework; sourceTree = "<group>"; };
 		DCCBB1E81F6BADAC00D5ED23 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		DCCBB1EA1F6BAE9000D5ED23 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		DCD6B0921F81C6FF002E810C /* GirlCellOfTableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GirlCellOfTableTableViewCell.swift; sourceTree = "<group>"; };
+		DCD6B0991F81CF3B002E810C /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				DC8DFE131F72A0EE00F442DE /* AuthViewController.swift */,
+				DCD6B0921F81C6FF002E810C /* GirlCellOfTableTableViewCell.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -100,6 +105,7 @@
 		DCCBB1C51F6BAC8300D5ED23 /* athena-ios */ = {
 			isa = PBXGroup;
 			children = (
+				DCD6B0981F81CF2E002E810C /* utils */,
 				DC8DFE121F72A0D900F442DE /* controllers */,
 				DC8DFE0D1F728F4000F442DE /* model */,
 				DCCBB1EA1F6BAE9000D5ED23 /* API.swift */,
@@ -125,6 +131,14 @@
 				DCCBB1DE1F6BAD8A00D5ED23 /* Alamofire.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DCD6B0981F81CF2E002E810C /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				DCD6B0991F81CF3B002E810C /* utils.swift */,
+			);
+			path = utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +248,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCD6B09A1F81CF3B002E810C /* utils.swift in Sources */,
 				DCCBB1CB1F6BAC8300D5ED23 /* ProfileViewController.swift in Sources */,
 				DCCBB1C71F6BAC8300D5ED23 /* AppDelegate.swift in Sources */,
 				DCCBB1EB1F6BAE9000D5ED23 /* API.swift in Sources */,
@@ -241,6 +256,7 @@
 				DC8DFE0F1F728F8000F442DE /* ModalApp.swift in Sources */,
 				DCCBB1C91F6BAC8300D5ED23 /* IndexViewController.swift in Sources */,
 				DC8DFE111F728FFC00F442DE /* Config.swift in Sources */,
+				DCD6B0931F81C6FF002E810C /* GirlCellOfTableTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
