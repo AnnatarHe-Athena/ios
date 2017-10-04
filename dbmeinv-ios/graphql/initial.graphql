@@ -1,5 +1,0 @@
-
-query InitFetch($from: Int!, $take: Int!, $offset: Int!) {
-    ...fetchCategories
-    ...fetchGirls
-}
