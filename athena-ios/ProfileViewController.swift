@@ -9,7 +9,12 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-
+    @IBOutlet weak var userAvatar: UIImageView!
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var userEmail: UILabel!
+    @IBOutlet weak var userBio: UILabel!
+    @IBOutlet weak var userCollectionsTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -22,12 +27,12 @@ class ProfileViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.checkLogin()
+        // FIXME: delete me
+//        self.checkLogin()
     }
     
     func checkLogin() {
         if Config.token == "" {
-            
             performSegue(withIdentifier: "toAuth", sender: nil)
         }
         

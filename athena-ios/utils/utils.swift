@@ -10,9 +10,9 @@
 class Utils {
     public static func getRealImageSrc(image: String, type: String = "bmiddle") -> String {
         
-//        #if DEBUG
-//            return "https://via.placeholder.com/350x150"
-//        #endif
+        #if DEBUG
+            return "https://via.placeholder.com/350x150"
+        #endif
         if (image.hasPrefix("http")) {
             return image
         }

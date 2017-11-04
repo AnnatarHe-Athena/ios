@@ -9,6 +9,7 @@
 import UIKit
 import Apollo
 import SDWebImage
+import SKPhotoBrowser
 
 class IndexViewController: UIViewController {
     @IBOutlet weak var cellListTableView: UITableView!
@@ -24,7 +25,7 @@ class IndexViewController: UIViewController {
         let alert = UIAlertController(title: "Categories", message: nil, preferredStyle: .actionSheet)
         
         for var category in ModalApp.categories {
-            alert.addAction(UIAlertAction(title: category?.name, style: .default, handler: { action in
+            alert.addAction(UIAlertAction(title: "category?.name", style: .default, handler: { action in
                 
                 self.categoryID = category?.id
                 
@@ -115,11 +116,31 @@ extension IndexViewController: UITableViewDelegate, UITableViewDataSource {
         
         let imageSrc = Utils.getRealImageSrc(image: (detail?.img)!)
         
-        cell.detailImage.sd_setImage(with: URL(string: imageSrc), placeholderImage: nil, options: .allowInvalidSSLCertificates, completed: nil)
+        cell.detailImage.sd_setImage(with: URL(string: imageSrc), placeholderImage: UIImage(named: "placeholderImage.png"), options: .allowInvalidSSLCertificates, completed: nil)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let itemData = cells[indexPath.row]
+        
+        let cell = tableView.cellForRow(at: indexPath) as! GirlCellOfTableTableViewCell
+        
+        let defaultImage = cell.detailImage.image
+        var images = [SKPhoto]()
+        
+        let photo = SKPhoto.photoWithImageURL(Utils.getRealImageSrc(image: (itemData?.img)!, type: "large"))
+        
+        images.append(photo)
+        
+        let browser = SKPhotoBrowser(originImage: defaultImage ?? UIImage(), photos: images, animatedFromView: cell)
+        
+        browser.initializePageIndex(0)
+        
+//        presentedViewController(browser, animated: true, completion: nil)
+        
+        present(browser, animated: true, completion: nil)
+        
         print("clicked", indexPath)
     }
     

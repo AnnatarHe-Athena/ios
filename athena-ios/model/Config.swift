@@ -21,12 +21,11 @@ class Config {
         let configuration = URLSessionConfiguration.default
             // Add additional headers as needed
         configuration.httpAdditionalHeaders = ["athena-token": Config.token]
-        var url: URL
         
         #if DEBUG
-            url = URL(string: devServer)!
+            let url = URL(string: devServer)!
         #else
-            url = URL(string: prodServer)!
+            let url = URL(string: prodServer)!
         #endif
         
         return ApolloClient(networkTransport: HTTPNetworkTransport(url: url, configuration: configuration))
