@@ -127,19 +127,8 @@ extension IndexViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.cellForRow(at: indexPath) as! GirlCellOfTableTableViewCell
         
         let defaultImage = cell.detailImage.image
-        var images = [SKPhoto]()
         
-        let photo = SKPhoto.photoWithImageURL(Utils.getRealImageSrc(image: (itemData?.img)!, type: "large"))
-        
-        images.append(photo)
-        
-        let browser = SKPhotoBrowser(originImage: defaultImage ?? UIImage(), photos: images, animatedFromView: cell)
-        
-        browser.initializePageIndex(0)
-        
-//        presentedViewController(browser, animated: true, completion: nil)
-        
-        present(browser, animated: true, completion: nil)
+        Utils.presentBigPreview(view: self, src: Utils.getRealImageSrc(image: (itemData?.img)!, type: "large"), holderImage: defaultImage, from: cell)
         
         print("clicked", indexPath)
     }

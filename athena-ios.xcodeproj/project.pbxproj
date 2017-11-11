@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DC0C01801F8B46D600ED869A /* SKPhotoBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBB1E61F6BADA700D5ED23 /* SKPhotoBrowser.framework */; };
 		DC0C01811F8B46D600ED869A /* SKPhotoBrowser.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBB1E61F6BADA700D5ED23 /* SKPhotoBrowser.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DC8DFE0F1F728F8000F442DE /* ModalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DFE0E1F728F8000F442DE /* ModalApp.swift */; };
 		DC8DFE111F728FFC00F442DE /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DFE101F728FFC00F442DE /* Config.swift */; };
@@ -27,6 +26,9 @@
 		DCCBB1EB1F6BAE9000D5ED23 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCBB1EA1F6BAE9000D5ED23 /* API.swift */; };
 		DCD6B0931F81C6FF002E810C /* GirlCellOfTableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD6B0921F81C6FF002E810C /* GirlCellOfTableTableViewCell.swift */; };
 		DCD6B09A1F81CF3B002E810C /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD6B0991F81CF3B002E810C /* utils.swift */; };
+		DCDECFC21FB5429300380A86 /* Sentry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCDECFC11FB5429200380A86 /* Sentry.framework */; };
+		DCDECFC31FB553D100380A86 /* Sentry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCDECFC11FB5429200380A86 /* Sentry.framework */; };
+		DCDECFC41FB553D100380A86 /* Sentry.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DCDECFC11FB5429200380A86 /* Sentry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +39,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				DC0C01811F8B46D600ED869A /* SKPhotoBrowser.framework in Embed Frameworks */,
+				DCDECFC41FB553D100380A86 /* Sentry.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,6 +67,7 @@
 		DCCBB1EA1F6BAE9000D5ED23 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		DCD6B0921F81C6FF002E810C /* GirlCellOfTableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GirlCellOfTableTableViewCell.swift; sourceTree = "<group>"; };
 		DCD6B0991F81CF3B002E810C /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
+		DCDECFC11FB5429200380A86 /* Sentry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sentry.framework; path = Carthage/Build/iOS/Sentry.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,12 +76,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCCBB1DF1F6BAD8A00D5ED23 /* Alamofire.framework in Frameworks */,
+				DCDECFC31FB553D100380A86 /* Sentry.framework in Frameworks */,
 				DCCBB1E11F6BAD9100D5ED23 /* AlamofireImage.framework in Frameworks */,
 				DCCBB1E31F6BAD9300D5ED23 /* Apollo.framework in Frameworks */,
 				DCCBB1E51F6BADA000D5ED23 /* SDWebImage.framework in Frameworks */,
 				DCA0E7041F86FC240087A691 /* SKPhotoBrowser.framework in Frameworks */,
-				DC0C01801F8B46D600ED869A /* SKPhotoBrowser.framework in Frameworks */,
 				DCCBB1E91F6BADAC00D5ED23 /* SwiftyJSON.framework in Frameworks */,
+				DCDECFC21FB5429300380A86 /* Sentry.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +145,7 @@
 		DCCBB1DD1F6BAD8A00D5ED23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DCDECFC11FB5429200380A86 /* Sentry.framework */,
 				DCCBB1E81F6BADAC00D5ED23 /* SwiftyJSON.framework */,
 				DCCBB1E61F6BADA700D5ED23 /* SKPhotoBrowser.framework */,
 				DCCBB1E41F6BADA000D5ED23 /* SDWebImage.framework */,
@@ -165,12 +171,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DCCBB1D71F6BAC8300D5ED23 /* Build configuration list for PBXNativeTarget "athena-ios" */;
 			buildPhases = (
-				DCCBB1BF1F6BAC8300D5ED23 /* Sources */,
+				DCCBB1DA1F6BACD200D5ED23 /* ShellScript */,
+				DCCBB1DC1F6BAD1B00D5ED23 /* Generate GraphQL API */,
 				DCCBB1C01F6BAC8300D5ED23 /* Frameworks */,
 				DCCBB1C11F6BAC8300D5ED23 /* Resources */,
-				DCCBB1DA1F6BACD200D5ED23 /* ShellScript */,
-				DCCBB1DC1F6BAD1B00D5ED23 /* ShellScript */,
 				DC0C01821F8B46D600ED869A /* Embed Frameworks */,
+				DCCBB1BF1F6BAC8300D5ED23 /* Sources */,
 			);
 			buildRules = (
 			);
@@ -239,6 +245,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Apollo.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SDWebImage.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SKPhotoBrowser.framework",
 			);
 			outputPaths = (
 			);
@@ -246,18 +253,19 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
-		DCCBB1DC1F6BAD1B00D5ED23 /* ShellScript */ = {
+		DCCBB1DC1F6BAD1B00D5ED23 /* Generate GraphQL API */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Generate GraphQL API";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "APOLLO_FRAMEWORK_PATH=\"$(eval find $FRAMEWORK_SEARCH_PATHS -name \"Apollo.framework\" -maxdepth 1)\"\n\nif [ -z \"$APOLLO_FRAMEWORK_PATH\" ]; then\necho \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\nexit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n$APOLLO_FRAMEWORK_PATH/check-and-run-apollo-codegen.sh generate $(find ../../schema -name '*.graphql') --schema ../../schema/schema.json --output API.swift";
+			shellScript = "echo \"I was run\"\n\nAPOLLO_FRAMEWORK_PATH=\"$(eval find $FRAMEWORK_SEARCH_PATHS -name 'Apollo.framework' -maxdepth 1)\"\n\nif [ -z \"$APOLLO_FRAMEWORK_PATH\" ]; then\necho \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\nexit 1\nfi\n\n\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n$APOLLO_FRAMEWORK_PATH/check-and-run-apollo-codegen.sh generate $(find ../../schema -name '*.graphql') --schema ../../schema/schema.json --output API.swift";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -414,7 +422,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "athena-ios/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.annatarhe.athena-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -431,7 +439,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "athena-ios/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.annatarhe.athena-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -19,14 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        // Create a Sentry client and start crash handler
-        do {
-            Client.shared = try Client(dsn: "https://c11f932d316c4a2aa7b99e43cd950678:176a95d1d20c48c6b927b922fb44505f@sentry.io/238843")
-            try Client.shared?.startCrashHandler()
-        } catch let error {
-            print("\(error)")
-            // Wrong DSN or KSCrash not installed
-        }
+        
+        Utils.initApp()
         return true
     }
 

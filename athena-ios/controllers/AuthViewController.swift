@@ -72,5 +72,20 @@ class AuthViewController: UIViewController {
     
     override func viewDidLoad() {
         indicator.hidesWhenStopped = true
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        createGradientLayer()
+    }
+    
+    private func createGradientLayer() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.view.bounds
+        gradientLayer.colors = [AthenaColors.blue.cgColor, AthenaColors.green.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 1, y: 0.2)
+        gradientLayer.endPoint = CGPoint(x: 0, y: 0.8)
+        
+        self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
 }

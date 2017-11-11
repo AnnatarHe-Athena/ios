@@ -28,7 +28,7 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         // FIXME: delete me
-//        self.checkLogin()
+        self.checkLogin()
     }
     
     func checkLogin() {
