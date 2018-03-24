@@ -4,3 +4,5 @@ github "apollostack/apollo-ios"
 github "rs/SDWebImage"
 github "suzuki-0000/SKPhotoBrowser"
 github "getsentry/sentry-cocoa" "3.8.5"
+github "Alamofire/AlamofireImage" ~> 3.3
+github "stephencelis/SQLite.swift" ~> 0.11.4

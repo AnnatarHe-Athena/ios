@@ -6,7 +6,7 @@
 //  Copyright © 2017 AnnatarHe. All rights reserved.
 //
 
-let devServer = "http://localhost:9000/graphql/v1"
+let devServer = "http://localhost:9009/graphql/v1"
 
 let prodServer = "https://api.dbg.annatarhe.com/graphql/v1"
 

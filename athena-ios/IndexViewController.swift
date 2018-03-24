@@ -16,25 +16,30 @@ class IndexViewController: UIViewController {
     
     private var categoryID: GraphQLID? = GraphQLID(0)
     private var cells: [FetchGirlsQueryQuery.Data.Girl?] = []
+    private var noMore = false
     
     private var loading: Bool = false
-
     @IBAction func CheckMore(_ sender: Any) {
         
         print(sender)
         let alert = UIAlertController(title: "Categories", message: nil, preferredStyle: .actionSheet)
         
         for var category in ModalApp.categories {
-            alert.addAction(UIAlertAction(title: "category?.name", style: .default, handler: { action in
+            alert.addAction(UIAlertAction(title: category?.name, style: .default, handler: { action in
                 
                 self.categoryID = category?.id
                 
                 // load data
-                self.loadCellsData()
+                self.loadCellsData(fetchMore: false)
                 
                 self.dismiss(animated: true, completion: nil)
             }))
         }
+        
+        alert.addAction(UIAlertAction(title: "refresh", style: .destructive, handler: { action in
+            self.initialLoad()
+            self.dismiss(animated: true, completion: nil)
+        }))
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(cancelAction)
@@ -53,8 +58,7 @@ class IndexViewController: UIViewController {
     
     private func initialLoad() {
         Config.getApolloClient().fetch(query: InitCategoriesQuery()) { (result, err) in
-            
-            print(err ?? "")
+            self.showAlert(err: err)
             guard let categories = result?.data?.categories else {
                 print("load incorrect data")
                 print(result?.data)
@@ -62,6 +66,21 @@ class IndexViewController: UIViewController {
             }
             ModalApp.categories = categories
         }
+    }
+    
+    func showAlert(err: Error?) {
+        guard let msg = err?.localizedDescription else {
+            // do nothing
+            return
+        }
+        
+        let alert = UIAlertController(title: "Load Category data error", message: msg, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ok", style: .default, handler: { action in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        
+        // sentry report this error
+        self.present(alert, animated: true)
     }
     
     private func loadCellsData(fetchMore: Bool = true) {
@@ -73,12 +92,16 @@ class IndexViewController: UIViewController {
         
         let offset = fetchMore ? cells.count : 0
         
-        Config.getApolloClient().fetch(query: FetchGirlsQueryQuery(from: Int(self.categoryID!)!, take: 20, offset: offset)) { (result, err) in
-            print(err ?? "")
+        Config.getApolloClient().fetch(query: FetchGirlsQueryQuery(from: Int(self.categoryID!)!, take: 20, offset: offset, hideOnly: false)) { (result, err) in
+            self.showAlert(err: err)
             
             guard let girls = result?.data?.girls else {
                 print("load error")
                 return
+            }
+            
+            if girls.count == 0 {
+                self.noMore = true
             }
             
             if fetchMore {
@@ -97,8 +120,6 @@ class IndexViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 
 extension IndexViewController: UITableViewDelegate, UITableViewDataSource {
@@ -134,7 +155,11 @@ extension IndexViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if self.noMore {
+            return
+        }
         let lastElement = cells.count - 1
+        
         
         if indexPath.row == lastElement {
             // is last one

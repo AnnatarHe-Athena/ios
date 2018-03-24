@@ -19,6 +19,16 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        self.checkLogin()
+        
+        
+        let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.touchAction))
+        self.view.addGestureRecognizer(gesture)
+    }
+    
+    
+    @objc func touchAction(sender : UITapGestureRecognizer) {
+        self.checkLogin()
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,8 +37,6 @@ class ProfileViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        // FIXME: delete me
-        self.checkLogin()
     }
     
     func checkLogin() {

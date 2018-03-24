@@ -5,16 +5,25 @@ import Apollo
 public struct CellInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(premission: Optional<Int?> = nil, img: Optional<String?> = nil, text: Optional<String?> = nil, cate: Optional<Int?> = nil) {
-    graphQLMap = ["premission": premission, "img": img, "text": text, "cate": cate]
+  public init(fromId: Optional<String?> = nil, fromUrl: Optional<String?> = nil, img: Optional<String?> = nil, text: Optional<String?> = nil, cate: Optional<Int?> = nil, permission: Optional<Int?> = nil) {
+    graphQLMap = ["fromID": fromId, "fromURL": fromUrl, "img": img, "text": text, "cate": cate, "permission": permission]
   }
 
-  public var premission: Optional<Int?> {
+  public var fromId: Optional<String?> {
     get {
-      return graphQLMap["premission"] as! Optional<Int?>
+      return graphQLMap["fromId"] as! Optional<String?>
     }
     set {
-      graphQLMap.updateValue(newValue, forKey: "premission")
+      graphQLMap.updateValue(newValue, forKey: "fromId")
+    }
+  }
+
+  public var fromUrl: Optional<String?> {
+    get {
+      return graphQLMap["fromUrl"] as! Optional<String?>
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "fromUrl")
     }
   }
 
@@ -44,6 +53,15 @@ public struct CellInput: GraphQLMapConvertible {
       graphQLMap.updateValue(newValue, forKey: "cate")
     }
   }
+
+  public var permission: Optional<Int?> {
+    get {
+      return graphQLMap["permission"] as! Optional<Int?>
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "permission")
+    }
+  }
 }
 
 public final class InitCategoriesQuery: GraphQLQuery {
@@ -67,16 +85,16 @@ public final class InitCategoriesQuery: GraphQLQuery {
     }
 
     public init(categories: [Category?]? = nil) {
-      self.init(snapshot: ["__typename": "RootSchema", "categories": categories.flatMap { $0.map { $0.flatMap { $0.snapshot } } }])
+      self.init(snapshot: ["__typename": "RootSchema", "categories": categories.flatMap { (value: [Category?]) -> [Snapshot?] in value.map { (value: Category?) -> Snapshot? in value.flatMap { (value: Category) -> Snapshot in value.snapshot } } }])
     }
 
     /// categories
     public var categories: [Category?]? {
       get {
-        return (snapshot["categories"] as? [Snapshot?]).flatMap { $0.map { $0.flatMap { Category(snapshot: $0) } } }
+        return (snapshot["categories"] as? [Snapshot?]).flatMap { (value: [Snapshot?]) -> [Category?] in value.map { (value: Snapshot?) -> Category? in value.flatMap { (value: Snapshot) -> Category in Category(snapshot: value) } } }
       }
       set {
-        snapshot.updateValue(newValue.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, forKey: "categories")
+        snapshot.updateValue(newValue.flatMap { (value: [Category?]) -> [Snapshot?] in value.map { (value: Category?) -> Snapshot? in value.flatMap { (value: Category) -> Snapshot in value.snapshot } } }, forKey: "categories")
       }
     }
 
@@ -151,29 +169,31 @@ public final class InitCategoriesQuery: GraphQLQuery {
 
 public final class FetchGirlsQueryQuery: GraphQLQuery {
   public static let operationString =
-    "query fetchGirlsQuery($from: Int!, $take: Int!, $offset: Int!) {\n  girls(from: $from, take: $take, offset: $offset) {\n    __typename\n    ...fetchGirls\n  }\n}"
+    "query fetchGirlsQuery($from: Int!, $take: Int!, $offset: Int!, $hideOnly: Boolean) {\n  girls(from: $from, take: $take, offset: $offset, hideOnly: $hideOnly) {\n    __typename\n    ...fetchGirls\n  }\n}"
 
   public static var requestString: String { return operationString.appending(FetchGirls.fragmentString) }
 
   public var from: Int
   public var take: Int
   public var offset: Int
+  public var hideOnly: Bool?
 
-  public init(from: Int, take: Int, offset: Int) {
+  public init(from: Int, take: Int, offset: Int, hideOnly: Bool? = nil) {
     self.from = from
     self.take = take
     self.offset = offset
+    self.hideOnly = hideOnly
   }
 
   public var variables: GraphQLMap? {
-    return ["from": from, "take": take, "offset": offset]
+    return ["from": from, "take": take, "offset": offset, "hideOnly": hideOnly]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["RootSchema"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("girls", arguments: ["from": GraphQLVariable("from"), "take": GraphQLVariable("take"), "offset": GraphQLVariable("offset")], type: .list(.object(Girl.selections))),
+      GraphQLField("girls", arguments: ["from": GraphQLVariable("from"), "take": GraphQLVariable("take"), "offset": GraphQLVariable("offset"), "hideOnly": GraphQLVariable("hideOnly")], type: .list(.object(Girl.selections))),
     ]
 
     public var snapshot: Snapshot
@@ -183,16 +203,16 @@ public final class FetchGirlsQueryQuery: GraphQLQuery {
     }
 
     public init(girls: [Girl?]? = nil) {
-      self.init(snapshot: ["__typename": "RootSchema", "girls": girls.flatMap { $0.map { $0.flatMap { $0.snapshot } } }])
+      self.init(snapshot: ["__typename": "RootSchema", "girls": girls.flatMap { (value: [Girl?]) -> [Snapshot?] in value.map { (value: Girl?) -> Snapshot? in value.flatMap { (value: Girl) -> Snapshot in value.snapshot } } }])
     }
 
     /// girls
     public var girls: [Girl?]? {
       get {
-        return (snapshot["girls"] as? [Snapshot?]).flatMap { $0.map { $0.flatMap { Girl(snapshot: $0) } } }
+        return (snapshot["girls"] as? [Snapshot?]).flatMap { (value: [Snapshot?]) -> [Girl?] in value.map { (value: Snapshot?) -> Girl? in value.flatMap { (value: Snapshot) -> Girl in Girl(snapshot: value) } } }
       }
       set {
-        snapshot.updateValue(newValue.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, forKey: "girls")
+        snapshot.updateValue(newValue.flatMap { (value: [Girl?]) -> [Snapshot?] in value.map { (value: Girl?) -> Snapshot? in value.flatMap { (value: Girl) -> Snapshot in value.snapshot } } }, forKey: "girls")
       }
     }
 
@@ -205,6 +225,9 @@ public final class FetchGirlsQueryQuery: GraphQLQuery {
         GraphQLField("id", type: .scalar(GraphQLID.self)),
         GraphQLField("img", type: .scalar(String.self)),
         GraphQLField("text", type: .scalar(String.self)),
+        GraphQLField("permission", type: .scalar(Int.self)),
+        GraphQLField("fromID", type: .scalar(String.self)),
+        GraphQLField("fromURL", type: .scalar(String.self)),
       ]
 
       public var snapshot: Snapshot
@@ -213,8 +236,8 @@ public final class FetchGirlsQueryQuery: GraphQLQuery {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID? = nil, img: String? = nil, text: String? = nil) {
-        self.init(snapshot: ["__typename": "girl", "id": id, "img": img, "text": text])
+      public init(id: GraphQLID? = nil, img: String? = nil, text: String? = nil, permission: Int? = nil, fromId: String? = nil, fromUrl: String? = nil) {
+        self.init(snapshot: ["__typename": "girl", "id": id, "img": img, "text": text, "permission": permission, "fromID": fromId, "fromURL": fromUrl])
       }
 
       public var __typename: String {
@@ -250,6 +273,33 @@ public final class FetchGirlsQueryQuery: GraphQLQuery {
         }
         set {
           snapshot.updateValue(newValue, forKey: "text")
+        }
+      }
+
+      public var permission: Int? {
+        get {
+          return snapshot["permission"] as? Int
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "permission")
+        }
+      }
+
+      public var fromId: String? {
+        get {
+          return snapshot["fromID"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "fromID")
+        }
+      }
+
+      public var fromUrl: String? {
+        get {
+          return snapshot["fromURL"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "fromURL")
         }
       }
 
@@ -313,26 +363,26 @@ public final class InitialQuery: GraphQLQuery {
     }
 
     public init(girls: [Girl?]? = nil, categories: [Category?]? = nil) {
-      self.init(snapshot: ["__typename": "RootSchema", "girls": girls.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, "categories": categories.flatMap { $0.map { $0.flatMap { $0.snapshot } } }])
+      self.init(snapshot: ["__typename": "RootSchema", "girls": girls.flatMap { (value: [Girl?]) -> [Snapshot?] in value.map { (value: Girl?) -> Snapshot? in value.flatMap { (value: Girl) -> Snapshot in value.snapshot } } }, "categories": categories.flatMap { (value: [Category?]) -> [Snapshot?] in value.map { (value: Category?) -> Snapshot? in value.flatMap { (value: Category) -> Snapshot in value.snapshot } } }])
     }
 
     /// girls
     public var girls: [Girl?]? {
       get {
-        return (snapshot["girls"] as? [Snapshot?]).flatMap { $0.map { $0.flatMap { Girl(snapshot: $0) } } }
+        return (snapshot["girls"] as? [Snapshot?]).flatMap { (value: [Snapshot?]) -> [Girl?] in value.map { (value: Snapshot?) -> Girl? in value.flatMap { (value: Snapshot) -> Girl in Girl(snapshot: value) } } }
       }
       set {
-        snapshot.updateValue(newValue.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, forKey: "girls")
+        snapshot.updateValue(newValue.flatMap { (value: [Girl?]) -> [Snapshot?] in value.map { (value: Girl?) -> Snapshot? in value.flatMap { (value: Girl) -> Snapshot in value.snapshot } } }, forKey: "girls")
       }
     }
 
     /// categories
     public var categories: [Category?]? {
       get {
-        return (snapshot["categories"] as? [Snapshot?]).flatMap { $0.map { $0.flatMap { Category(snapshot: $0) } } }
+        return (snapshot["categories"] as? [Snapshot?]).flatMap { (value: [Snapshot?]) -> [Category?] in value.map { (value: Snapshot?) -> Category? in value.flatMap { (value: Snapshot) -> Category in Category(snapshot: value) } } }
       }
       set {
-        snapshot.updateValue(newValue.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, forKey: "categories")
+        snapshot.updateValue(newValue.flatMap { (value: [Category?]) -> [Snapshot?] in value.map { (value: Category?) -> Snapshot? in value.flatMap { (value: Category) -> Snapshot in value.snapshot } } }, forKey: "categories")
       }
     }
 
@@ -345,6 +395,9 @@ public final class InitialQuery: GraphQLQuery {
         GraphQLField("id", type: .scalar(GraphQLID.self)),
         GraphQLField("img", type: .scalar(String.self)),
         GraphQLField("text", type: .scalar(String.self)),
+        GraphQLField("permission", type: .scalar(Int.self)),
+        GraphQLField("fromID", type: .scalar(String.self)),
+        GraphQLField("fromURL", type: .scalar(String.self)),
       ]
 
       public var snapshot: Snapshot
@@ -353,8 +406,8 @@ public final class InitialQuery: GraphQLQuery {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID? = nil, img: String? = nil, text: String? = nil) {
-        self.init(snapshot: ["__typename": "girl", "id": id, "img": img, "text": text])
+      public init(id: GraphQLID? = nil, img: String? = nil, text: String? = nil, permission: Int? = nil, fromId: String? = nil, fromUrl: String? = nil) {
+        self.init(snapshot: ["__typename": "girl", "id": id, "img": img, "text": text, "permission": permission, "fromID": fromId, "fromURL": fromUrl])
       }
 
       public var __typename: String {
@@ -390,6 +443,33 @@ public final class InitialQuery: GraphQLQuery {
         }
         set {
           snapshot.updateValue(newValue, forKey: "text")
+        }
+      }
+
+      public var permission: Int? {
+        get {
+          return snapshot["permission"] as? Int
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "permission")
+        }
+      }
+
+      public var fromId: String? {
+        get {
+          return snapshot["fromID"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "fromID")
+        }
+      }
+
+      public var fromUrl: String? {
+        get {
+          return snapshot["fromURL"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "fromURL")
         }
       }
 
@@ -526,7 +606,7 @@ public final class AddToCollectionMutation: GraphQLMutation {
     }
 
     public init(addCollection: AddCollection? = nil) {
-      self.init(snapshot: ["__typename": "RootMutation", "addCollection": addCollection.flatMap { $0.snapshot }])
+      self.init(snapshot: ["__typename": "RootMutation", "addCollection": addCollection.flatMap { (value: AddCollection) -> Snapshot in value.snapshot }])
     }
 
     /// add collection
@@ -608,16 +688,16 @@ public final class AddGirlCellsMutation: GraphQLMutation {
     }
 
     public init(addGirls: [AddGirl?]? = nil) {
-      self.init(snapshot: ["__typename": "RootMutation", "addGirls": addGirls.flatMap { $0.map { $0.flatMap { $0.snapshot } } }])
+      self.init(snapshot: ["__typename": "RootMutation", "addGirls": addGirls.flatMap { (value: [AddGirl?]) -> [Snapshot?] in value.map { (value: AddGirl?) -> Snapshot? in value.flatMap { (value: AddGirl) -> Snapshot in value.snapshot } } }])
     }
 
     /// add some Girls
     public var addGirls: [AddGirl?]? {
       get {
-        return (snapshot["addGirls"] as? [Snapshot?]).flatMap { $0.map { $0.flatMap { AddGirl(snapshot: $0) } } }
+        return (snapshot["addGirls"] as? [Snapshot?]).flatMap { (value: [Snapshot?]) -> [AddGirl?] in value.map { (value: Snapshot?) -> AddGirl? in value.flatMap { (value: Snapshot) -> AddGirl in AddGirl(snapshot: value) } } }
       }
       set {
-        snapshot.updateValue(newValue.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, forKey: "addGirls")
+        snapshot.updateValue(newValue.flatMap { (value: [AddGirl?]) -> [Snapshot?] in value.map { (value: AddGirl?) -> Snapshot? in value.flatMap { (value: AddGirl) -> Snapshot in value.snapshot } } }, forKey: "addGirls")
       }
     }
 
@@ -630,6 +710,9 @@ public final class AddGirlCellsMutation: GraphQLMutation {
         GraphQLField("id", type: .scalar(GraphQLID.self)),
         GraphQLField("img", type: .scalar(String.self)),
         GraphQLField("text", type: .scalar(String.self)),
+        GraphQLField("permission", type: .scalar(Int.self)),
+        GraphQLField("fromID", type: .scalar(String.self)),
+        GraphQLField("fromURL", type: .scalar(String.self)),
       ]
 
       public var snapshot: Snapshot
@@ -638,8 +721,8 @@ public final class AddGirlCellsMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID? = nil, img: String? = nil, text: String? = nil) {
-        self.init(snapshot: ["__typename": "girl", "id": id, "img": img, "text": text])
+      public init(id: GraphQLID? = nil, img: String? = nil, text: String? = nil, permission: Int? = nil, fromId: String? = nil, fromUrl: String? = nil) {
+        self.init(snapshot: ["__typename": "girl", "id": id, "img": img, "text": text, "permission": permission, "fromID": fromId, "fromURL": fromUrl])
       }
 
       public var __typename: String {
@@ -678,6 +761,33 @@ public final class AddGirlCellsMutation: GraphQLMutation {
         }
       }
 
+      public var permission: Int? {
+        get {
+          return snapshot["permission"] as? Int
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "permission")
+        }
+      }
+
+      public var fromId: String? {
+        get {
+          return snapshot["fromID"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "fromID")
+        }
+      }
+
+      public var fromUrl: String? {
+        get {
+          return snapshot["fromURL"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "fromURL")
+        }
+      }
+
       public var fragments: Fragments {
         get {
           return Fragments(snapshot: snapshot)
@@ -697,6 +807,88 @@ public final class AddGirlCellsMutation: GraphQLMutation {
           set {
             snapshot += newValue.snapshot
           }
+        }
+      }
+    }
+  }
+}
+
+public final class RemoveGirlMutation: GraphQLMutation {
+  public static let operationString =
+    "mutation removeGirl($cells: [Int], $toRemove: Boolean) {\n  removeGirl(cells: $cells, toRemove: $toRemove) {\n    __typename\n    isOk\n  }\n}"
+
+  public var cells: [Int?]?
+  public var toRemove: Bool?
+
+  public init(cells: [Int?]? = nil, toRemove: Bool? = nil) {
+    self.cells = cells
+    self.toRemove = toRemove
+  }
+
+  public var variables: GraphQLMap? {
+    return ["cells": cells, "toRemove": toRemove]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["RootMutation"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("removeGirl", arguments: ["cells": GraphQLVariable("cells"), "toRemove": GraphQLVariable("toRemove")], type: .object(RemoveGirl.selections)),
+    ]
+
+    public var snapshot: Snapshot
+
+    public init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    public init(removeGirl: RemoveGirl? = nil) {
+      self.init(snapshot: ["__typename": "RootMutation", "removeGirl": removeGirl.flatMap { (value: RemoveGirl) -> Snapshot in value.snapshot }])
+    }
+
+    /// remove girl cell
+    public var removeGirl: RemoveGirl? {
+      get {
+        return (snapshot["removeGirl"] as? Snapshot).flatMap { RemoveGirl(snapshot: $0) }
+      }
+      set {
+        snapshot.updateValue(newValue?.snapshot, forKey: "removeGirl")
+      }
+    }
+
+    public struct RemoveGirl: GraphQLSelectionSet {
+      public static let possibleTypes = ["addCollectionReturnType"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("isOk", type: .scalar(Bool.self)),
+      ]
+
+      public var snapshot: Snapshot
+
+      public init(snapshot: Snapshot) {
+        self.snapshot = snapshot
+      }
+
+      public init(isOk: Bool? = nil) {
+        self.init(snapshot: ["__typename": "addCollectionReturnType", "isOk": isOk])
+      }
+
+      public var __typename: String {
+        get {
+          return snapshot["__typename"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var isOk: Bool? {
+        get {
+          return snapshot["isOk"] as? Bool
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "isOk")
         }
       }
     }
@@ -733,7 +925,7 @@ public final class AuthQuery: GraphQLQuery {
     }
 
     public init(auth: Auth? = nil) {
-      self.init(snapshot: ["__typename": "RootSchema", "auth": auth.flatMap { $0.snapshot }])
+      self.init(snapshot: ["__typename": "RootSchema", "auth": auth.flatMap { (value: Auth) -> Snapshot in value.snapshot }])
     }
 
     /// user auth by email and password
@@ -829,16 +1021,16 @@ public final class FetchCollectionsQuery: GraphQLQuery {
     }
 
     public init(collections: [Collection?]? = nil) {
-      self.init(snapshot: ["__typename": "RootSchema", "collections": collections.flatMap { $0.map { $0.flatMap { $0.snapshot } } }])
+      self.init(snapshot: ["__typename": "RootSchema", "collections": collections.flatMap { (value: [Collection?]) -> [Snapshot?] in value.map { (value: Collection?) -> Snapshot? in value.flatMap { (value: Collection) -> Snapshot in value.snapshot } } }])
     }
 
     /// collections
     public var collections: [Collection?]? {
       get {
-        return (snapshot["collections"] as? [Snapshot?]).flatMap { $0.map { $0.flatMap { Collection(snapshot: $0) } } }
+        return (snapshot["collections"] as? [Snapshot?]).flatMap { (value: [Snapshot?]) -> [Collection?] in value.map { (value: Snapshot?) -> Collection? in value.flatMap { (value: Snapshot) -> Collection in Collection(snapshot: value) } } }
       }
       set {
-        snapshot.updateValue(newValue.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, forKey: "collections")
+        snapshot.updateValue(newValue.flatMap { (value: [Collection?]) -> [Snapshot?] in value.map { (value: Collection?) -> Snapshot? in value.flatMap { (value: Collection) -> Snapshot in value.snapshot } } }, forKey: "collections")
       }
     }
 
@@ -851,6 +1043,9 @@ public final class FetchCollectionsQuery: GraphQLQuery {
         GraphQLField("id", type: .scalar(GraphQLID.self)),
         GraphQLField("img", type: .scalar(String.self)),
         GraphQLField("text", type: .scalar(String.self)),
+        GraphQLField("permission", type: .scalar(Int.self)),
+        GraphQLField("fromID", type: .scalar(String.self)),
+        GraphQLField("fromURL", type: .scalar(String.self)),
       ]
 
       public var snapshot: Snapshot
@@ -859,8 +1054,8 @@ public final class FetchCollectionsQuery: GraphQLQuery {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID? = nil, img: String? = nil, text: String? = nil) {
-        self.init(snapshot: ["__typename": "girl", "id": id, "img": img, "text": text])
+      public init(id: GraphQLID? = nil, img: String? = nil, text: String? = nil, permission: Int? = nil, fromId: String? = nil, fromUrl: String? = nil) {
+        self.init(snapshot: ["__typename": "girl", "id": id, "img": img, "text": text, "permission": permission, "fromID": fromId, "fromURL": fromUrl])
       }
 
       public var __typename: String {
@@ -899,6 +1094,33 @@ public final class FetchCollectionsQuery: GraphQLQuery {
         }
       }
 
+      public var permission: Int? {
+        get {
+          return snapshot["permission"] as? Int
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "permission")
+        }
+      }
+
+      public var fromId: String? {
+        get {
+          return snapshot["fromID"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "fromID")
+        }
+      }
+
+      public var fromUrl: String? {
+        get {
+          return snapshot["fromURL"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "fromURL")
+        }
+      }
+
       public var fragments: Fragments {
         get {
           return Fragments(snapshot: snapshot)
@@ -924,9 +1146,122 @@ public final class FetchCollectionsQuery: GraphQLQuery {
   }
 }
 
+public final class InfoQuery: GraphQLQuery {
+  public static let operationString =
+    "query info {\n  info {\n    __typename\n    userCount\n    cellCount\n    fee\n    email\n    copyright\n  }\n}"
+
+  public init() {
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["RootSchema"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("info", type: .object(Info.selections)),
+    ]
+
+    public var snapshot: Snapshot
+
+    public init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    public init(info: Info? = nil) {
+      self.init(snapshot: ["__typename": "RootSchema", "info": info.flatMap { (value: Info) -> Snapshot in value.snapshot }])
+    }
+
+    /// infomations
+    public var info: Info? {
+      get {
+        return (snapshot["info"] as? Snapshot).flatMap { Info(snapshot: $0) }
+      }
+      set {
+        snapshot.updateValue(newValue?.snapshot, forKey: "info")
+      }
+    }
+
+    public struct Info: GraphQLSelectionSet {
+      public static let possibleTypes = ["info"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("userCount", type: .scalar(Int.self)),
+        GraphQLField("cellCount", type: .scalar(Int.self)),
+        GraphQLField("fee", type: .scalar(String.self)),
+        GraphQLField("email", type: .scalar(String.self)),
+        GraphQLField("copyright", type: .scalar(String.self)),
+      ]
+
+      public var snapshot: Snapshot
+
+      public init(snapshot: Snapshot) {
+        self.snapshot = snapshot
+      }
+
+      public init(userCount: Int? = nil, cellCount: Int? = nil, fee: String? = nil, email: String? = nil, copyright: String? = nil) {
+        self.init(snapshot: ["__typename": "info", "userCount": userCount, "cellCount": cellCount, "fee": fee, "email": email, "copyright": copyright])
+      }
+
+      public var __typename: String {
+        get {
+          return snapshot["__typename"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var userCount: Int? {
+        get {
+          return snapshot["userCount"] as? Int
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "userCount")
+        }
+      }
+
+      public var cellCount: Int? {
+        get {
+          return snapshot["cellCount"] as? Int
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "cellCount")
+        }
+      }
+
+      public var fee: String? {
+        get {
+          return snapshot["fee"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "fee")
+        }
+      }
+
+      public var email: String? {
+        get {
+          return snapshot["email"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "email")
+        }
+      }
+
+      public var copyright: String? {
+        get {
+          return snapshot["copyright"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "copyright")
+        }
+      }
+    }
+  }
+}
+
 public final class FetchProfileWithCollectionsQuery: GraphQLQuery {
   public static let operationString =
-    "query FetchProfileWithCollections($id: Int!, $from: Int!, $size: Int!) {\n  users(id: $id) {\n    __typename\n    id\n    email\n    name\n    pwd\n    avatar\n    bio\n    token\n  }\n  collections(id: $id, from: $from, size: $size) {\n    __typename\n    ...fetchGirls\n  }\n}"
+    "query FetchProfileWithCollections($id: Int!, $from: Int!, $size: Int!) {\n  users(id: $id) {\n    __typename\n    id\n    email\n    name\n    pwd\n    avatar\n    bio\n    token\n    role\n  }\n  collections(id: $id, from: $from, size: $size) {\n    __typename\n    ...fetchGirls\n  }\n}"
 
   public static var requestString: String { return operationString.appending(FetchGirls.fragmentString) }
 
@@ -959,7 +1294,7 @@ public final class FetchProfileWithCollectionsQuery: GraphQLQuery {
     }
 
     public init(users: User? = nil, collections: [Collection?]? = nil) {
-      self.init(snapshot: ["__typename": "RootSchema", "users": users.flatMap { $0.snapshot }, "collections": collections.flatMap { $0.map { $0.flatMap { $0.snapshot } } }])
+      self.init(snapshot: ["__typename": "RootSchema", "users": users.flatMap { (value: User) -> Snapshot in value.snapshot }, "collections": collections.flatMap { (value: [Collection?]) -> [Snapshot?] in value.map { (value: Collection?) -> Snapshot? in value.flatMap { (value: Collection) -> Snapshot in value.snapshot } } }])
     }
 
     /// a user
@@ -975,10 +1310,10 @@ public final class FetchProfileWithCollectionsQuery: GraphQLQuery {
     /// collections
     public var collections: [Collection?]? {
       get {
-        return (snapshot["collections"] as? [Snapshot?]).flatMap { $0.map { $0.flatMap { Collection(snapshot: $0) } } }
+        return (snapshot["collections"] as? [Snapshot?]).flatMap { (value: [Snapshot?]) -> [Collection?] in value.map { (value: Snapshot?) -> Collection? in value.flatMap { (value: Snapshot) -> Collection in Collection(snapshot: value) } } }
       }
       set {
-        snapshot.updateValue(newValue.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, forKey: "collections")
+        snapshot.updateValue(newValue.flatMap { (value: [Collection?]) -> [Snapshot?] in value.map { (value: Collection?) -> Snapshot? in value.flatMap { (value: Collection) -> Snapshot in value.snapshot } } }, forKey: "collections")
       }
     }
 
@@ -994,6 +1329,7 @@ public final class FetchProfileWithCollectionsQuery: GraphQLQuery {
         GraphQLField("avatar", type: .scalar(String.self)),
         GraphQLField("bio", type: .scalar(String.self)),
         GraphQLField("token", type: .scalar(String.self)),
+        GraphQLField("role", type: .scalar(Int.self)),
       ]
 
       public var snapshot: Snapshot
@@ -1002,8 +1338,8 @@ public final class FetchProfileWithCollectionsQuery: GraphQLQuery {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID? = nil, email: String? = nil, name: String? = nil, pwd: String? = nil, avatar: String? = nil, bio: String? = nil, token: String? = nil) {
-        self.init(snapshot: ["__typename": "user", "id": id, "email": email, "name": name, "pwd": pwd, "avatar": avatar, "bio": bio, "token": token])
+      public init(id: GraphQLID? = nil, email: String? = nil, name: String? = nil, pwd: String? = nil, avatar: String? = nil, bio: String? = nil, token: String? = nil, role: Int? = nil) {
+        self.init(snapshot: ["__typename": "user", "id": id, "email": email, "name": name, "pwd": pwd, "avatar": avatar, "bio": bio, "token": token, "role": role])
       }
 
       public var __typename: String {
@@ -1077,6 +1413,15 @@ public final class FetchProfileWithCollectionsQuery: GraphQLQuery {
           snapshot.updateValue(newValue, forKey: "token")
         }
       }
+
+      public var role: Int? {
+        get {
+          return snapshot["role"] as? Int
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "role")
+        }
+      }
     }
 
     public struct Collection: GraphQLSelectionSet {
@@ -1088,6 +1433,9 @@ public final class FetchProfileWithCollectionsQuery: GraphQLQuery {
         GraphQLField("id", type: .scalar(GraphQLID.self)),
         GraphQLField("img", type: .scalar(String.self)),
         GraphQLField("text", type: .scalar(String.self)),
+        GraphQLField("permission", type: .scalar(Int.self)),
+        GraphQLField("fromID", type: .scalar(String.self)),
+        GraphQLField("fromURL", type: .scalar(String.self)),
       ]
 
       public var snapshot: Snapshot
@@ -1096,8 +1444,8 @@ public final class FetchProfileWithCollectionsQuery: GraphQLQuery {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID? = nil, img: String? = nil, text: String? = nil) {
-        self.init(snapshot: ["__typename": "girl", "id": id, "img": img, "text": text])
+      public init(id: GraphQLID? = nil, img: String? = nil, text: String? = nil, permission: Int? = nil, fromId: String? = nil, fromUrl: String? = nil) {
+        self.init(snapshot: ["__typename": "girl", "id": id, "img": img, "text": text, "permission": permission, "fromID": fromId, "fromURL": fromUrl])
       }
 
       public var __typename: String {
@@ -1133,6 +1481,33 @@ public final class FetchProfileWithCollectionsQuery: GraphQLQuery {
         }
         set {
           snapshot.updateValue(newValue, forKey: "text")
+        }
+      }
+
+      public var permission: Int? {
+        get {
+          return snapshot["permission"] as? Int
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "permission")
+        }
+      }
+
+      public var fromId: String? {
+        get {
+          return snapshot["fromID"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "fromID")
+        }
+      }
+
+      public var fromUrl: String? {
+        get {
+          return snapshot["fromURL"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "fromURL")
         }
       }
 
@@ -1223,7 +1598,7 @@ public struct FetchCategories: GraphQLFragment {
 
 public struct FetchGirls: GraphQLFragment {
   public static let fragmentString =
-    "fragment fetchGirls on girl {\n  __typename\n  id\n  img\n  text\n}"
+    "fragment fetchGirls on girl {\n  __typename\n  id\n  img\n  text\n  permission\n  fromID\n  fromURL\n}"
 
   public static let possibleTypes = ["girl"]
 
@@ -1232,6 +1607,9 @@ public struct FetchGirls: GraphQLFragment {
     GraphQLField("id", type: .scalar(GraphQLID.self)),
     GraphQLField("img", type: .scalar(String.self)),
     GraphQLField("text", type: .scalar(String.self)),
+    GraphQLField("permission", type: .scalar(Int.self)),
+    GraphQLField("fromID", type: .scalar(String.self)),
+    GraphQLField("fromURL", type: .scalar(String.self)),
   ]
 
   public var snapshot: Snapshot
@@ -1240,8 +1618,8 @@ public struct FetchGirls: GraphQLFragment {
     self.snapshot = snapshot
   }
 
-  public init(id: GraphQLID? = nil, img: String? = nil, text: String? = nil) {
-    self.init(snapshot: ["__typename": "girl", "id": id, "img": img, "text": text])
+  public init(id: GraphQLID? = nil, img: String? = nil, text: String? = nil, permission: Int? = nil, fromId: String? = nil, fromUrl: String? = nil) {
+    self.init(snapshot: ["__typename": "girl", "id": id, "img": img, "text": text, "permission": permission, "fromID": fromId, "fromURL": fromUrl])
   }
 
   public var __typename: String {
@@ -1277,6 +1655,33 @@ public struct FetchGirls: GraphQLFragment {
     }
     set {
       snapshot.updateValue(newValue, forKey: "text")
+    }
+  }
+
+  public var permission: Int? {
+    get {
+      return snapshot["permission"] as? Int
+    }
+    set {
+      snapshot.updateValue(newValue, forKey: "permission")
+    }
+  }
+
+  public var fromId: String? {
+    get {
+      return snapshot["fromID"] as? String
+    }
+    set {
+      snapshot.updateValue(newValue, forKey: "fromID")
+    }
+  }
+
+  public var fromUrl: String? {
+    get {
+      return snapshot["fromURL"] as? String
+    }
+    set {
+      snapshot.updateValue(newValue, forKey: "fromURL")
     }
   }
 }

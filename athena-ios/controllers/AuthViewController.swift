@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import LocalAuthentication
+import SQLite
 
 class AuthViewController: UIViewController {
     
@@ -41,6 +43,7 @@ class AuthViewController: UIViewController {
                 
                 self.indicator.stopAnimating()
                 self.loading = false
+                self.showErrorMsg(title: (err?.localizedDescription)!)
                 return
             }
 
@@ -72,11 +75,70 @@ class AuthViewController: UIViewController {
     
     override func viewDidLoad() {
         indicator.hidesWhenStopped = true
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         createGradientLayer()
+    }
+    
+    private func figerCheck() {
+    
+        let context = LAContext()
+        var err: NSError?
+        
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &err) {
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "请指纹解锁", reply: { success, error in
+                if success {
+                    // dismiss and reload data
+                    
+                } else {
+                    if let error = error as NSError? {
+                        // 获取错误信息
+                        let message = self.errorMessageForLAErrorCode(errorCode: error.code)
+                        print(message)
+                        self.showErrorMsg(title: message)
+                    }
+                }
+            })
+        }
+    
+    }
+    
+    private func errorMessageForLAErrorCode(errorCode: Int) -> String {
+        var message = ""
+        
+        switch errorCode {
+        case LAError.appCancel.rawValue:
+            message = "Authentication was cancelled by application"
+            
+        case LAError.authenticationFailed.rawValue:
+            message = "The user failed to provide valid credentials"
+            
+        case LAError.invalidContext.rawValue:
+            message = "The context is invalid"
+            
+        case LAError.passcodeNotSet.rawValue:
+            message = "Passcode is not set on the device"
+            
+        case LAError.systemCancel.rawValue:
+            message = "Authentication was cancelled by the system"
+            
+        case LAError.biometryLockout.rawValue:
+            message = "Too many failed attempts."
+            
+        case LAError.biometryNotAvailable.rawValue:
+            message = "TouchID is not available on the device"
+            
+        case LAError.userCancel.rawValue:
+            message = "The user did cancel"
+            
+        case LAError.userFallback.rawValue:
+            message = "The user chose to use the fallback"
+            
+        default:
+            message = "Did not find error code on LAError object"
+        }
+        return message
     }
     
     private func createGradientLayer() {
