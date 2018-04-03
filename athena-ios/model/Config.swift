@@ -21,7 +21,7 @@ class Config {
         let configuration = URLSessionConfiguration.default
             // Add additional headers as needed
         configuration.httpAdditionalHeaders = ["athena-token": Config.token]
-        
+
         #if DEBUG
             let url = URL(string: devServer)!
         #else

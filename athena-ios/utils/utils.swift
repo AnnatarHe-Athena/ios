@@ -37,9 +37,22 @@ class Utils {
         let realImageUrlData = Data(base64Encoded: image)
         let realImageUrl = String(data: realImageUrlData!, encoding: .utf8)
         if (realImageUrl!.hasPrefix("http")) {
-            return image
+            return realImageUrl!
         }
-        return "https://wx1.sinaimg.cn/\(type)/\(image)"
+        
+        if (realImageUrl?.hasPrefix("qn://"))! {
+            let qnBaseURL = realImageUrl?.replacingOccurrences(of: "qn://", with: "https://cdn.annatarhe.com/")
+            switch (type) {
+            case "bmiddle":
+                return qnBaseURL! + "-thumbnails"
+            case "large":
+                return qnBaseURL! + "-copyrightDB"
+            default:
+                return ""
+            }
+        }
+
+        return "https://wx1.sinaimg.cn/\(type)/\(realImageUrl!)"
     }
     
     public static func presentBigPreview(
