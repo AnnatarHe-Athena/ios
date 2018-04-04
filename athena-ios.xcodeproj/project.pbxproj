@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3401723E20752E7E00C24029 /* SKPhotoCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3401723D20752E7E00C24029 /* SKPhotoCache.swift */; };
+		3401724520753D8A00C24029 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3401724420753D8A00C24029 /* SettingViewController.swift */; };
 		3434A975206621450096DF73 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3434A974206621450096DF73 /* DBManager.swift */; };
 		3434A9792066373F0096DF73 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3434A9782066373F0096DF73 /* SQLite.framework */; };
 		349EAE7D206E53F000ACFB02 /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 349EAE7C206E53F000ACFB02 /* KeychainSwift.framework */; };
@@ -50,6 +51,7 @@
 /* Begin PBXFileReference section */
 		3401723D20752E7E00C24029 /* SKPhotoCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKPhotoCache.swift; sourceTree = "<group>"; };
 		340172412075320800C24029 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "/Users/annatarhe/Code/ios/athena-ios/Assets.xcassets"; sourceTree = "<absolute>"; };
+		3401724420753D8A00C24029 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		3434A974206621450096DF73 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		3434A976206637320096DF73 /* SQLite.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SQLite.framework.dSYM; path = Carthage/Build/iOS/SQLite.framework.dSYM; sourceTree = "<group>"; };
 		3434A9782066373F0096DF73 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = Carthage/Build/iOS/SQLite.framework; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			children = (
 				DC8DFE131F72A0EE00F442DE /* AuthViewController.swift */,
 				DCD6B0921F81C6FF002E810C /* GirlCellOfTableTableViewCell.swift */,
+				3401724420753D8A00C24029 /* SettingViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				DC8DFE111F728FFC00F442DE /* Config.swift in Sources */,
 				DCD6B0931F81C6FF002E810C /* GirlCellOfTableTableViewCell.swift in Sources */,
 				3434A975206621450096DF73 /* DBManager.swift in Sources */,
+				3401724520753D8A00C24029 /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

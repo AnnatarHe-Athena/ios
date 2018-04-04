@@ -68,8 +68,9 @@ class IndexViewController: UIViewController {
             }
             ModalApp.categories = categories
             
-            if self.categoryID == GraphQLID(0) {
+            if self.categoryID! == "0" {
                 self.categoryID = categories.first??.id
+                self.loadCellsData(false)
             }
         }
     }
@@ -145,7 +146,7 @@ extension IndexViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.detailImage.sd_setImage(with: URL(string: imageSrc), placeholderImage: UIImage(named: "placeholderImage.png"), options: .allowInvalidSSLCertificates, completed: nil)
         cell.titleText.text = detail?.text
-        cell.id = detail?.id
+        cell.id = (detail?.id)!
         return cell
     }
     
