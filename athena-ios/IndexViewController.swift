@@ -28,9 +28,11 @@ class IndexViewController: UIViewController {
             alert.addAction(UIAlertAction(title: category?.name, style: .default, handler: { action in
                 
                 self.categoryID = category?.id
-                
+                self.title = category?.name
                 // load data
                 self.loadCellsData(fetchMore: false)
+                
+                self.cellListTableView.setContentOffset(CGPoint.zero, animated: true)
                 
                 self.dismiss(animated: true, completion: nil)
             }))
@@ -56,7 +58,7 @@ class IndexViewController: UIViewController {
     }
     
     
-    private func initialLoad() {
+    func initialLoad() {
         Config.getApolloClient().fetch(query: InitCategoriesQuery()) { (result, err) in
             self.showAlert(err: err)
             guard let categories = result?.data?.categories else {
@@ -65,6 +67,10 @@ class IndexViewController: UIViewController {
                 return
             }
             ModalApp.categories = categories
+            
+            if self.categoryID == GraphQLID(0) {
+                self.categoryID = categories.first??.id
+            }
         }
     }
     
@@ -138,6 +144,8 @@ extension IndexViewController: UITableViewDelegate, UITableViewDataSource {
         let imageSrc = Utils.getRealImageSrc(image: (detail?.img)!)
         
         cell.detailImage.sd_setImage(with: URL(string: imageSrc), placeholderImage: UIImage(named: "placeholderImage.png"), options: .allowInvalidSSLCertificates, completed: nil)
+        cell.titleText.text = detail?.text
+        cell.id = detail?.id
         return cell
     }
     

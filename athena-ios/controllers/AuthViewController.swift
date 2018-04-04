@@ -9,6 +9,7 @@
 import UIKit
 import LocalAuthentication
 import SQLite
+import KeychainSwift
 
 class AuthViewController: UIViewController {
     
@@ -17,6 +18,9 @@ class AuthViewController: UIViewController {
     
     @IBAction func cancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    @IBAction func fingerLogin(_ sender: Any) {
+        self.fingerCheck()
     }
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -56,11 +60,16 @@ class AuthViewController: UIViewController {
             }
 
             Config.token = token
-            print(token)
+            Config.userId = (result?.data?.auth?.id)!
+            let keychain = KeychainSwift()
+            keychain.set(_email, forKey: "email")
+            keychain.set(_pwd, forKey: "pwd")
 
             self.indicator.stopAnimating()
             self.loading = false
-            self.dismiss(animated: true, completion: nil)
+            
+            self.backToProfile()
+
         }
     }
     
@@ -81,7 +90,17 @@ class AuthViewController: UIViewController {
         createGradientLayer()
     }
     
-    private func figerCheck() {
+    private func backToProfile() {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let profileVC = storyboard.instantiateViewController(withIdentifier: "profileViewController") as! ProfileViewController
+        profileVC.loadProfile()
+        let indexVC = storyboard.instantiateViewController(withIdentifier: "indexVC") as! IndexViewController
+        indexVC.initialLoad()
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    private func fingerCheck() {
     
         let context = LAContext()
         var err: NSError?
@@ -90,6 +109,18 @@ class AuthViewController: UIViewController {
             context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "请指纹解锁", reply: { success, error in
                 if success {
                     // dismiss and reload data
+                    
+                    let keychainSwift = KeychainSwift()
+                    guard let email = keychainSwift.get("email"), let pwd = keychainSwift.get("pwd") else {
+                        self.showErrorMsg(title: "please login with email and password in first time")
+                        return
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.email.text = email
+                        self.password.text = pwd
+                        self.login(self)
+                    }
                     
                 } else {
                     if let error = error as NSError? {

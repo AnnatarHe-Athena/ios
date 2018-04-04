@@ -8,6 +8,7 @@
 
 import SKPhotoBrowser
 import Sentry
+import SDWebImage
 
 class Utils {
     
@@ -25,6 +26,8 @@ class Utils {
             print("\(error)")
             // Wrong DSN or KSCrash not installed
         }
+        // 2. replace SKCache instance with custom cache
+        SKCache.sharedCache.imageCache = CustomImageCache()
     }
     
     

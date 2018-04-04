@@ -16,6 +16,8 @@ class Config {
     
     static var token: String = ""
     
+    static var userId: String = ""
+    
     static func getApolloClient() -> ApolloClient {
         
         let configuration = URLSessionConfiguration.default

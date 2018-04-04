@@ -15,6 +15,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var userBio: UILabel!
     @IBOutlet weak var userCollectionsTableView: UITableView!
     
+    var loadFrom = 0;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -43,7 +45,38 @@ class ProfileViewController: UIViewController {
         if Config.token == "" {
             performSegue(withIdentifier: "toAuth", sender: nil)
         }
+    }
+    
+    func showAlert(err: Error?) {
+        guard let msg = err?.localizedDescription else {
+            // do nothing
+            return
+        }
         
+        let alert = UIAlertController(title: "Load profile data error", message: msg, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ok", style: .default, handler: { action in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        
+        // sentry report this error
+        self.present(alert, animated: true)
+    }
+    
+    func loadProfile() {
+        // load profile
+        Config.getApolloClient().fetch(query: FetchProfileWithCollectionsQuery(id: 1, from: self.loadFrom, size: 20)) { (result, err) in
+            guard let user = result?.data?.users else {
+                self.showAlert(err: err)
+                return
+            }
+            
+            self.userAvatar.sd_setImage(with: URL(string: user.avatar!)!, completed: nil)
+            self.userName.text = user.name
+            self.userBio.text = user.bio
+            
+            // todo: collection
+            
+        }
     }
 
 }

@@ -13,7 +13,7 @@
         <!--Index View Controller-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="IndexViewController" customModule="athena_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="indexVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9pv-A4-QxB" customClass="IndexViewController" customModule="athena_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -38,24 +38,53 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qc1-bj-XPD">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                                                    <rect key="frame" x="0.0" y="50" width="375" height="400"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="300" id="ioG-bw-DmM"/>
+                                                        <constraint firstAttribute="height" constant="400" id="ioG-bw-DmM"/>
                                                     </constraints>
                                                 </imageView>
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="title" borderStyle="roundedRect" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AUr-9p-fAX">
+                                                    <rect key="frame" x="15" y="11" width="97" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="idg-qZ-iRr">
+                                                    <rect key="frame" x="269" y="9" width="30" height="30"/>
+                                                    <state key="normal" title="Like"/>
+                                                    <connections>
+                                                        <action selector="likeBtn:" destination="gmn-Tc-fk4" eventType="touchUpInside" id="ovs-wt-gjr"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e9l-un-GE0">
+                                                    <rect key="frame" x="307" y="9" width="53" height="30"/>
+                                                    <state key="normal" title="Collect"/>
+                                                    <connections>
+                                                        <action selector="collectBtn:" destination="gmn-Tc-fk4" eventType="touchUpInside" id="gCP-DN-dhs"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="idg-qZ-iRr" firstAttribute="centerY" secondItem="e9l-un-GE0" secondAttribute="centerY" id="2SP-qI-k2M"/>
                                                 <constraint firstItem="Qc1-bj-XPD" firstAttribute="leading" secondItem="hp3-Rz-4aG" secondAttribute="leading" id="4ax-Kh-WRB"/>
+                                                <constraint firstItem="idg-qZ-iRr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hp3-Rz-4aG" secondAttribute="leading" constant="20" symbolic="YES" id="8Jb-UX-sO7"/>
                                                 <constraint firstAttribute="trailing" secondItem="Qc1-bj-XPD" secondAttribute="trailing" id="Ih5-tg-ubj"/>
+                                                <constraint firstItem="idg-qZ-iRr" firstAttribute="height" secondItem="e9l-un-GE0" secondAttribute="height" id="Xir-N8-J6D"/>
                                                 <constraint firstAttribute="trailing" secondItem="Qc1-bj-XPD" secondAttribute="trailing" id="YGc-lz-pFX"/>
                                                 <constraint firstAttribute="trailing" secondItem="Qc1-bj-XPD" secondAttribute="trailing" id="bKW-5f-oIj"/>
                                                 <constraint firstItem="Qc1-bj-XPD" firstAttribute="leading" secondItem="hp3-Rz-4aG" secondAttribute="leading" id="dsN-Rg-Mcw"/>
                                                 <constraint firstItem="Qc1-bj-XPD" firstAttribute="leading" secondItem="hp3-Rz-4aG" secondAttribute="leading" id="kLB-Bf-qtp"/>
-                                                <constraint firstItem="Qc1-bj-XPD" firstAttribute="top" secondItem="hp3-Rz-4aG" secondAttribute="top" id="su0-LO-Hbz"/>
+                                                <constraint firstAttribute="trailing" secondItem="e9l-un-GE0" secondAttribute="trailing" constant="15" id="kyz-R7-2xN"/>
+                                                <constraint firstItem="Qc1-bj-XPD" firstAttribute="top" secondItem="idg-qZ-iRr" secondAttribute="bottom" constant="11" id="lqw-tV-Vm4"/>
+                                                <constraint firstAttribute="trailing" secondItem="idg-qZ-iRr" secondAttribute="trailing" constant="76" id="qyO-xC-3xp"/>
+                                                <constraint firstItem="Qc1-bj-XPD" firstAttribute="top" secondItem="hp3-Rz-4aG" secondAttribute="top" constant="50" id="su0-LO-Hbz"/>
+                                                <constraint firstItem="e9l-un-GE0" firstAttribute="leading" secondItem="idg-qZ-iRr" secondAttribute="trailing" constant="8" symbolic="YES" id="wDo-kM-kmb"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="detailImage" destination="Qc1-bj-XPD" id="LNQ-Qy-eBW"/>
+                                            <outlet property="titleText" destination="AUr-9p-fAX" id="3zh-sC-cm5"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -87,7 +116,7 @@
         <!--User Info-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="ProfileViewController" customModule="athena_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="profileViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8rJ-Kc-sve" customClass="ProfileViewController" customModule="athena_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -191,7 +220,7 @@
             </objects>
             <point key="canvasLocation" x="2260" y="356"/>
         </scene>
-        <!--Auth View Controller-->
+        <!--Auth-->
         <scene sceneID="3U9-np-eJj">
             <objects>
                 <viewController id="vLR-gb-ZGO" customClass="AuthViewController" customModule="athena_ios" customModuleProvider="target" sceneMemberID="viewController">
@@ -294,20 +323,30 @@
                                     <constraint firstAttribute="trailing" secondItem="2Mx-Lg-HvI" secondAttribute="trailing" constant="20" id="zgx-vY-DST"/>
                                 </constraints>
                             </stackView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="lTu-J7-rdx">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="lTu-J7-rdx">
                                 <rect key="frame" x="177" y="324" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8J-a0-9VJ">
+                                <rect key="frame" x="167" y="442" width="40" height="30"/>
+                                <state key="normal" title="finger"/>
+                                <connections>
+                                    <action selector="fingerLogin:" destination="vLR-gb-ZGO" eventType="touchUpInside" id="Oyh-ue-w7L"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Otd-VQ-Ssk" firstAttribute="centerX" secondItem="rfU-UA-yjY" secondAttribute="centerX" id="3oV-P7-xWl"/>
+                            <constraint firstItem="h8J-a0-9VJ" firstAttribute="centerX" secondItem="lTu-J7-rdx" secondAttribute="centerX" id="5ob-I8-K1N"/>
                             <constraint firstItem="Otd-VQ-Ssk" firstAttribute="centerY" secondItem="rfU-UA-yjY" secondAttribute="centerY" id="6jR-g8-4gq"/>
+                            <constraint firstItem="h8J-a0-9VJ" firstAttribute="top" secondItem="Otd-VQ-Ssk" secondAttribute="bottom" constant="40" id="COj-vz-g5b"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Otd-VQ-Ssk" secondAttribute="trailing" constant="20" id="EOq-wh-w77"/>
+                            <constraint firstItem="lTu-J7-rdx" firstAttribute="centerY" secondItem="Otd-VQ-Ssk" secondAttribute="centerY" id="Jp0-Nc-WOa"/>
                             <constraint firstItem="Otd-VQ-Ssk" firstAttribute="leading" secondItem="rfU-UA-yjY" secondAttribute="leadingMargin" constant="20" id="drN-M1-OLh"/>
+                            <constraint firstItem="h8J-a0-9VJ" firstAttribute="centerX" secondItem="Otd-VQ-Ssk" secondAttribute="centerX" id="p7l-cf-pRU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Pnn-MX-kmU">
+                    <navigationItem key="navigationItem" title="Auth" id="Pnn-MX-kmU">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="mof-EW-3ue">
                             <connections>
                                 <action selector="cancel:" destination="vLR-gb-ZGO" id="Qbs-pL-9Ct"/>
@@ -347,7 +386,7 @@
         <scene sceneID="c5Y-li-Uvt">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="acp-XV-d8k" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Lists" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Lists" image="home" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ujd-6q-kXG">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -384,7 +423,7 @@
         <scene sceneID="9WW-Vb-E8A">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1gk-7v-xCc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="user" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ckh-UF-GaO">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -401,7 +440,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="home" width="22" height="19"/>
+        <image name="user" width="18" height="19"/>
     </resources>
 </document>

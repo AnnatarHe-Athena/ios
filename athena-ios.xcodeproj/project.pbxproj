@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3401723E20752E7E00C24029 /* SKPhotoCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3401723D20752E7E00C24029 /* SKPhotoCache.swift */; };
 		3434A975206621450096DF73 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3434A974206621450096DF73 /* DBManager.swift */; };
 		3434A9792066373F0096DF73 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3434A9782066373F0096DF73 /* SQLite.framework */; };
 		349EAE7D206E53F000ACFB02 /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 349EAE7C206E53F000ACFB02 /* KeychainSwift.framework */; };
@@ -19,7 +20,6 @@
 		DCCBB1C91F6BAC8300D5ED23 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCBB1C81F6BAC8300D5ED23 /* IndexViewController.swift */; };
 		DCCBB1CB1F6BAC8300D5ED23 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCBB1CA1F6BAC8300D5ED23 /* ProfileViewController.swift */; };
 		DCCBB1CE1F6BAC8300D5ED23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCCBB1CC1F6BAC8300D5ED23 /* Main.storyboard */; };
-		DCCBB1D01F6BAC8300D5ED23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCCBB1CF1F6BAC8300D5ED23 /* Assets.xcassets */; };
 		DCCBB1D31F6BAC8300D5ED23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCCBB1D11F6BAC8300D5ED23 /* LaunchScreen.storyboard */; };
 		DCCBB1DF1F6BAD8A00D5ED23 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBB1DE1F6BAD8A00D5ED23 /* Alamofire.framework */; };
 		DCCBB1E31F6BAD9300D5ED23 /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBB1E21F6BAD9300D5ED23 /* Apollo.framework */; };
@@ -48,6 +48,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3401723D20752E7E00C24029 /* SKPhotoCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKPhotoCache.swift; sourceTree = "<group>"; };
+		340172412075320800C24029 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "/Users/annatarhe/Code/ios/athena-ios/Assets.xcassets"; sourceTree = "<absolute>"; };
 		3434A974206621450096DF73 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		3434A976206637320096DF73 /* SQLite.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SQLite.framework.dSYM; path = Carthage/Build/iOS/SQLite.framework.dSYM; sourceTree = "<group>"; };
 		3434A9782066373F0096DF73 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = Carthage/Build/iOS/SQLite.framework; sourceTree = "<group>"; };
@@ -60,7 +62,6 @@
 		DCCBB1C81F6BAC8300D5ED23 /* IndexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexViewController.swift; sourceTree = "<group>"; };
 		DCCBB1CA1F6BAC8300D5ED23 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		DCCBB1CD1F6BAC8300D5ED23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		DCCBB1CF1F6BAC8300D5ED23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCCBB1D21F6BAC8300D5ED23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DCCBB1D41F6BAC8300D5ED23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DCCBB1DE1F6BAD8A00D5ED23 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
@@ -140,8 +141,8 @@
 				DCCBB1C61F6BAC8300D5ED23 /* AppDelegate.swift */,
 				DCCBB1C81F6BAC8300D5ED23 /* IndexViewController.swift */,
 				DCCBB1CA1F6BAC8300D5ED23 /* ProfileViewController.swift */,
+				340172412075320800C24029 /* Assets.xcassets */,
 				DCCBB1CC1F6BAC8300D5ED23 /* Main.storyboard */,
-				DCCBB1CF1F6BAC8300D5ED23 /* Assets.xcassets */,
 				DCCBB1D11F6BAC8300D5ED23 /* LaunchScreen.storyboard */,
 				DCCBB1D41F6BAC8300D5ED23 /* Info.plist */,
 			);
@@ -169,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				DCD6B0991F81CF3B002E810C /* utils.swift */,
+				3401723D20752E7E00C24029 /* SKPhotoCache.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -237,7 +239,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCCBB1D31F6BAC8300D5ED23 /* LaunchScreen.storyboard in Resources */,
-				DCCBB1D01F6BAC8300D5ED23 /* Assets.xcassets in Resources */,
 				DCCBB1CE1F6BAC8300D5ED23 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCD6B09A1F81CF3B002E810C /* utils.swift in Sources */,
+				3401723E20752E7E00C24029 /* SKPhotoCache.swift in Sources */,
 				DCCBB1CB1F6BAC8300D5ED23 /* ProfileViewController.swift in Sources */,
 				DCCBB1C71F6BAC8300D5ED23 /* AppDelegate.swift in Sources */,
 				DCCBB1EB1F6BAE9000D5ED23 /* API.swift in Sources */,
