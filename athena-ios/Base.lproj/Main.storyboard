@@ -37,7 +37,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="365.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qc1-bj-XPD">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qc1-bj-XPD">
                                                     <rect key="frame" x="0.0" y="50" width="375" height="400"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="400" id="ioG-bw-DmM"/>
@@ -50,36 +50,46 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="idg-qZ-iRr">
-                                                    <rect key="frame" x="279" y="9" width="20" height="30"/>
-                                                    <state key="normal" image="like"/>
-                                                    <connections>
-                                                        <action selector="likeBtn:" destination="gmn-Tc-fk4" eventType="touchUpInside" id="ovs-wt-gjr"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e9l-un-GE0">
-                                                    <rect key="frame" x="307" y="9" width="53" height="30"/>
-                                                    <state key="normal" title="Collect"/>
-                                                    <connections>
-                                                        <action selector="collectBtn:" destination="gmn-Tc-fk4" eventType="touchUpInside" id="gCP-DN-dhs"/>
-                                                    </connections>
-                                                </button>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9A6-1i-yQm">
+                                                    <rect key="frame" x="280" y="17" width="80" height="22"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="idg-qZ-iRr">
+                                                            <rect key="frame" x="0.0" y="0.0" width="20" height="22"/>
+                                                            <state key="normal" image="like"/>
+                                                            <connections>
+                                                                <action selector="likeBtn:" destination="gmn-Tc-fk4" eventType="touchUpInside" id="ovs-wt-gjr"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e9l-un-GE0">
+                                                            <rect key="frame" x="30" y="0.0" width="20" height="22"/>
+                                                            <state key="normal" image="add"/>
+                                                            <connections>
+                                                                <action selector="collectBtn:" destination="gmn-Tc-fk4" eventType="touchUpInside" id="gCP-DN-dhs"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yyo-68-nZk">
+                                                            <rect key="frame" x="60" y="0.0" width="20" height="22"/>
+                                                            <state key="normal" image="remove"/>
+                                                            <connections>
+                                                                <action selector="deleteBtnTapped:" destination="gmn-Tc-fk4" eventType="touchUpInside" id="x6d-mp-Bij"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="idg-qZ-iRr" firstAttribute="height" secondItem="e9l-un-GE0" secondAttribute="height" id="txU-jL-JVa"/>
+                                                    </constraints>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="idg-qZ-iRr" firstAttribute="centerY" secondItem="e9l-un-GE0" secondAttribute="centerY" id="2SP-qI-k2M"/>
                                                 <constraint firstItem="Qc1-bj-XPD" firstAttribute="leading" secondItem="hp3-Rz-4aG" secondAttribute="leading" id="4ax-Kh-WRB"/>
-                                                <constraint firstItem="idg-qZ-iRr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hp3-Rz-4aG" secondAttribute="leading" constant="20" symbolic="YES" id="8Jb-UX-sO7"/>
+                                                <constraint firstItem="Qc1-bj-XPD" firstAttribute="top" secondItem="9A6-1i-yQm" secondAttribute="bottom" constant="11" id="EJS-UO-jq6"/>
+                                                <constraint firstAttribute="trailing" secondItem="9A6-1i-yQm" secondAttribute="trailing" constant="15" id="IKD-bH-EwG"/>
                                                 <constraint firstAttribute="trailing" secondItem="Qc1-bj-XPD" secondAttribute="trailing" id="Ih5-tg-ubj"/>
-                                                <constraint firstItem="idg-qZ-iRr" firstAttribute="height" secondItem="e9l-un-GE0" secondAttribute="height" id="Xir-N8-J6D"/>
                                                 <constraint firstAttribute="trailing" secondItem="Qc1-bj-XPD" secondAttribute="trailing" id="YGc-lz-pFX"/>
                                                 <constraint firstAttribute="trailing" secondItem="Qc1-bj-XPD" secondAttribute="trailing" id="bKW-5f-oIj"/>
                                                 <constraint firstItem="Qc1-bj-XPD" firstAttribute="leading" secondItem="hp3-Rz-4aG" secondAttribute="leading" id="dsN-Rg-Mcw"/>
                                                 <constraint firstItem="Qc1-bj-XPD" firstAttribute="leading" secondItem="hp3-Rz-4aG" secondAttribute="leading" id="kLB-Bf-qtp"/>
-                                                <constraint firstAttribute="trailing" secondItem="e9l-un-GE0" secondAttribute="trailing" constant="15" id="kyz-R7-2xN"/>
-                                                <constraint firstItem="Qc1-bj-XPD" firstAttribute="top" secondItem="idg-qZ-iRr" secondAttribute="bottom" constant="11" id="lqw-tV-Vm4"/>
-                                                <constraint firstAttribute="trailing" secondItem="idg-qZ-iRr" secondAttribute="trailing" constant="76" id="qyO-xC-3xp"/>
                                                 <constraint firstItem="Qc1-bj-XPD" firstAttribute="top" secondItem="hp3-Rz-4aG" secondAttribute="top" constant="50" id="su0-LO-Hbz"/>
-                                                <constraint firstItem="e9l-un-GE0" firstAttribute="leading" secondItem="idg-qZ-iRr" secondAttribute="trailing" constant="8" symbolic="YES" id="wDo-kM-kmb"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -495,10 +505,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="add" width="20" height="20"/>
         <image name="fingerPrint" width="18" height="20"/>
         <image name="home" width="22" height="19"/>
         <image name="like" width="20" height="19"/>
         <image name="more" width="18" height="14"/>
+        <image name="remove" width="20" height="20"/>
         <image name="setting" width="20" height="20"/>
         <image name="user" width="18" height="19"/>
     </resources>

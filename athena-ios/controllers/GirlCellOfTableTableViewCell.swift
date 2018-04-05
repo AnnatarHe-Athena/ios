@@ -20,6 +20,9 @@ class GirlCellOfTableTableViewCell: UITableViewCell {
     @IBAction func collectBtn(_ sender: Any) {
         print("collect", id)
     }
+    @IBAction func deleteBtnTapped(_ sender: Any) {
+        print("remove item", id)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
