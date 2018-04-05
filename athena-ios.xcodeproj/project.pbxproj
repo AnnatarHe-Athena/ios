@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3401723E20752E7E00C24029 /* SKPhotoCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3401723D20752E7E00C24029 /* SKPhotoCache.swift */; };
 		3401724520753D8A00C24029 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3401724420753D8A00C24029 /* SettingViewController.swift */; };
+		3401724C207595F600C24029 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3401724B207595F600C24029 /* SettingCell.swift */; };
+		3401724E2075984400C24029 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3401724D2075984400C24029 /* AboutViewController.swift */; };
 		3434A975206621450096DF73 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3434A974206621450096DF73 /* DBManager.swift */; };
 		3434A9792066373F0096DF73 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3434A9782066373F0096DF73 /* SQLite.framework */; };
 		349EAE7D206E53F000ACFB02 /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 349EAE7C206E53F000ACFB02 /* KeychainSwift.framework */; };
@@ -52,6 +54,8 @@
 		3401723D20752E7E00C24029 /* SKPhotoCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKPhotoCache.swift; sourceTree = "<group>"; };
 		340172412075320800C24029 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "/Users/annatarhe/Code/ios/athena-ios/Assets.xcassets"; sourceTree = "<absolute>"; };
 		3401724420753D8A00C24029 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		3401724B207595F600C24029 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		3401724D2075984400C24029 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		3434A974206621450096DF73 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		3434A976206637320096DF73 /* SQLite.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SQLite.framework.dSYM; path = Carthage/Build/iOS/SQLite.framework.dSYM; sourceTree = "<group>"; };
 		3434A9782066373F0096DF73 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = Carthage/Build/iOS/SQLite.framework; sourceTree = "<group>"; };
@@ -113,6 +117,8 @@
 				DC8DFE131F72A0EE00F442DE /* AuthViewController.swift */,
 				DCD6B0921F81C6FF002E810C /* GirlCellOfTableTableViewCell.swift */,
 				3401724420753D8A00C24029 /* SettingViewController.swift */,
+				3401724B207595F600C24029 /* SettingCell.swift */,
+				3401724D2075984400C24029 /* AboutViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -297,8 +303,10 @@
 				DCCBB1EB1F6BAE9000D5ED23 /* API.swift in Sources */,
 				DC8DFE141F72A0EE00F442DE /* AuthViewController.swift in Sources */,
 				DC8DFE0F1F728F8000F442DE /* ModalApp.swift in Sources */,
+				3401724C207595F600C24029 /* SettingCell.swift in Sources */,
 				DCCBB1C91F6BAC8300D5ED23 /* IndexViewController.swift in Sources */,
 				DC8DFE111F728FFC00F442DE /* Config.swift in Sources */,
+				3401724E2075984400C24029 /* AboutViewController.swift in Sources */,
 				DCD6B0931F81C6FF002E810C /* GirlCellOfTableTableViewCell.swift in Sources */,
 				3434A975206621450096DF73 /* DBManager.swift in Sources */,
 				3401724520753D8A00C24029 /* SettingViewController.swift in Sources */,

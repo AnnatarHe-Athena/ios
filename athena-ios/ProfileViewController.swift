@@ -73,6 +73,7 @@ class ProfileViewController: UIViewController {
             self.userAvatar.sd_setImage(with: URL(string: user.avatar!)!, completed: nil)
             self.userName.text = user.name
             self.userBio.text = user.bio
+            self.userEmail.text = user.email
             
             // todo: collection
             
