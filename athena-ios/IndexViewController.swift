@@ -70,7 +70,7 @@ class IndexViewController: UIViewController {
             
             if self.categoryID! == "0" {
                 self.categoryID = categories.first??.id
-                self.loadCellsData(false)
+                self.loadCellsData(fetchMore: false)
             }
         }
     }
