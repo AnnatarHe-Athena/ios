@@ -54,6 +54,8 @@ class AuthViewController: UIViewController {
             guard let token = result?.data?.auth?.token else {
                 print("token miss")
                 
+                self.showErrorMsg(title: "token miss")
+                
                 self.indicator.stopAnimating()
                 self.loading = false
                 return
@@ -92,11 +94,12 @@ class AuthViewController: UIViewController {
     
     private func backToProfile() {
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let profileVC = storyboard.instantiateViewController(withIdentifier: "profileViewController") as! ProfileViewController
-        profileVC.loadProfile()
-        let indexVC = storyboard.instantiateViewController(withIdentifier: "indexVC") as! IndexViewController
-        indexVC.initialLoad()
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let profileVC = storyboard.instantiateViewController(withIdentifier: "profileViewController") as! ProfileViewController
+//        profileVC.loadProfile()
+//        let indexVC = storyboard.instantiateViewController(withIdentifier: "indexVC") as! IndexViewController
+//        indexVC.initialLoad()
+//        
         self.dismiss(animated: true, completion: nil)
     }
     

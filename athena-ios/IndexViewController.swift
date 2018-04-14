@@ -10,6 +10,7 @@ import UIKit
 import Apollo
 import SDWebImage
 import SKPhotoBrowser
+import Sentry
 
 class IndexViewController: UIViewController {
     @IBOutlet weak var cellListTableView: UITableView!
@@ -21,7 +22,6 @@ class IndexViewController: UIViewController {
     private var loading: Bool = false
     @IBAction func CheckMore(_ sender: Any) {
         
-        print(sender)
         let alert = UIAlertController(title: "Categories", message: nil, preferredStyle: .actionSheet)
         
         for var category in ModalApp.categories {
@@ -30,13 +30,25 @@ class IndexViewController: UIViewController {
                 self.categoryID = category?.id
                 self.title = category?.name
                 // load data
-                self.loadCellsData(fetchMore: false)
+                self.loadCellsData(fetchMore: false, cate: self.categoryID)
                 
                 self.cellListTableView.setContentOffset(CGPoint.zero, animated: true)
                 
                 self.dismiss(animated: true, completion: nil)
             }))
         }
+        
+        alert.addAction(UIAlertAction(title: "随机", style: .default, handler: {action in
+            // do random something
+            self.title = "随机"
+            // TODO: load random data
+            let randomIndex = Int(arc4random_uniform(UInt32(ModalApp.categories.count)))
+            let category = ModalApp.categories[randomIndex]
+            let cate = category?.id
+            
+            let offset = Int(arc4random_uniform(UInt32((category?.count)!)))
+            self.loadCellsData(fetchMore: false, cate: cate, offset: offset, isRandom: true)
+        }))
         
         alert.addAction(UIAlertAction(title: "refresh", style: .destructive, handler: { action in
             self.initialLoad()
@@ -64,13 +76,18 @@ class IndexViewController: UIViewController {
             guard let categories = result?.data?.categories else {
                 print("load incorrect data")
                 print(result?.data)
+                
+                let event = Event(level: .warning)
+                event.message = "load incorrect data"
+                Client.shared?.send(event: event, completion: nil)
                 return
             }
+            
             ModalApp.categories = categories
             
             if self.categoryID! == "0" {
                 self.categoryID = categories.first??.id
-                self.loadCellsData(fetchMore: false)
+                self.loadCellsData(fetchMore: false, cate: self.categoryID)
             }
         }
     }
@@ -90,34 +107,32 @@ class IndexViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
-    private func loadCellsData(fetchMore: Bool = true) {
+    private func loadCellsData(fetchMore: Bool = true, cate: GraphQLID?, offset: Int = 0, isRandom: Bool = false) {
         guard !loading else {
             return
         }
         
         loading = true
         
-        let offset = fetchMore ? cells.count : 0
+        let newOffset = fetchMore ? cells.count : offset
         
-        Config.getApolloClient().fetch(query: FetchGirlsQueryQuery(from: Int(self.categoryID!)!, take: 20, offset: offset, hideOnly: false)) { (result, err) in
+        Config.getApolloClient().fetch(query: FetchGirlsQueryQuery(from: Int(self.categoryID!)!, take: 20, offset: newOffset, hideOnly: false)) { (result, err) in
             self.showAlert(err: err)
             
-            guard let girls = result?.data?.girls else {
+            guard let dataItems = result?.data?.girls else {
                 print("load error")
                 return
             }
             
-            if girls.count == 0 {
+            if dataItems.count == 0 {
                 self.noMore = true
             }
             
-            if fetchMore {
-                self.cells.append(contentsOf: girls)
-                
+            if fetchMore || isRandom {
+                self.cells.append(contentsOf: dataItems)
             } else {
-                self.cells = girls
+                self.cells = dataItems
             }
-            
             self.cellListTableView.reloadData()
             self.loading = false
         }
@@ -145,7 +160,6 @@ extension IndexViewController: UITableViewDelegate, UITableViewDataSource {
         let imageSrc = Utils.getRealImageSrc(image: (detail?.img)!)
         
         cell.detailImage.sd_setImage(with: URL(string: imageSrc), placeholderImage: UIImage(named: "placeholderImage.png"), options: .allowInvalidSSLCertificates, completed: nil)
-        cell.titleText.text = detail?.text
         cell.id = (detail?.id)!
         return cell
     }
@@ -153,14 +167,16 @@ extension IndexViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let itemData = cells[indexPath.row]
+//
+//        let cell = tableView.cellForRow(at: indexPath) as! GirlCellOfTableTableViewCell
+//
         
-        let cell = tableView.cellForRow(at: indexPath) as! GirlCellOfTableTableViewCell
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let postVC = storyboard.instantiateViewController(withIdentifier: "imageDetailView") as! PostDetailViewController
         
-        let defaultImage = cell.detailImage.image
+        postVC.data = itemData
         
-        Utils.presentBigPreview(view: self, src: Utils.getRealImageSrc(image: (itemData?.img)!, type: "large"), holderImage: defaultImage, from: cell)
-        
-        print("clicked", indexPath)
+        performSegue(withIdentifier: "imageDetail", sender: nil)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -173,7 +189,7 @@ extension IndexViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == lastElement {
             // is last one
             // show load data
-            self.loadCellsData(fetchMore: true)
+            self.loadCellsData(fetchMore: true, cate: self.categoryID)
             print("load more at footer")
         }
     }

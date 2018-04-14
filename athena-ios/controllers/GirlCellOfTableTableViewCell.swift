@@ -12,8 +12,8 @@ class GirlCellOfTableTableViewCell: UITableViewCell {
     
     var id = "-1"
     
+    @IBOutlet weak var titleText: UILabel!
     @IBOutlet weak var detailImage: UIImageView!
-    @IBOutlet weak var titleText: UITextField!
     @IBAction func likeBtn(_ sender: Any) {
         print("like ", id)
     }

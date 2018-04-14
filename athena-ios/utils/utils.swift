@@ -77,7 +77,6 @@ class Utils {
         browser.initializePageIndex(0)
         
         view.present(browser, animated: true, completion: nil)
-        
     }
 }
 
