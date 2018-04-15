@@ -204,4 +204,30 @@ extension IndexViewController: UITableViewDelegate, UITableViewDataSource {
             print("load more at footer")
         }
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func toDelete(index: IndexPath) {
+        
+        let cell = self.cells[index.row]
+        Config.getApolloClient().perform(mutation: RemoveGirlMutation(cells: [Int((cell?.id)!)], toRemove: false)) { (result, err) in
+            if err != nil {
+                self.showToast(message: "remove data error")
+                return
+            }
+            
+            self.cells.remove(at: index.row)
+            self.cellListTableView.deleteRows(at: [index], with: .fade)
+        }
+        
+        
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            self.toDelete(index: indexPath)
+        }
+    }
 }

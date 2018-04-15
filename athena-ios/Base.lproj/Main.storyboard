@@ -105,7 +105,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOe-nE-ZFc">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOe-nE-ZFc">
                                         <rect key="frame" x="8" y="68.5" width="359" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -120,13 +120,19 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tn9-dt-aAr">
                                         <rect key="frame" x="9" y="553" width="359" height="30"/>
                                         <state key="normal" title="fromid"/>
+                                        <connections>
+                                            <action selector="fromIdClicked:" destination="Ycv-2p-nC1" eventType="touchUpInside" id="4YL-T6-Awi"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MVL-zL-ZBW">
                                         <rect key="frame" x="9" y="596" width="359" height="30"/>
                                         <state key="normal" title="fromurl"/>
+                                        <connections>
+                                            <action selector="fromUrlClicked:" destination="Ycv-2p-nC1" eventType="touchUpInside" id="EIe-Cj-LEj"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0VL-UT-eKH">
-                                        <rect key="frame" x="9" y="696" width="359" height="50"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0VL-UT-eKH">
+                                        <rect key="frame" x="9" y="696" width="359" height="32"/>
                                         <color key="backgroundColor" red="0.91764705882352937" green="0.2627450980392157" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
                                         <state key="normal" title="Delete">

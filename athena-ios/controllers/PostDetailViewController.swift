@@ -29,11 +29,17 @@ class PostDetailViewController : UIViewController {
     @IBAction func doDelete(_ sender: Any) {
         print("delete")
     }
+    @IBAction func fromIdClicked(_ sender: Any) {
+        self.showToast(message: "not support yet")
+    }
+    @IBAction func fromUrlClicked(_ sender: Any) {
+        UIApplication.shared.open(URL(string: (self.data?.fromUrl)!)!, completionHandler: nil)
+    }
     
     @objc func imageTapped() {
         Utils.presentBigPreview(
             view: self,
-            src: Utils.getRealImageSrc(image: (data?.img)!, type: "large"),
+            src: self.data!,
             holderImage: self.imgView.image,
             from: self.view
         )
@@ -42,6 +48,7 @@ class PostDetailViewController : UIViewController {
         // loaded
         self.title = data?.text
         self.textLabel.text = data?.text
+        self.titleLabel.text = data?.text
         
         let imageSrc = Utils.getRealImageSrc(image: (data?.img)!)
         self.imgView.sd_setImage(with: URL(string: imageSrc), completed: nil)

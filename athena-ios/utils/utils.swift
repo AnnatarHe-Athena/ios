@@ -60,15 +60,17 @@ class Utils {
     
     public static func presentBigPreview(
         view: UIViewController,
-        src: String,
+        src: FetchGirlsQueryQuery.Data.Girl,
         holderImage: UIImage?,
         from: UIView
         ) {
         
-        var images = [SKPhoto]()
-        let photo = SKPhoto.photoWithImageURL(src)
+        let imgSrc = Utils.getRealImageSrc(image: (src.img)!, type: "large")
         
-        photo.caption = "hello world"
+        var images = [SKPhoto]()
+        let photo = SKPhoto.photoWithImageURL(imgSrc)
+        
+        photo.caption = src.text
         
         images.append(photo)
         
