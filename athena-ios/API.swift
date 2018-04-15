@@ -505,6 +505,7 @@ public final class InitialQuery: GraphQLQuery {
         GraphQLField("id", type: .scalar(GraphQLID.self)),
         GraphQLField("name", type: .scalar(String.self)),
         GraphQLField("src", type: .scalar(Int.self)),
+        GraphQLField("count", type: .scalar(Int.self)),
       ]
 
       public var snapshot: Snapshot
@@ -513,8 +514,8 @@ public final class InitialQuery: GraphQLQuery {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID? = nil, name: String? = nil, src: Int? = nil) {
-        self.init(snapshot: ["__typename": "category", "id": id, "name": name, "src": src])
+      public init(id: GraphQLID? = nil, name: String? = nil, src: Int? = nil, count: Int? = nil) {
+        self.init(snapshot: ["__typename": "category", "id": id, "name": name, "src": src, "count": count])
       }
 
       public var __typename: String {
@@ -550,6 +551,15 @@ public final class InitialQuery: GraphQLQuery {
         }
         set {
           snapshot.updateValue(newValue, forKey: "src")
+        }
+      }
+
+      public var count: Int? {
+        get {
+          return snapshot["count"] as? Int
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "count")
         }
       }
 
@@ -1538,7 +1548,7 @@ public final class FetchProfileWithCollectionsQuery: GraphQLQuery {
 
 public struct FetchCategories: GraphQLFragment {
   public static let fragmentString =
-    "fragment fetchCategories on category {\n  __typename\n  id\n  name\n  src\n}"
+    "fragment fetchCategories on category {\n  __typename\n  id\n  name\n  src\n  count\n}"
 
   public static let possibleTypes = ["category"]
 
@@ -1547,6 +1557,7 @@ public struct FetchCategories: GraphQLFragment {
     GraphQLField("id", type: .scalar(GraphQLID.self)),
     GraphQLField("name", type: .scalar(String.self)),
     GraphQLField("src", type: .scalar(Int.self)),
+    GraphQLField("count", type: .scalar(Int.self)),
   ]
 
   public var snapshot: Snapshot
@@ -1555,8 +1566,8 @@ public struct FetchCategories: GraphQLFragment {
     self.snapshot = snapshot
   }
 
-  public init(id: GraphQLID? = nil, name: String? = nil, src: Int? = nil) {
-    self.init(snapshot: ["__typename": "category", "id": id, "name": name, "src": src])
+  public init(id: GraphQLID? = nil, name: String? = nil, src: Int? = nil, count: Int? = nil) {
+    self.init(snapshot: ["__typename": "category", "id": id, "name": name, "src": src, "count": count])
   }
 
   public var __typename: String {
@@ -1592,6 +1603,15 @@ public struct FetchCategories: GraphQLFragment {
     }
     set {
       snapshot.updateValue(newValue, forKey: "src")
+    }
+  }
+
+  public var count: Int? {
+    get {
+      return snapshot["count"] as? Int
+    }
+    set {
+      snapshot.updateValue(newValue, forKey: "count")
     }
   }
 }

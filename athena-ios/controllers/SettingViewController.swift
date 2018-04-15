@@ -21,7 +21,7 @@ struct SettingItem {
 class SettingViewController: UITableViewController {
     
     let settings = [
-        SettingItem(id: 0, title: "public data", type: .publicData),
+        SettingItem(id: 0, title: "Open data", type: .publicData),
         SettingItem(id: 1, title: "About", type: .about),
         SettingItem(id: 2, title: "Logout", type: .logout)
     ]
@@ -51,8 +51,14 @@ class SettingViewController: UITableViewController {
         
         let settingData = self.settings[indexPath.row]
         
-        if settingData.type == .about {
+        switch settingData.type {
+        case .about:
             performSegue(withIdentifier: "toAboutPage", sender: nil)
+        case .publicData:
+            performSegue(withIdentifier: "toPublicData", sender: nil)
+        default:
+            self.showToast(message: "not support yet")
+            return
         }
         print("clicked", indexPath)
     }

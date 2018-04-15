@@ -13,6 +13,8 @@ class PostDetailViewController : UIViewController {
     
     var data: FetchGirlsQueryQuery.Data.Girl? = nil
     
+    @IBOutlet weak var fromUrl: UIButton!
+    @IBOutlet weak var fromId: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var imgView: UIImageView!
@@ -44,8 +46,11 @@ class PostDetailViewController : UIViewController {
         let imageSrc = Utils.getRealImageSrc(image: (data?.img)!)
         self.imgView.sd_setImage(with: URL(string: imageSrc), completed: nil)
         
+        
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(PostDetailViewController.imageTapped))
         self.imgView.isUserInteractionEnabled = true
         self.imgView.addGestureRecognizer(singleTap)
+        self.fromId.setTitle(data?.fromId, for: .normal)
+        self.fromUrl.setTitle(data?.fromUrl, for: .normal)
     }
 }

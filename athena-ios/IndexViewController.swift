@@ -19,6 +19,8 @@ class IndexViewController: UIViewController {
     private var cells: [FetchGirlsQueryQuery.Data.Girl?] = []
     private var noMore = false
     
+    private var selectedItemIndex = 0
+    
     private var loading: Bool = false
     @IBAction func CheckMore(_ sender: Any) {
         
@@ -47,7 +49,8 @@ class IndexViewController: UIViewController {
             let cate = category?.id
             
             let offset = Int(arc4random_uniform(UInt32((category?.count)!)))
-            self.loadCellsData(fetchMore: false, cate: cate, offset: offset, isRandom: true)
+            print(cate, offset)
+//            self.loadCellsData(fetchMore: false, cate: cate, offset: offset, isRandom: true)
         }))
         
         alert.addAction(UIAlertAction(title: "refresh", style: .destructive, handler: { action in
@@ -170,13 +173,21 @@ extension IndexViewController: UITableViewDelegate, UITableViewDataSource {
 //
 //        let cell = tableView.cellForRow(at: indexPath) as! GirlCellOfTableTableViewCell
 //
+        self.selectedItemIndex = indexPath.row
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let postVC = storyboard.instantiateViewController(withIdentifier: "imageDetailView") as! PostDetailViewController
-        
-        postVC.data = itemData
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let postVC = storyboard.instantiateViewController(withIdentifier: "imageDetailView") as! PostDetailViewController
+//        
+//        postVC.data = itemData
         
         performSegue(withIdentifier: "imageDetail", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "imageDetail" {
+            let postVC = segue.destination as! PostDetailViewController
+            postVC.data = cells[selectedItemIndex]
+        }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
