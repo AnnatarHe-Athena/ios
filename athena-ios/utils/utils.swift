@@ -80,6 +80,17 @@ class Utils {
         
         view.present(browser, animated: true, completion: nil)
     }
+    
+    public static func getURLScheme(url: String) -> String {
+        if url.contains("zhihu.com") {
+            let seqs = url.split(separator: "/")
+            let id = seqs[seqs.count - 1]
+            print(id)
+            return "zhihu://answers/\(id)"
+        }
+        
+        return url
+    }
 }
 
 struct AthenaColors {

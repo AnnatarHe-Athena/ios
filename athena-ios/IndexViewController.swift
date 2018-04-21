@@ -24,7 +24,7 @@ class IndexViewController: UIViewController {
     private var loading: Bool = false
     @IBAction func CheckMore(_ sender: Any) {
         
-        let alert = UIAlertController(title: "Categories", message: nil, preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         for var category in ModalApp.categories {
             alert.addAction(UIAlertAction(title: category?.name, style: .default, handler: { action in
@@ -50,7 +50,7 @@ class IndexViewController: UIViewController {
             
             let offset = Int(arc4random_uniform(UInt32((category?.count)!)))
             print(cate, offset)
-//            self.loadCellsData(fetchMore: false, cate: cate, offset: offset, isRandom: true)
+            self.randomFetchCell(fetchMore: false)
         }))
         
         alert.addAction(UIAlertAction(title: "refresh", style: .destructive, handler: { action in
@@ -70,8 +70,36 @@ class IndexViewController: UIViewController {
         cellListTableView.delegate = self
         
         initialLoad()
+        
+        self.addRefrashControl()
+        
     }
     
+    private func addRefrashControl() {
+        let refrashControl = UIRefreshControl()
+        refrashControl.addTarget(self, action: #selector(self.pullToRefrash), for: .valueChanged)
+        
+        cellListTableView.refreshControl = refrashControl
+    }
+    
+    @objc private func pullToRefrash() {
+        print("pull to refrash")
+        Config.getApolloClient().fetch(query: FetchGirlsQueryQuery(from: Int(self.categoryID!)!, take: 20, offset: 0, hideOnly: false)) { (result, err) in
+            self.showAlert(err: err)
+            guard let dataItems = result?.data?.girls else {
+                print("load error")
+                return
+            }
+            
+            if dataItems.count == 0 {
+                self.noMore = true
+            }
+            
+            self.cells = dataItems
+            self.cellListTableView.reloadData()
+            self.cellListTableView.refreshControl?.endRefreshing()
+        }
+    }
     
     func initialLoad() {
         Config.getApolloClient().fetch(query: InitCategoriesQuery()) { (result, err) in
@@ -140,6 +168,42 @@ class IndexViewController: UIViewController {
             self.loading = false
         }
     }
+    
+    private func randomFetchCell(fetchMore: Bool = true) {
+        guard !loading else {
+            return
+        }
+        
+        loading = true
+        
+        let randomIndex = Int(arc4random_uniform(UInt32(ModalApp.categories.count)))
+        let category = ModalApp.categories[randomIndex]
+        let cate = category?.id
+        
+        let offset = Int(arc4random_uniform(UInt32((category?.count)!)))
+        
+        Config.getApolloClient().fetch(query: FetchGirlsQueryQuery(from: Int(cate!)!, take: 20, offset: offset, hideOnly: false)) { (result, err) in
+            self.showAlert(err: err)
+            
+            guard let dataItems = result?.data?.girls else {
+                print("load error")
+                self.showToast(message: "load data error")
+                return
+            }
+            
+            if dataItems.count == 0 {
+                self.noMore = true
+            }
+            
+            if fetchMore {
+                self.cells.append(contentsOf: dataItems)
+            } else {
+                self.cells = dataItems
+            }
+            self.cellListTableView.reloadData()
+            self.loading = false
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -170,15 +234,8 @@ extension IndexViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let itemData = cells[indexPath.row]
-//
-//        let cell = tableView.cellForRow(at: indexPath) as! GirlCellOfTableTableViewCell
-//
-        self.selectedItemIndex = indexPath.row
         
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let postVC = storyboard.instantiateViewController(withIdentifier: "imageDetailView") as! PostDetailViewController
-//        
-//        postVC.data = itemData
+        self.selectedItemIndex = indexPath.row
         
         performSegue(withIdentifier: "imageDetail", sender: nil)
     }
@@ -191,16 +248,17 @@ extension IndexViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if self.noMore {
+        if self.noMore && self.title != "随机" {
             return
         }
         let lastElement = cells.count - 1
         
-        
         if indexPath.row == lastElement {
-            // is last one
-            // show load data
-            self.loadCellsData(fetchMore: true, cate: self.categoryID)
+            if self.title == "随机" {
+                self.randomFetchCell(fetchMore: true)
+            } else {
+                self.loadCellsData(fetchMore: true, cate: self.categoryID)
+            }
             print("load more at footer")
         }
     }
@@ -210,7 +268,6 @@ extension IndexViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func toDelete(index: IndexPath) {
-        
         let cell = self.cells[index.row]
         Config.getApolloClient().perform(mutation: RemoveGirlMutation(cells: [Int((cell?.id)!)], toRemove: false)) { (result, err) in
             if err != nil {
@@ -221,8 +278,6 @@ extension IndexViewController: UITableViewDelegate, UITableViewDataSource {
             self.cells.remove(at: index.row)
             self.cellListTableView.deleteRows(at: [index], with: .fade)
         }
-        
-        
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

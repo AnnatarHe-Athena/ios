@@ -15,6 +15,7 @@
 		3434A9792066373F0096DF73 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3434A9782066373F0096DF73 /* SQLite.framework */; };
 		344D45AA2079AAE40069F2AD /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 344D45A92079AAE40069F2AD /* Media.xcassets */; };
 		349EAE7D206E53F000ACFB02 /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 349EAE7C206E53F000ACFB02 /* KeychainSwift.framework */; };
+		34A6A9EC208A08F8005C237B /* AthenaNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A6A9EB208A08F8005C237B /* AthenaNavigationBar.swift */; };
 		34E9DFFC20810442000676FB /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E9DFFB20810442000676FB /* PostDetailViewController.swift */; };
 		34E9DFFE2081D4CA000676FB /* PublicDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E9DFFD2081D4CA000676FB /* PublicDataViewController.swift */; };
 		DC0C01811F8B46D600ED869A /* SKPhotoBrowser.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBB1E61F6BADA700D5ED23 /* SKPhotoBrowser.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -63,6 +64,7 @@
 		3434A9782066373F0096DF73 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = Carthage/Build/iOS/SQLite.framework; sourceTree = "<group>"; };
 		344D45A92079AAE40069F2AD /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		349EAE7C206E53F000ACFB02 /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainSwift.framework; path = Carthage/Build/iOS/KeychainSwift.framework; sourceTree = "<group>"; };
+		34A6A9EB208A08F8005C237B /* AthenaNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthenaNavigationBar.swift; sourceTree = "<group>"; };
 		34E9DFFB20810442000676FB /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		34E9DFFD2081D4CA000676FB /* PublicDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicDataViewController.swift; sourceTree = "<group>"; };
 		DC8DFE0E1F728F8000F442DE /* ModalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalApp.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				3401724D2075984400C24029 /* AboutViewController.swift */,
 				34E9DFFB20810442000676FB /* PostDetailViewController.swift */,
 				34E9DFFD2081D4CA000676FB /* PublicDataViewController.swift */,
+				34A6A9EB208A08F8005C237B /* AthenaNavigationBar.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				DC8DFE0F1F728F8000F442DE /* ModalApp.swift in Sources */,
 				34E9DFFC20810442000676FB /* PostDetailViewController.swift in Sources */,
 				3401724C207595F600C24029 /* SettingCell.swift in Sources */,
+				34A6A9EC208A08F8005C237B /* AthenaNavigationBar.swift in Sources */,
 				DCCBB1C91F6BAC8300D5ED23 /* IndexViewController.swift in Sources */,
 				DC8DFE111F728FFC00F442DE /* Config.swift in Sources */,
 				3401724E2075984400C24029 /* AboutViewController.swift in Sources */,

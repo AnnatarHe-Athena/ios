@@ -18,7 +18,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userEmail: UILabel!
     @IBOutlet weak var userBio: UILabel!
-    @IBOutlet weak var userCollectionsTableView: UITableView!
+    @IBOutlet weak var userCollectionsTableView: UICollectionView!
+    @IBOutlet weak var profileContainer: UIView!
     
     var loadFrom = 0;
     var profileLoaded = false
@@ -29,9 +30,9 @@ class ProfileViewController: UIViewController {
         
         self.checkLogin()
         
-        
         let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.touchAction))
         self.view.addGestureRecognizer(gesture)
+        
     }
     
     
@@ -85,13 +86,17 @@ class ProfileViewController: UIViewController {
                 avatarUrl = user.avatar!
             }
             
-            //            self.userAvatar.sd_setImage(with: URL(string: "https://via.placeholder.com/300x300")!, completed: nil)
             let avatar = URL(string: avatarUrl)
             self.userAvatar.sd_setImage(with: avatar, placeholderImage: nil, options: .allowInvalidSSLCertificates, completed: nil)
             self.userName.text = user.name
             self.userBio.text = user.bio
             self.userEmail.text = user.email
             // todo: collection
+            
+            self.userAvatar.layer.cornerRadius = 40.0
+            self.userAvatar.layer.borderWidth = 1.0
+            self.userAvatar.layer.borderColor = UIColor.clear.cgColor
+            self.userAvatar.layer.masksToBounds = true
         }
     }
 }
