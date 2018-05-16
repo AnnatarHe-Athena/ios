@@ -30,6 +30,18 @@ class PublicDataViewController: UIViewController {
             self.fee.text = "you have to pay \(info.fee!) if you want to login"
             self.email.text = "concat me with \(info.email!)"
             self.copyright.text = "copyright: \(info.copyright!)"
+            
+            self.runCardSequence(info: info)
         }
     }
+
+    private func runCardSequence(info: InfoQuery.Data.Info) {
+        let view = UIView()
+        view.frame = CGRect(x: 100, y: 100, width: 200, height: 200)
+        
+        let text = UILabel()
+        text.text = "server got \(info.userCount!) users"
+        view.addSubview(text)
+    }
+    
 }

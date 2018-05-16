@@ -47,9 +47,9 @@ class Utils {
             let qnBaseURL = realImageUrl?.replacingOccurrences(of: "qn://", with: "https://cdn.annatarhe.com/")
             switch (type) {
             case "bmiddle":
-                return qnBaseURL! + "-thumbnails"
+                return qnBaseURL! + "-thumbnails.webp"
             case "large":
-                return qnBaseURL! + "-copyrightDB"
+                return qnBaseURL! + "-copyrightDB.webp"
             default:
                 return ""
             }
