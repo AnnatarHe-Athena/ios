@@ -49,7 +49,7 @@ class Utils {
             case "bmiddle":
                 return qnBaseURL! + "-thumbnails.webp"
             case "large":
-                return qnBaseURL! + "-copyrightDB.webp"
+                return qnBaseURL! + "-copyrightDB"
             default:
                 return ""
             }

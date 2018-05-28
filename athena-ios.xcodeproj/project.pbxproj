@@ -65,6 +65,8 @@
 		344D45A92079AAE40069F2AD /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		349EAE7C206E53F000ACFB02 /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainSwift.framework; path = Carthage/Build/iOS/KeychainSwift.framework; sourceTree = "<group>"; };
 		34A6A9EB208A08F8005C237B /* AthenaNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthenaNavigationBar.swift; sourceTree = "<group>"; };
+		34C59D9020ABF386006FF049 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Carthage/Build/iOS/Firebase.framework; sourceTree = "<group>"; };
+		34C59D9320ABF4DF006FF049 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Carthage/Build/iOS/FirebaseCore.framework; sourceTree = "<group>"; };
 		34E9DFFB20810442000676FB /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		34E9DFFD2081D4CA000676FB /* PublicDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicDataViewController.swift; sourceTree = "<group>"; };
 		DC8DFE0E1F728F8000F442DE /* ModalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalApp.swift; sourceTree = "<group>"; };
@@ -171,6 +173,8 @@
 		DCCBB1DD1F6BAD8A00D5ED23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				34C59D9320ABF4DF006FF049 /* FirebaseCore.framework */,
+				34C59D9020ABF386006FF049 /* Firebase.framework */,
 				349EAE7C206E53F000ACFB02 /* KeychainSwift.framework */,
 				3434A9782066373F0096DF73 /* SQLite.framework */,
 				3434A976206637320096DF73 /* SQLite.framework.dSYM */,
@@ -401,6 +405,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LIBTOOLFLAGS = ObjC;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -452,6 +457,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LIBTOOLFLAGS = ObjC;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;

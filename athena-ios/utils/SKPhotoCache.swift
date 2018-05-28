@@ -11,6 +11,10 @@ import SKPhotoBrowser
 import SDWebImage
 
 class CustomImageCache: SKImageCacheable {
+    func removeAllImages() {
+        // TODO
+    }
+    
     func imageForKey(_ key: String) -> UIImage? {
         let img = SDWebImageManager.shared().imageCache?.imageFromCache(forKey: key)
         return img

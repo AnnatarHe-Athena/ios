@@ -5,17 +5,8 @@ import Apollo
 public struct CellInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(permission: Optional<Int?> = nil, fromId: Optional<String?> = nil, fromUrl: Optional<String?> = nil, img: Optional<String?> = nil, text: Optional<String?> = nil, cate: Optional<Int?> = nil) {
-    graphQLMap = ["permission": permission, "fromID": fromId, "fromURL": fromUrl, "img": img, "text": text, "cate": cate]
-  }
-
-  public var permission: Optional<Int?> {
-    get {
-      return graphQLMap["permission"] as! Optional<Int?>
-    }
-    set {
-      graphQLMap.updateValue(newValue, forKey: "permission")
-    }
+  public init(fromId: Optional<String?> = nil, fromUrl: Optional<String?> = nil, img: Optional<String?> = nil, text: Optional<String?> = nil, cate: Optional<Int?> = nil, permission: Optional<Int?> = nil) {
+    graphQLMap = ["fromID": fromId, "fromURL": fromUrl, "img": img, "text": text, "cate": cate, "permission": permission]
   }
 
   public var fromId: Optional<String?> {
@@ -60,6 +51,15 @@ public struct CellInput: GraphQLMapConvertible {
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "cate")
+    }
+  }
+
+  public var permission: Optional<Int?> {
+    get {
+      return graphQLMap["permission"] as! Optional<Int?>
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "permission")
     }
   }
 }

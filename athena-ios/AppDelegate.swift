@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         Utils.initApp()
+        // Use Firebase library to configure APIs
         return true
     }
 
