@@ -15,6 +15,7 @@
 		3434A9792066373F0096DF73 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3434A9782066373F0096DF73 /* SQLite.framework */; };
 		344D45AA2079AAE40069F2AD /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 344D45A92079AAE40069F2AD /* Media.xcassets */; };
 		349EAE7D206E53F000ACFB02 /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 349EAE7C206E53F000ACFB02 /* KeychainSwift.framework */; };
+		349F4E6220D7B2D80045DB67 /* CollectionItemCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349F4E6020D7B2D80045DB67 /* CollectionItemCellCollectionViewCell.swift */; };
 		34A6A9EC208A08F8005C237B /* AthenaNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A6A9EB208A08F8005C237B /* AthenaNavigationBar.swift */; };
 		34E9DFFC20810442000676FB /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E9DFFB20810442000676FB /* PostDetailViewController.swift */; };
 		34E9DFFE2081D4CA000676FB /* PublicDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E9DFFD2081D4CA000676FB /* PublicDataViewController.swift */; };
@@ -64,6 +65,7 @@
 		3434A9782066373F0096DF73 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = Carthage/Build/iOS/SQLite.framework; sourceTree = "<group>"; };
 		344D45A92079AAE40069F2AD /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		349EAE7C206E53F000ACFB02 /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainSwift.framework; path = Carthage/Build/iOS/KeychainSwift.framework; sourceTree = "<group>"; };
+		349F4E6020D7B2D80045DB67 /* CollectionItemCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionItemCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		34A6A9EB208A08F8005C237B /* AthenaNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthenaNavigationBar.swift; sourceTree = "<group>"; };
 		34C59D9020ABF386006FF049 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Carthage/Build/iOS/Firebase.framework; sourceTree = "<group>"; };
 		34C59D9320ABF4DF006FF049 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Carthage/Build/iOS/FirebaseCore.framework; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			children = (
 				DC8DFE131F72A0EE00F442DE /* AuthViewController.swift */,
 				DCD6B0921F81C6FF002E810C /* GirlCellOfTableTableViewCell.swift */,
+				349F4E6020D7B2D80045DB67 /* CollectionItemCellCollectionViewCell.swift */,
 				3401724420753D8A00C24029 /* SettingViewController.swift */,
 				3401724B207595F600C24029 /* SettingCell.swift */,
 				3401724D2075984400C24029 /* AboutViewController.swift */,
@@ -320,6 +323,7 @@
 				DC8DFE141F72A0EE00F442DE /* AuthViewController.swift in Sources */,
 				DC8DFE0F1F728F8000F442DE /* ModalApp.swift in Sources */,
 				34E9DFFC20810442000676FB /* PostDetailViewController.swift in Sources */,
+				349F4E6220D7B2D80045DB67 /* CollectionItemCellCollectionViewCell.swift in Sources */,
 				3401724C207595F600C24029 /* SettingCell.swift in Sources */,
 				34A6A9EC208A08F8005C237B /* AthenaNavigationBar.swift in Sources */,
 				DCCBB1C91F6BAC8300D5ED23 /* IndexViewController.swift in Sources */,
@@ -474,9 +478,9 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "athena-ios/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.annatarhe.athena-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = com.annatarhe.db;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 			};
@@ -492,9 +496,9 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "athena-ios/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.annatarhe.athena-ios";
+				PRODUCT_BUNDLE_IDENTIFIER = com.annatarhe.db;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 			};

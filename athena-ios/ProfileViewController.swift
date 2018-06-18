@@ -21,12 +21,17 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var userCollectionsTableView: UICollectionView!
     @IBOutlet weak var profileContainer: UIView!
     
+    var collections: [FetchProfileWithCollectionsQuery.Data.Collection?] = []
+    
     var loadFrom = 0;
     var profileLoaded = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        userCollectionsTableView.dataSource = self
+        userCollectionsTableView.delegate = self
         
         self.checkLogin()
         
@@ -92,6 +97,10 @@ class ProfileViewController: UIViewController {
             self.userBio.text = user.bio
             self.userEmail.text = user.email
             // todo: collection
+            if let collects = result?.data?.collections {
+                self.collections = collects
+                self.userCollectionsTableView.reloadData()
+            }
             
             self.userAvatar.layer.cornerRadius = 40.0
             self.userAvatar.layer.borderWidth = 1.0
@@ -101,3 +110,34 @@ class ProfileViewController: UIViewController {
     }
 }
 
+extension ProfileViewController : UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return collections.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionGirlCell", for: indexPath) as! CollectionItemCellCollectionViewCell
+        let dataItem = collections[indexPath.row]
+        let img = Utils.getRealImageSrc(image: (dataItem?.img!)!)
+        
+        cell.img.sd_setImage(with: URL(string: img), placeholderImage: UIImage(named: "placeholderImage.png"), options: .allowInvalidSSLCertificates, completed: nil)
+        return cell
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("ffdjaksdjflasjdkf")
+//        let dataCell = collectionView.cellForItem(at: indexPath) as! CollectionItemCellCollectionViewCell
+//
+//        let dataItem = collections[indexPath.row] as! FetchGirlsQueryQuery.Data.Girl
+//        
+//        Utils.presentBigPreview(
+//            view: self,
+//            src: dataItem,
+//            holderImage: dataCell.img.image,
+//            from: dataCell
+//        )
+    }
+    
+    
+}
