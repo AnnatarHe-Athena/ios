@@ -65,12 +65,13 @@ class Utils {
         from: UIView
         ) {
         
-        let imgSrc = Utils.getRealImageSrc(image: (src.img)!, type: "large")
+        
+        let imgSrc = Utils.getRealImageSrc(image: (src.fragments.fetchGirls.img)!, type: "large")
         
         var images = [SKPhoto]()
         let photo = SKPhoto.photoWithImageURL(imgSrc)
         
-        photo.caption = src.text
+        photo.caption = src.fragments.fetchGirls.text
         
         images.append(photo)
         

@@ -85,17 +85,18 @@ class ProfileViewController: UIViewController {
                 return
             }
             let avatarUrl: String
-            if user.avatar == "null" {
+            let userObj = user.fragments.profile
+            if userObj.avatar == "null" {
                 avatarUrl = "https://via.placeholder.com/300x300"
             } else {
-                avatarUrl = user.avatar!
+                avatarUrl = userObj.avatar!
             }
             
             let avatar = URL(string: avatarUrl)
             self.userAvatar.sd_setImage(with: avatar, placeholderImage: nil, options: .allowInvalidSSLCertificates, completed: nil)
-            self.userName.text = user.name
-            self.userBio.text = user.bio
-            self.userEmail.text = user.email
+            self.userName.text = userObj.name
+            self.userBio.text = userObj.bio
+            self.userEmail.text = userObj.email
             // todo: collection
             if let collects = result?.data?.collections {
                 self.collections = collects
@@ -118,7 +119,7 @@ extension ProfileViewController : UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionGirlCell", for: indexPath) as! CollectionItemCellCollectionViewCell
         let dataItem = collections[indexPath.row]
-        let img = Utils.getRealImageSrc(image: (dataItem?.img!)!)
+        let img = Utils.getRealImageSrc(image: (dataItem?.fragments.fetchGirls.img!)!)
         
         cell.img.sd_setImage(with: URL(string: img), placeholderImage: UIImage(named: "placeholderImage.png"), options: .allowInvalidSSLCertificates, completed: nil)
         return cell

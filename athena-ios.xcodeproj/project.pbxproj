@@ -209,10 +209,10 @@
 			buildConfigurationList = DCCBB1D71F6BAC8300D5ED23 /* Build configuration list for PBXNativeTarget "athena-ios" */;
 			buildPhases = (
 				DCCBB1DA1F6BACD200D5ED23 /* ShellScript */,
-				DCCBB1DC1F6BAD1B00D5ED23 /* Generate GraphQL API */,
 				DCCBB1C01F6BAC8300D5ED23 /* Frameworks */,
 				DCCBB1C11F6BAC8300D5ED23 /* Resources */,
 				DC0C01821F8B46D600ED869A /* Embed Frameworks */,
+				DCCBB1DC1F6BAD1B00D5ED23 /* Generate GraphQL API */,
 				DCCBB1BF1F6BAC8300D5ED23 /* Sources */,
 			);
 			buildRules = (
@@ -237,6 +237,7 @@
 					DCCBB1C21F6BAC8300D5ED23 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = VY3AP6C55K;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -291,7 +292,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 		DCCBB1DC1F6BAD1B00D5ED23 /* Generate GraphQL API */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -305,7 +306,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"I was run\"\n\nAPOLLO_FRAMEWORK_PATH=\"$(eval find $FRAMEWORK_SEARCH_PATHS -name 'Apollo.framework' -maxdepth 1)\"\n\nif [ -z \"$APOLLO_FRAMEWORK_PATH\" ]; then\necho \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\nexit 1\nfi\n\n\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n$APOLLO_FRAMEWORK_PATH/check-and-run-apollo-codegen.sh generate $(find ../../schema -name '*.graphql') --schema ../../schema/schema.json --output API.swift";
+			shellScript = "APOLLO_FRAMEWORK_PATH=\"$(eval find $FRAMEWORK_SEARCH_PATHS -name \"Apollo.framework\" -maxdepth 1)\"\n\nif [ -z \"$APOLLO_FRAMEWORK_PATH\" ]; then\necho \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\nexit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\ncd ../../schema\nmake gen\n# $APOLLO_FRAMEWORK_PATH/check-and-run-apollo-cli.sh codegen:generate --queries=\"$(find ../../schema -name '*.graphql')\" --schema=../../schema.json API.swift\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -482,7 +483,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.annatarhe.db;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -500,7 +501,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.annatarhe.db;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
