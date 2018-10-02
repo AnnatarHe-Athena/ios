@@ -12,10 +12,14 @@ import SDWebImage
 import SKPhotoBrowser
 import Sentry
 
+fileprivate let defaultCategoryID = GraphQLID(0)
+
 class IndexViewController: UIViewController {
+    
+    
     @IBOutlet weak var cellListTableView: UITableView!
     
-    private var categoryID: GraphQLID? = GraphQLID(0)
+    private var categoryID: GraphQLID? = defaultCategoryID
     private var cells: [FetchGirlsQueryQuery.Data.Girl?] = []
     private var noMore = false
     
@@ -84,10 +88,19 @@ class IndexViewController: UIViewController {
     
     @objc private func pullToRefrash() {
         print("pull to refrash")
+        if self.categoryID == defaultCategoryID {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 300) {
+                DispatchQueue.main.async {
+                    self.cellListTableView.refreshControl?.endRefreshing()
+                }
+            }
+            self.showToast(message: "login first")
+        }
         Config.getApolloClient().fetch(query: FetchGirlsQueryQuery(from: Int(self.categoryID!)!, take: 20, offset: 0, hideOnly: false)) { (result, err) in
             self.showAlert(err: err)
             guard let dataItems = result?.data?.girls else {
                 print("load error")
+                self.cellListTableView.refreshControl?.endRefreshing()
                 return
             }
             
@@ -224,16 +237,16 @@ extension IndexViewController: UITableViewDelegate, UITableViewDataSource {
         
         let detail = cells[indexPath.row]
         
-        let imageSrc = Utils.getRealImageSrc(image: (detail?.img)!)
+        let imageSrc = Utils.getRealImageSrc(image: (detail?.fragments.fetchGirls.img)!)
         
         cell.detailImage.sd_setImage(with: URL(string: imageSrc), placeholderImage: UIImage(named: "placeholderImage.png"), options: .allowInvalidSSLCertificates, completed: nil)
-        cell.id = (detail?.id)!
+        cell.id = (detail?.fragments.fetchGirls.id)!
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let itemData = cells[indexPath.row]
+//        let itemData = cells[indexPath.row]
         
         self.selectedItemIndex = indexPath.row
         
@@ -269,7 +282,8 @@ extension IndexViewController: UITableViewDelegate, UITableViewDataSource {
     
     func toDelete(index: IndexPath) {
         let cell = self.cells[index.row]
-        Config.getApolloClient().perform(mutation: RemoveGirlMutation(cells: [Int((cell?.id)!)], toRemove: false)) { (result, err) in
+        let cellID = cell?.fragments.fetchGirls.id
+        Config.getApolloClient().perform(mutation: RemoveGirlMutation(cells: [Int(cellID!)], toRemove: false)) { (result, err) in
             if err != nil {
                 self.showToast(message: "remove data error")
                 return
@@ -280,7 +294,7 @@ extension IndexViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             self.toDelete(index: indexPath)
         }

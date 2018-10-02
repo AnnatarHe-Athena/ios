@@ -26,11 +26,12 @@ class PostDetailViewController : UIViewController {
     }
     @IBAction func fromUrlClicked(_ sender: Any) {
         
+        let fromUrl = self.data?.fragments.fetchGirls.fromUrl
         
-        let urlScheme = Utils.getURLScheme(url: (self.data?.fromUrl)!)
+        let urlScheme = Utils.getURLScheme(url: fromUrl!)
         var url = URL(string: urlScheme)
         if !UIApplication.shared.canOpenURL(URL(string: urlScheme)!) {
-            url = URL(string: (self.data?.fromUrl)!)
+            url = URL(string: fromUrl!)
         }
         
         UIApplication.shared.open(url!, completionHandler: nil)
@@ -53,12 +54,12 @@ class PostDetailViewController : UIViewController {
     }
     override func viewDidLoad() {
         // loaded
+        let postDetail = data?.fragments.fetchGirls
+        self.title = postDetail!.text
+        self.textLabel.text = postDetail!.text
+        self.titleLabel.text = postDetail!.content
         
-        self.title = data?.text
-        self.textLabel.text = data?.text
-        self.titleLabel.text = data?.content
-        
-        let imageSrc = Utils.getRealImageSrc(image: (data?.img)!)
+        let imageSrc = Utils.getRealImageSrc(image: (postDetail!.img)!)
         self.imgView.sd_setImage(with: URL(string: imageSrc), completed: {(image, error, cacheType, imageURL) in
             let rate = (image?.size.width)! / (image?.size.height)!
             let height = (UIScreen.main.bounds.width - 16) / rate
@@ -73,8 +74,8 @@ class PostDetailViewController : UIViewController {
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(PostDetailViewController.imageTapped))
         self.imgView.isUserInteractionEnabled = true
         self.imgView.addGestureRecognizer(singleTap)
-        self.fromId.setTitle(data?.fromId, for: .normal)
-        self.fromUrl.setTitle(data?.fromUrl, for: .normal)
+        self.fromId.setTitle(postDetail!.fromId, for: .normal)
+        self.fromUrl.setTitle(postDetail!.fromUrl, for: .normal)
         
         let rightBtn = UIBarButtonItem(title: "Actions", style: .plain, target: self, action: #selector(self.onRightBtnClicked))
         self.navigationItem.rightBarButtonItem = rightBtn
