@@ -108,33 +108,42 @@ class AuthViewController: UIViewController {
         let context = LAContext()
         var err: NSError?
         
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &err) {
-            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "请指纹解锁", reply: { success, error in
-                if success {
-                    // dismiss and reload data
-                    
-                    let keychainSwift = KeychainSwift()
-                    guard let email = keychainSwift.get("email"), let pwd = keychainSwift.get("pwd") else {
-                        self.showErrorMsg(title: "please login with email and password in first time")
-                        return
-                    }
-                    
-                    DispatchQueue.main.async {
-                        self.email.text = email
-                        self.password.text = pwd
-                        self.login(self)
-                    }
-                    
-                } else {
-                    if let error = error as NSError? {
-                        // 获取错误信息
-                        let message = self.errorMessageForLAErrorCode(errorCode: error.code)
-                        print(message)
-                        self.showErrorMsg(title: message)
-                    }
-                }
-            })
+        guard context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &err) else {
+            print(err)
+            return
         }
+        
+        context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "请指纹解锁", reply: { success, error in
+            guard success == true else {
+                print(error)
+                return
+            }
+            if success {
+                // dismiss and reload data
+                
+                let keychainSwift = KeychainSwift()
+                guard let email = keychainSwift.get("email"), let pwd = keychainSwift.get("pwd") else {
+                    self.showErrorMsg(title: "please login with email and password in first time")
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    self.email.text = email
+                    self.password.text = pwd
+                    self.login(self)
+                }
+                return
+                
+            }
+            
+            if let error = error as NSError? {
+                // 获取错误信息
+                let message = self.errorMessageForLAErrorCode(errorCode: error.code)
+                print(message)
+                self.showErrorMsg(title: message)
+            }
+            
+        })
     
     }
     

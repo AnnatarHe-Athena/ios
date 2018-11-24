@@ -86,11 +86,21 @@ class PostDetailViewController : UIViewController {
         print("clicked right btn")
         let actionsSheets = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         actionsSheets.addAction(UIAlertAction(title: "Like", style: .default, handler: { action in
-            print("do like action")
             self.showToast(message: "like not support yet")
         }))
         actionsSheets.addAction(UIAlertAction(title: "Collect", style: .default, handler: { action in
             print("do Collect action")
+            let cellID = Int((self.data?.fragments.fetchGirls.id!)!)
+            
+            Config.getApolloClient()
+                .perform(mutation: AddToCollectionMutation(cells: [cellID])) { (result, err ) in
+                    if err != nil {
+                        self.showToast(message: "remove data error")
+                        return
+                    }
+                    
+                    self.showToast(message: "collection saved")
+            }
             self.showToast(message: "collect not support yet")
         }))
         actionsSheets.addAction(UIAlertAction(title: "Like", style: .destructive, handler: { action in

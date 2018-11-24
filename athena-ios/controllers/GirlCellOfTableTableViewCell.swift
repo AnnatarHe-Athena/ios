@@ -20,13 +20,13 @@ class GirlCellOfTableTableViewCell: UITableViewCell {
         // Initialization code
         
         containerView.backgroundColor = UIColor.white.withAlphaComponent(0.8)
-        containerView.layer.cornerRadius = 8
+        containerView.layer.cornerRadius = 0
         containerView.layer.masksToBounds = true
         
 //        let squarePath = UIBezierPath(roundedRect: containerView.bounds, cornerRadius: 8).cgPath
 //        self.containerView.layer.shadowPath = squarePath;
         
-        self.detailImage.layer.cornerRadius = 4.0
+        self.detailImage.layer.cornerRadius = 0
         self.detailImage.layer.borderWidth = 1.0
         self.detailImage.layer.borderColor = UIColor.clear.cgColor
         self.detailImage.layer.masksToBounds = true

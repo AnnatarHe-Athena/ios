@@ -9,11 +9,6 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-    //    @IBOutlet weak var userAvatar: UIImageView!
-    //    @IBOutlet weak var userName: UILabel!
-    //    @IBOutlet weak var userEmail: UILabel!
-    //    @IBOutlet weak var userBio: UILabel!
-    //    @IBOutlet weak var userCollectionsTableView: UITableView!
     @IBOutlet weak var userAvatar: UIImageView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userEmail: UILabel!
@@ -28,8 +23,6 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
         userCollectionsTableView.dataSource = self
         userCollectionsTableView.delegate = self
         
@@ -37,9 +30,7 @@ class ProfileViewController: UIViewController {
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.touchAction))
         self.view.addGestureRecognizer(gesture)
-        
     }
-    
     
     @objc func touchAction(sender : UITapGestureRecognizer) {
         self.checkLogin()
@@ -78,7 +69,6 @@ class ProfileViewController: UIViewController {
     }
     
     func loadProfile() {
-        // load profile
         Config.getApolloClient().fetch(query: FetchProfileWithCollectionsQuery(id: Int(Config.userId)!, from: self.loadFrom, size: 20)) { (result, err) in
             guard let user = result?.data?.users else {
                 self.showAlert(err: err)
@@ -103,7 +93,7 @@ class ProfileViewController: UIViewController {
                 self.userCollectionsTableView.reloadData()
             }
             
-            self.userAvatar.layer.cornerRadius = 40.0
+            self.userAvatar.layer.cornerRadius = 4.0
             self.userAvatar.layer.borderWidth = 1.0
             self.userAvatar.layer.borderColor = UIColor.clear.cgColor
             self.userAvatar.layer.masksToBounds = true
