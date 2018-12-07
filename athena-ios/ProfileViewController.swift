@@ -20,11 +20,13 @@ class ProfileViewController: UIViewController {
     
     var loadFrom = 0;
     var profileLoaded = false
+    var loading = false
+    private var collectionCursor = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         userCollectionsTableView.dataSource = self
-        userCollectionsTableView.delegate = self
+//        userCollectionsTableView.delegate = self
         
         self.checkLogin()
         
@@ -70,12 +72,14 @@ class ProfileViewController: UIViewController {
     
     func loadProfile() {
         Config.getApolloClient().fetch(query: FetchProfileWithCollectionsQuery(id: Int(Config.userId)!, from: self.loadFrom, size: 20)) { (result, err) in
+            self.collectionCursor += 20
             guard let user = result?.data?.users else {
                 self.showAlert(err: err)
                 return
             }
             let avatarUrl: String
             let userObj = user.fragments.profile
+            self.title = userObj.name!
             if userObj.avatar == "null" {
                 avatarUrl = "https://via.placeholder.com/300x300"
             } else {
@@ -97,6 +101,34 @@ class ProfileViewController: UIViewController {
             self.userAvatar.layer.borderWidth = 1.0
             self.userAvatar.layer.borderColor = UIColor.clear.cgColor
             self.userAvatar.layer.masksToBounds = true
+        }
+    }
+    
+    func loadMoreCollect() {
+        guard !loading else {
+            return
+        }
+        loading = true
+        
+        Config.getApolloClient().fetch(query: FetchCollectionsQuery(id: Int(Config.userId)!, from: collectionCursor, size: 0)) { (result, err) in
+            self.loading = false
+            guard err == nil else {
+                print(err)
+                return
+            }
+            if let newCollection = result?.data?.collections {
+                
+                if (newCollection.count == 0) {
+                    return
+                }
+                
+                let nc = newCollection as! [FetchProfileWithCollectionsQuery.Data.Collection]
+                
+                self.collections.append(contentsOf: nc)
+            }
+            
+            self.userCollectionsTableView.reloadData()
+            self.collectionCursor += 20
         }
     }
 }
@@ -128,6 +160,13 @@ extension ProfileViewController : UICollectionViewDataSource, UICollectionViewDe
 //            holderImage: dataCell.img.image,
 //            from: dataCell
 //        )
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if (indexPath.item == collections.count - 1) {
+            // load more
+            self.loadMoreCollect()
+        }
     }
     
     
