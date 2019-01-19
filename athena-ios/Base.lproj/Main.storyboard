@@ -37,26 +37,28 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tea-20-fjp">
-                                                    <rect key="frame" x="23" y="19" width="329" height="462"/>
+                                                    <rect key="frame" x="4" y="4" width="367" height="492"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i3w-Qv-duw">
-                                                            <rect key="frame" x="0.0" y="0.0" width="329" height="462"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="367" height="492"/>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="i3w-Qv-duw" secondAttribute="bottom" id="H9x-np-Dda"/>
-                                                        <constraint firstItem="i3w-Qv-duw" firstAttribute="leading" secondItem="Tea-20-fjp" secondAttribute="leading" id="PPk-Ah-7QM"/>
-                                                        <constraint firstAttribute="trailing" secondItem="i3w-Qv-duw" secondAttribute="trailing" id="Wrz-fD-YIR"/>
+                                                        <constraint firstItem="i3w-Qv-duw" firstAttribute="centerX" secondItem="Tea-20-fjp" secondAttribute="centerX" id="60r-S7-M3t"/>
+                                                        <constraint firstItem="i3w-Qv-duw" firstAttribute="height" secondItem="Tea-20-fjp" secondAttribute="height" id="H7k-is-BfA"/>
+                                                        <constraint firstItem="i3w-Qv-duw" firstAttribute="centerY" secondItem="Tea-20-fjp" secondAttribute="centerY" id="Vbu-2D-nuj"/>
+                                                        <constraint firstItem="i3w-Qv-duw" firstAttribute="width" secondItem="Tea-20-fjp" secondAttribute="width" id="XCL-Qy-pUh"/>
                                                         <constraint firstItem="i3w-Qv-duw" firstAttribute="top" secondItem="Tea-20-fjp" secondAttribute="top" id="a4H-Jl-ebQ"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Tea-20-fjp" firstAttribute="leading" secondItem="hp3-Rz-4aG" secondAttribute="leadingMargin" constant="8" id="16L-Tz-gDz"/>
-                                                <constraint firstItem="Tea-20-fjp" firstAttribute="top" secondItem="hp3-Rz-4aG" secondAttribute="topMargin" constant="8" id="9bN-S4-79R"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Tea-20-fjp" secondAttribute="trailing" constant="8" id="BQR-On-WpY"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Tea-20-fjp" secondAttribute="bottom" constant="8" id="da6-aY-rqk"/>
+                                                <constraint firstItem="Tea-20-fjp" firstAttribute="top" secondItem="hp3-Rz-4aG" secondAttribute="top" constant="4" id="3MO-rs-OVG"/>
+                                                <constraint firstItem="Tea-20-fjp" firstAttribute="centerX" secondItem="hp3-Rz-4aG" secondAttribute="centerX" id="7eW-kw-GC4"/>
+                                                <constraint firstItem="Tea-20-fjp" firstAttribute="leading" secondItem="hp3-Rz-4aG" secondAttribute="leading" constant="4" id="MLd-gR-EW9"/>
+                                                <constraint firstAttribute="trailing" secondItem="Tea-20-fjp" secondAttribute="trailing" constant="4" id="d2L-SP-Oph"/>
+                                                <constraint firstAttribute="bottom" secondItem="Tea-20-fjp" secondAttribute="bottom" constant="4" id="nvG-au-f1r"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -201,7 +203,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sXv-Zx-W9w">
-                                <rect key="frame" x="24" y="72" width="327" height="200"/>
+                                <rect key="frame" x="24" y="72" width="327" height="150"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="HSx-Q2-u1K">
                                         <rect key="frame" x="0.0" y="8" width="327" height="180"/>
@@ -210,10 +212,10 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="180"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GgA-ME-Ixo">
-                                                        <rect key="frame" x="45" y="35" width="110" height="110"/>
+                                                        <rect key="frame" x="50" y="40" width="100" height="100"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="110" id="iuP-Et-kNq"/>
-                                                            <constraint firstAttribute="height" constant="110" id="zQ5-Ez-KEy"/>
+                                                            <constraint firstAttribute="width" constant="100" id="iuP-Et-kNq"/>
+                                                            <constraint firstAttribute="height" constant="100" id="zQ5-Ez-KEy"/>
                                                         </constraints>
                                                     </imageView>
                                                 </subviews>
@@ -315,9 +317,9 @@
                             <constraint firstItem="sXv-Zx-W9w" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="8" symbolic="YES" id="1FR-6y-af0"/>
                             <constraint firstItem="sXv-Zx-W9w" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="8" id="4aO-cM-8jW"/>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="qdN-1X-02h" secondAttribute="bottom" id="6eA-M4-lJm"/>
-                            <constraint firstItem="qdN-1X-02h" firstAttribute="top" secondItem="sXv-Zx-W9w" secondAttribute="bottom" constant="8" id="FC2-6e-mNE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sXv-Zx-W9w" secondAttribute="trailing" constant="8" id="RKW-Bk-qBY"/>
                             <constraint firstAttribute="trailing" secondItem="qdN-1X-02h" secondAttribute="trailing" id="eJC-Dt-eeG"/>
+                            <constraint firstItem="qdN-1X-02h" firstAttribute="top" secondItem="sXv-Zx-W9w" secondAttribute="bottom" constant="58" id="kRe-wv-3dY"/>
                             <constraint firstItem="qdN-1X-02h" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="rua-DU-2O9"/>
                         </constraints>
                     </view>

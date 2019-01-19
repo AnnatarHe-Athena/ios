@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/annatarhe/Code/ios/athena-ios/Assets.xcassets">
-   </FileRef>
-   <FileRef
       location = "self:">
    </FileRef>
 </Workspace>
