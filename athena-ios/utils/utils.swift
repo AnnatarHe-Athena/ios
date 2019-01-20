@@ -90,6 +90,14 @@ class Utils {
             return "zhihu://answers/\(id)"
         }
         
+        if url.contains("jike.com") {
+            // example: https://web.okjike.com/topic/58b6480a2275da0014628065/official
+            
+            let regex = ""
+            
+            return "jike://page.jk/message/5c0d03d9845e060093648a46"
+        }
+        
         return url
     }
 }

@@ -56,8 +56,8 @@ class PostDetailViewController : UIViewController {
         // loaded
         let postDetail = data?.fragments.fetchGirls
         self.title = postDetail!.text
-        self.textLabel.text = postDetail!.text
-        self.titleLabel.text = postDetail!.content
+        self.textLabel.text = postDetail!.content
+        self.titleLabel.text = postDetail!.text
         
         let imageSrc = Utils.getRealImageSrc(image: (postDetail!.img)!)
         self.imgView.sd_setImage(with: URL(string: imageSrc), completed: {(image, error, cacheType, imageURL) in
@@ -101,7 +101,6 @@ class PostDetailViewController : UIViewController {
                     
                     self.showToast(message: "collection saved")
             }
-            self.showToast(message: "collect not support yet")
         }))
         actionsSheets.addAction(UIAlertAction(title: "Like", style: .destructive, handler: { action in
             print("do Delete action")
