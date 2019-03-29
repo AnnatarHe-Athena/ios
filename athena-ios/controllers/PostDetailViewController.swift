@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class PostDetailViewController : UIViewController {
+class PostDetailViewController : BaseViewController {
     
     var data: FetchGirlsQueryQuery.Data.Girl? = nil
     

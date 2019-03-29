@@ -14,7 +14,7 @@ import Sentry
 
 fileprivate let defaultCategoryID = GraphQLID(0)
 
-class IndexViewController: UIViewController {
+class IndexViewController: BaseViewController {
     
     
     @IBOutlet weak var cellListTableView: UITableView!
@@ -119,8 +119,6 @@ class IndexViewController: UIViewController {
             self.showAlert(err: err)
             guard let categories = result?.data?.categories else {
                 print("load incorrect data")
-                print(result?.data)
-                
                 let event = Event(level: .warning)
                 event.message = "load incorrect data"
                 Client.shared?.send(event: event, completion: nil)

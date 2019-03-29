@@ -11,7 +11,7 @@ import LocalAuthentication
 import SQLite
 import KeychainSwift
 
-class AuthViewController: UIViewController {
+class AuthViewController: BaseViewController {
     
     private var loading = false
     @IBOutlet weak var indicator: UIActivityIndicatorView!
@@ -89,6 +89,7 @@ class AuthViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         createGradientLayer()
     }
     

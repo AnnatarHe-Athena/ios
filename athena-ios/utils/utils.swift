@@ -55,7 +55,7 @@ class Utils {
             }
         }
 
-        return "https://wx1.sinaimg.cn/\(type)/\(realImageUrl!)"
+        return "https://ww1.sinaimg.cn/\(type)/\(realImageUrl!)"
     }
     
     public static func presentBigPreview(

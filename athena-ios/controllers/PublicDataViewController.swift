@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PublicDataViewController: UIViewController {
+class PublicDataViewController: BaseViewController {
     
     @IBOutlet weak var userCount: UILabel!
     @IBOutlet weak var cellCount: UILabel!
