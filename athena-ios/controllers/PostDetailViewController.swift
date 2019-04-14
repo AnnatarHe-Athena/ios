@@ -81,30 +81,29 @@ class PostDetailViewController : BaseViewController {
         self.navigationItem.rightBarButtonItem = rightBtn
     }
     
-    
     @objc private func onRightBtnClicked() {
         print("clicked right btn")
         let actionsSheets = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        actionsSheets.addAction(UIAlertAction(title: "Like", style: .default, handler: { action in
+        actionsSheets.addAction(UIAlertAction(title: "❤️ Like", style: .default, handler: { action in
             self.showToast(message: "like not support yet")
         }))
-        actionsSheets.addAction(UIAlertAction(title: "Collect", style: .default, handler: { action in
+        actionsSheets.addAction(UIAlertAction(title: "📖 Collect", style: .default, handler: { action in
             print("do Collect action")
             let cellID = Int((self.data?.fragments.fetchGirls.id!)!)
             
             Config.getApolloClient()
                 .perform(mutation: AddToCollectionMutation(cells: [cellID])) { (result, err ) in
                     if err != nil {
-                        self.showToast(message: "remove data error")
+                        self.showToast(message: "😭 remove data error")
                         return
                     }
                     
-                    self.showToast(message: "collection saved")
+                    self.showToast(message: "😁 collection saved")
             }
         }))
         actionsSheets.addAction(UIAlertAction(title: "Like", style: .destructive, handler: { action in
             print("do Delete action")
-            self.showToast(message: "delete not support yet")
+            self.showToast(message: "😭 delete not support yet")
         }))
         actionsSheets.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(actionsSheets, animated: true, completion: nil)

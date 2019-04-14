@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import SDWebImage
 
 enum settingEnum {
-    case about, logout, publicData
+    case about, logout, publicData, cache
 }
 
 struct SettingItem {
@@ -20,15 +21,12 @@ struct SettingItem {
 
 class SettingViewController: UITableViewController {
     
-    let settings = [
-        SettingItem(id: 0, title: "Open data", type: .publicData),
-        SettingItem(id: 1, title: "About", type: .about),
-        SettingItem(id: 2, title: "Logout", type: .logout)
+    var settings = [
+        SettingItem(id: 0, title: "👐 Open data", type: .publicData),
+        SettingItem(id: 1, title: "👨‍💻 About", type: .about),
+        SettingItem(id: 2, title: "🚪 Logout", type: .logout),
+        SettingItem(id: 3, title: "🏬 cache size: \(SDImageCache.shared.totalDiskSize()) bytes", type: .cache)
     ]
-    
-    override func viewDidLoad() {
-        
-    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.settings.count
@@ -43,7 +41,6 @@ class SettingViewController: UITableViewController {
         let detail = settings[indexPath.row]
         
         cell.textLabel?.text = detail.title
-        
         return cell
     }
     
@@ -56,6 +53,13 @@ class SettingViewController: UITableViewController {
             performSegue(withIdentifier: "toAboutPage", sender: nil)
         case .publicData:
             performSegue(withIdentifier: "toPublicData", sender: nil)
+        case .cache:
+            SDImageCache.shared.clearDisk(onCompletion: () -> {
+                self.showToast(message: "cleared")
+                settings[3].title = "🏬 cache size: 0"
+                self.tableView.reloadData()
+            })
+            
         default:
             self.showToast(message: "not support yet")
             return

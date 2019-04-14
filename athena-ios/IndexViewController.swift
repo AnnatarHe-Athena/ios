@@ -197,8 +197,7 @@ class IndexViewController: BaseViewController {
             self.showAlert(err: err)
             
             guard let dataItems = result?.data?.girls else {
-                print("load error")
-                self.showToast(message: "load data error")
+                self.showToast(message: "😭 load data error")
                 return
             }
             
@@ -283,7 +282,7 @@ extension IndexViewController: UITableViewDelegate, UITableViewDataSource {
         let cellID = cell?.fragments.fetchGirls.id
         Config.getApolloClient().perform(mutation: RemoveGirlMutation(cells: [Int(cellID!)], toRemove: false)) { (result, err) in
             if err != nil {
-                self.showToast(message: "remove data error")
+                self.showToast(message: "😭 remove data error")
                 return
             }
             
