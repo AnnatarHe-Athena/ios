@@ -2,6 +2,7 @@ github "Alamofire/Alamofire" ~> 4.4
 github "SwiftyJSON/SwiftyJSON"
 github "apollostack/apollo-ios"
 github "rs/SDWebImage"
+github "SDWebImage/SDWebImageWebPCoder"
 github "suzuki-0000/SKPhotoBrowser"
 github "getsentry/sentry-cocoa" "4.1.0"
 github "Alamofire/AlamofireImage" ~> 3.3

@@ -43,11 +43,14 @@ class Utils {
             return realImageUrl!
         }
         
+        // TODO: webp support
+        // https://github.com/SDWebImage/SDWebImageWebPCoder
+        
         if (realImageUrl?.hasPrefix("qn://"))! {
             let qnBaseURL = realImageUrl?.replacingOccurrences(of: "qn://", with: "https://cdn.annatarhe.com/")
             switch (type) {
             case "bmiddle":
-                return qnBaseURL! + "-thumbnails.webp"
+                return qnBaseURL! + "-thumbnails"
             case "large":
                 return qnBaseURL! + "-copyrightDB"
             default:

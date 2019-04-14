@@ -16,15 +16,14 @@ class CustomImageCache: SKImageCacheable {
     }
     
     func imageForKey(_ key: String) -> UIImage? {
-        let img = SDWebImageManager.shared().imageCache?.imageFromCache(forKey: key)
-        return img
+        return SDImageCache.shared.imageFromCache(forKey: key)
     }
     
     func setImage(_ image: UIImage, forKey key: String) {
-        SDWebImageManager.shared().imageCache?.store(image, forKey: key, toDisk: true, completion: nil)
+        SDImageCache.shared.store(image, forKey: key, toDisk: true, completion: nil)
     }
     
     func removeImageForKey(_ key: String) {
-        SDWebImageManager.shared().imageCache?.removeImage(forKey: key, withCompletion: nil)
+        SDImageCache.shared.removeImage(forKey: key)
     }
 }

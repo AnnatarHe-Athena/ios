@@ -144,6 +144,7 @@ extension ProfileViewController : UICollectionViewDataSource, UICollectionViewDe
         let dataItem = collections[indexPath.row]
         let img = Utils.getRealImageSrc(image: (dataItem?.fragments.fetchGirls.img!)!)
         
+        print(img)
         cell.img.sd_setImage(with: URL(string: img), placeholderImage: UIImage(named: "placeholderImage.png"), options: .allowInvalidSSLCertificates, completed: nil)
         return cell
     }
