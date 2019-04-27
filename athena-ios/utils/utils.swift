@@ -18,6 +18,7 @@ class Utils {
         // https://github.com/suzuki-0000/SKPhotoBrowser/issues/260
 //        SKPhotoBrowserOptions.displayToolbar = true
         SKPhotoBrowserOptions.displayAction = true
+//        SDImageCodersManager.shared.addCoder(SDImageWebPCoder.shared)
         
         do {
             Client.shared = try Client(dsn: "https://c11f932d316c4a2aa7b99e43cd950678:176a95d1d20c48c6b927b922fb44505f@sentry.io/238843")

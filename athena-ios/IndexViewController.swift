@@ -14,6 +14,11 @@ import Sentry
 
 fileprivate let defaultCategoryID = GraphQLID(0)
 
+fileprivate enum IndexCacheProgress: String {
+    case category = "index:category"
+    case offset = "index:offset"
+}
+
 class IndexViewController: BaseViewController {
     
     
@@ -66,14 +71,35 @@ class IndexViewController: BaseViewController {
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         cellListTableView.dataSource = self
         cellListTableView.delegate = self
         
-        initialLoad()
+        let _category = UserDefaults.standard.integer(forKey: IndexCacheProgress.category.rawValue)
+        let _offset = UserDefaults.standard.integer(forKey: IndexCacheProgress.offset.rawValue)
+        
+        if _category != 0 && _offset != 0 {
+            
+            let refreshAlert = UIAlertController(title: "继续？", message: "监测到上次有未完成的进度，是否继续", preferredStyle: .alert)
+            refreshAlert.addAction(UIAlertAction(title: "继续", style: .default, handler: { (action: UIAlertAction!) in
+                self.categoryID = GraphQLID(_category)
+                // TODO: update offset
+            }))
+            
+            refreshAlert.addAction(UIAlertAction(title: "取消", style: .cancel, handler: { (action: UIAlertAction!) in
+                self.initialLoad()
+            }))
+            
+            present(refreshAlert, animated: true, completion: nil)
+            
+        
+        } else {
+            initialLoad()
+        }
+        
         
         self.addRefrashControl()
         
@@ -175,6 +201,8 @@ class IndexViewController: BaseViewController {
             } else {
                 self.cells = dataItems
             }
+            UserDefaults.standard.set(Int(self.categoryID!), forKey: IndexCacheProgress.category.rawValue)
+            UserDefaults.standard.set(offset, forKey: IndexCacheProgress.offset.rawValue)
             self.cellListTableView.reloadData()
             self.loading = false
         }
