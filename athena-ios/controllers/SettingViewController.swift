@@ -28,8 +28,10 @@ class SettingViewController: UITableViewController {
     ]
     
     override func viewDidLoad() {
-        self.settings.append(SettingItem(id: 3, title: "🏬 cache size: \(SDImageCache.shared.totalDiskSize()) bytes", type: .cache))
-        self.tableView.reloadData()
+        DispatchQueue.main.async {
+            self.settings.append(SettingItem(id: 3, title: "🏬 cache size: \(SDImageCache.shared.totalDiskSize()) bytes", type: .cache))
+            self.tableView.reloadData()
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

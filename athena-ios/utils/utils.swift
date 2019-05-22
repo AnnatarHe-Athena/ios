@@ -9,6 +9,7 @@
 import SKPhotoBrowser
 import Sentry
 import SDWebImage
+//import SDWebImageWebPCoder
 
 class Utils {
     
@@ -18,6 +19,7 @@ class Utils {
         // https://github.com/suzuki-0000/SKPhotoBrowser/issues/260
 //        SKPhotoBrowserOptions.displayToolbar = true
         SKPhotoBrowserOptions.displayAction = true
+        SKPhotoBrowserOptions.backgroundColor = UIColor.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.7)
 //        SDImageCodersManager.shared.addCoder(SDImageWebPCoder.shared)
         
         do {

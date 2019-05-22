@@ -21,12 +21,43 @@ fileprivate enum IndexCacheProgress: String {
 
 class IndexViewController: BaseViewController {
     
+    @IBAction func onSkipClick(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "跳过", message: "请输入跳过数量", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.text = ""
+            textField.keyboardType = .numberPad
+        }
+        alert.addAction(UIAlertAction(title: "submit", style: .default, handler: { action in
+            let text = alert.textFields![0].text!
+            guard !text.isEmpty else {
+                self.showToast(message: "no data")
+                return
+            }
+            
+            let _skip = Int(text)
+            
+            self.skip = _skip!
+            
+            if self.cells.count > 0 {
+                self.loadCellsData(fetchMore: true, cate: self.categoryID, offset: 0, isRandom: false)
+            }
+            
+            self.dismiss(animated: true, completion: nil)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: { action in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(alert, animated: true)
+    }
     
     @IBOutlet weak var cellListTableView: UITableView!
     
     private var categoryID: GraphQLID? = defaultCategoryID
     private var cells: [FetchGirlsQueryQuery.Data.Girl?] = []
     private var noMore = false
+    private var skip = 0
     
     private var selectedItemIndex = 0
     
@@ -122,7 +153,7 @@ class IndexViewController: BaseViewController {
             }
             self.showToast(message: "login first")
         }
-        Config.getApolloClient().fetch(query: FetchGirlsQueryQuery(from: Int(self.categoryID!)!, take: 20, offset: 0, hideOnly: false)) { (result, err) in
+        Config.getApolloClient().fetch(query: FetchGirlsQueryQuery(from: Int(self.categoryID!)!, take: 20, offset: self.skip, hideOnly: false)) { (result, err) in
             self.showAlert(err: err)
             guard let dataItems = result?.data?.girls else {
                 print("load error")
@@ -182,7 +213,7 @@ class IndexViewController: BaseViewController {
         
         loading = true
         
-        let newOffset = fetchMore ? cells.count : offset
+        let newOffset = (fetchMore ? cells.count : offset) + self.skip
         
         Config.getApolloClient().fetch(query: FetchGirlsQueryQuery(from: Int(self.categoryID!)!, take: 20, offset: newOffset, hideOnly: false)) { (result, err) in
             self.showAlert(err: err)
@@ -246,6 +277,24 @@ class IndexViewController: BaseViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if(velocity.y > 0) {
+            // Code will work without the animation block.I am using animation block incase if you want to set any delay to it.
+            UIView.animate(withDuration: 2.5, delay: 0, options: UIView.AnimationOptions(), animations: {
+                self.navigationController?.setNavigationBarHidden(true, animated: true)
+//                self.navigationController?.setToolbarHidden(true, animated: true)
+                print("Hide")
+            }, completion: nil)
+            
+        } else {
+            UIView.animate(withDuration: 2.5, delay: 0, options: UIView.AnimationOptions(), animations: {
+                self.navigationController?.setNavigationBarHidden(false, animated: true)
+//                self.navigationController?.setToolbarHidden(false, animated: true)
+                print("Unhide")
+            }, completion: nil)
+        }
     }
 }
 

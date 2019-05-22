@@ -86,6 +86,8 @@ class AuthViewController: BaseViewController {
     
     override func viewDidLoad() {
         indicator.hidesWhenStopped = true
+        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard)))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -93,14 +95,11 @@ class AuthViewController: BaseViewController {
         createGradientLayer()
     }
     
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     private func backToProfile() {
-        
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let profileVC = storyboard.instantiateViewController(withIdentifier: "profileViewController") as! ProfileViewController
-//        profileVC.loadProfile()
-//        let indexVC = storyboard.instantiateViewController(withIdentifier: "indexVC") as! IndexViewController
-//        indexVC.initialLoad()
-//        
         self.dismiss(animated: true, completion: nil)
     }
     
