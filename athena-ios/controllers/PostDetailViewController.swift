@@ -22,7 +22,23 @@ class PostDetailViewController : BaseViewController {
     
     @IBOutlet weak var imageHeighConstrant: NSLayoutConstraint!
     @IBAction func fromIdClicked(_ sender: Any) {
-        self.showToast(message: "not support yet")
+        print(self.data?.fragments.fetchGirls.fromUrl)
+        guard (self.data?.fragments.fetchGirls.fromUrl?.contains("https://weibo.com"))! else {
+            print(self.data?.fragments.fetchGirls.fromUrl)
+            self.showToast(message: "not support yet")
+            return
+        }
+        let urlScheme = "sinaweibo://userinfo?uid=\(data?.fragments.fetchGirls.fromId! ?? "0")"
+        
+        let url = URL(string: urlScheme)
+        print(url, urlScheme)
+        if !UIApplication.shared.canOpenURL(url!) {
+            self.showToast(message: "not support yet")
+            return
+        }
+        
+        UIApplication.shared.open(url!, completionHandler: nil)
+        // sinaweibo://userinfo?uid=xxx
     }
     @IBAction func fromUrlClicked(_ sender: Any) {
         
@@ -47,12 +63,21 @@ class PostDetailViewController : BaseViewController {
     @objc func imageTapped() {
         Utils.presentBigPreview(
             view: self,
-            src: self.data!,
+            imageUrl: (self.data?.fragments.fetchGirls.img!)!,
+            text: (self.data?.fragments.fetchGirls.text)!,
             holderImage: self.imgView.image,
             from: self.view
         )
     }
     override func viewDidLoad() {
+        
+        if self.navigationController?.isNavigationBarHidden ?? false {
+            UIView.animate(withDuration: 2.5, delay: 0, options: UIView.AnimationOptions(), animations: {
+                self.navigationController?.setNavigationBarHidden(false, animated: true)
+                print("Unhide")
+            }, completion: nil)
+        }
+        
         // loaded
         let postDetail = data?.fragments.fetchGirls
         self.title = postDetail!.text

@@ -21,17 +21,16 @@ class ProfileViewController: BaseViewController {
     var loadFrom = 0;
     var profileLoaded = false
     var loading = false
+    
     private var collectionCursor = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         userCollectionsTableView.dataSource = self
-//        userCollectionsTableView.delegate = self
+        userCollectionsTableView.delegate = self
         
         self.checkLogin()
         
-        let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.touchAction))
-        self.view.addGestureRecognizer(gesture)
     }
     
     @objc func touchAction(sender : UITapGestureRecognizer) {
@@ -152,21 +151,25 @@ extension ProfileViewController : UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("ffdjaksdjflasjdkf")
-//        let dataCell = collectionView.cellForItem(at: indexPath) as! CollectionItemCellCollectionViewCell
-//
-//        let dataItem = collections[indexPath.row] as! FetchGirlsQueryQuery.Data.Girl
-//        
-//        Utils.presentBigPreview(
-//            view: self,
-//            src: dataItem,
-//            holderImage: dataCell.img.image,
-//            from: dataCell
-//        )
+        let dataCell = collectionView.cellForItem(at: indexPath) as! CollectionItemCellCollectionViewCell
+
+        let dataItem = collections[indexPath.row] as! FetchProfileWithCollectionsQuery.Data.Collection
+        
+        Utils.presentBigPreview(
+            view: self,
+            imageUrl: dataItem.fragments.fetchGirls.img!,
+            text: dataItem.fragments.fetchGirls.text!,
+            holderImage: dataCell.img.image,
+            from: dataCell
+        )
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        print("will display", indexPath.item, collections.count)
         if (indexPath.item == collections.count - 1) {
             // load more
+            print("profile load more")
             self.loadMoreCollect()
         }
     }

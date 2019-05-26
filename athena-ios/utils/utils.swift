@@ -66,23 +66,23 @@ class Utils {
     
     public static func presentBigPreview(
         view: UIViewController,
-        src: FetchGirlsQueryQuery.Data.Girl,
+        imageUrl: String,
+        text: String,
         holderImage: UIImage?,
         from: UIView
         ) {
         
         
-        let imgSrc = Utils.getRealImageSrc(image: (src.fragments.fetchGirls.img)!, type: "large")
+        let imgSrc = Utils.getRealImageSrc(image: imageUrl, type: "large")
         
         var images = [SKPhoto]()
         let photo = SKPhoto.photoWithImageURL(imgSrc)
         
-        photo.caption = src.fragments.fetchGirls.text
+        photo.caption = text
         
         images.append(photo)
         
-        let browser = SKPhotoBrowser(originImage: holderImage ?? UIImage(), photos: images, animatedFromView: from)
-        
+        let browser = SKPhotoBrowser(photos: images)
         browser.initializePageIndex(0)
         
         view.present(browser, animated: true, completion: nil)

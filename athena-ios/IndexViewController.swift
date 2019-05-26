@@ -276,7 +276,6 @@ class IndexViewController: BaseViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
@@ -313,7 +312,7 @@ extension IndexViewController: UITableViewDelegate, UITableViewDataSource {
         
         let imageSrc = Utils.getRealImageSrc(image: (detail?.fragments.fetchGirls.img)!)
         
-        cell.detailImage.sd_setImage(with: URL(string: imageSrc), placeholderImage: UIImage(named: "placeholderImage.png"), options: .allowInvalidSSLCertificates, completed: nil)
+        cell.detailImage.sd_setImage(with: URL(string: imageSrc), placeholderImage: nil, options: .allowInvalidSSLCertificates, completed: nil)
         cell.id = (detail?.fragments.fetchGirls.id)!
         return cell
     }
