@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SDWebImage
+import SDWebImageWebPCoder
 
 class ProfileViewController: BaseViewController {
     @IBOutlet weak var userAvatar: UIImageView!
@@ -77,7 +79,7 @@ class ProfileViewController: BaseViewController {
                 self.showAlert(err: err)
                 return
             }
-            let avatarUrl: String
+            var avatarUrl: String
             let userObj = user.fragments.profile
             self.title = userObj.name!
             if userObj.avatar == "null" {
@@ -144,13 +146,14 @@ extension ProfileViewController : UICollectionViewDataSource, UICollectionViewDe
         let img = Utils.getRealImageSrc(image: (dataItem?.fragments.fetchGirls.img!)!)
         
         print(img)
-        cell.img.sd_setImage(with: URL(string: img), placeholderImage: UIImage(named: "placeholderImage.png"), options: .allowInvalidSSLCertificates, completed: nil)
+        cell.img.sd_setImage(with: URL(string: img), placeholderImage: UIImage(named: "placeholderImage.png"), options: .allowInvalidSSLCertificates, completed: { _, err, _, _ in
+//            print(err)
+        })
         return cell
     }
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("ffdjaksdjflasjdkf")
         let dataCell = collectionView.cellForItem(at: indexPath) as! CollectionItemCellCollectionViewCell
 
         let dataItem = collections[indexPath.row] as! FetchProfileWithCollectionsQuery.Data.Collection

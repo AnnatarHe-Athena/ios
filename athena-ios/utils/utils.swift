@@ -9,7 +9,7 @@
 import SKPhotoBrowser
 import Sentry
 import SDWebImage
-//import SDWebImageWebPCoder
+import SDWebImageWebPCoder
 
 class Utils {
     
@@ -20,7 +20,7 @@ class Utils {
 //        SKPhotoBrowserOptions.displayToolbar = true
         SKPhotoBrowserOptions.displayAction = true
         SKPhotoBrowserOptions.backgroundColor = UIColor.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.7)
-//        SDImageCodersManager.shared.addCoder(SDImageWebPCoder.shared)
+        SDImageCodersManager.shared.addCoder(SDImageWebPCoder.shared)
         
         do {
             Client.shared = try Client(dsn: "https://c11f932d316c4a2aa7b99e43cd950678:176a95d1d20c48c6b927b922fb44505f@sentry.io/238843")
@@ -53,9 +53,9 @@ class Utils {
             let qnBaseURL = realImageUrl?.replacingOccurrences(of: "qn://", with: "https://cdn.annatarhe.com/")
             switch (type) {
             case "bmiddle":
-                return qnBaseURL! + "-thumbnails"
+                return qnBaseURL! + "-thumbnails.webp"
             case "large":
-                return qnBaseURL! + "-copyrightDB"
+                return qnBaseURL! + "-copyrightDB.webp"
             default:
                 return ""
             }

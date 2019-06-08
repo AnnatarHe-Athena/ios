@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,51 +11,32 @@
 		3401724520753D8A00C24029 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3401724420753D8A00C24029 /* SettingViewController.swift */; };
 		3401724C207595F600C24029 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3401724B207595F600C24029 /* SettingCell.swift */; };
 		3401724E2075984400C24029 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3401724D2075984400C24029 /* AboutViewController.swift */; };
-		3419DF0122754FC200D9371C /* SDWebImageWebPCoder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3419DF0022754FC200D9371C /* SDWebImageWebPCoder.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		3419DF0122754FC200D9371C /* SDWebImageWebPCoder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3419DF0022754FC200D9371C /* SDWebImageWebPCoder.framework */; };
 		3434A975206621450096DF73 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3434A974206621450096DF73 /* DBManager.swift */; };
-		3434A9792066373F0096DF73 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3434A9782066373F0096DF73 /* SQLite.framework */; };
 		344D45AA2079AAE40069F2AD /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 344D45A92079AAE40069F2AD /* Media.xcassets */; };
 		349800DE2203EF490081536C /* baseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349800DD2203EF490081536C /* baseViewController.swift */; };
-		349EAE7D206E53F000ACFB02 /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 349EAE7C206E53F000ACFB02 /* KeychainSwift.framework */; };
 		349F4E6220D7B2D80045DB67 /* CollectionItemCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349F4E6020D7B2D80045DB67 /* CollectionItemCellCollectionViewCell.swift */; };
 		34A6A9EC208A08F8005C237B /* AthenaNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A6A9EB208A08F8005C237B /* AthenaNavigationBar.swift */; };
+		34D6C83622A923CF0037BEC5 /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBB1E21F6BAD9300D5ED23 /* Apollo.framework */; };
+		34D6C83722A923CF0037BEC5 /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 349EAE7C206E53F000ACFB02 /* KeychainSwift.framework */; };
+		34D6C83822A923CF0037BEC5 /* Sentry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCDECFC11FB5429200380A86 /* Sentry.framework */; };
+		34D6C83922A923CF0037BEC5 /* SKPhotoBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBB1E61F6BADA700D5ED23 /* SKPhotoBrowser.framework */; };
+		34D6C83A22A923CF0037BEC5 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBB1E81F6BADAC00D5ED23 /* SwiftyJSON.framework */; };
 		34E9DFFC20810442000676FB /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E9DFFB20810442000676FB /* PostDetailViewController.swift */; };
 		34E9DFFE2081D4CA000676FB /* PublicDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E9DFFD2081D4CA000676FB /* PublicDataViewController.swift */; };
-		DC0C01811F8B46D600ED869A /* SKPhotoBrowser.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBB1E61F6BADA700D5ED23 /* SKPhotoBrowser.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DC8DFE0F1F728F8000F442DE /* ModalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DFE0E1F728F8000F442DE /* ModalApp.swift */; };
 		DC8DFE111F728FFC00F442DE /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DFE101F728FFC00F442DE /* Config.swift */; };
 		DC8DFE141F72A0EE00F442DE /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DFE131F72A0EE00F442DE /* AuthViewController.swift */; };
-		DCA0E7041F86FC240087A691 /* SKPhotoBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBB1E61F6BADA700D5ED23 /* SKPhotoBrowser.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DCCBB1C71F6BAC8300D5ED23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCBB1C61F6BAC8300D5ED23 /* AppDelegate.swift */; };
 		DCCBB1C91F6BAC8300D5ED23 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCBB1C81F6BAC8300D5ED23 /* IndexViewController.swift */; };
 		DCCBB1CB1F6BAC8300D5ED23 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCBB1CA1F6BAC8300D5ED23 /* ProfileViewController.swift */; };
 		DCCBB1CE1F6BAC8300D5ED23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCCBB1CC1F6BAC8300D5ED23 /* Main.storyboard */; };
 		DCCBB1D31F6BAC8300D5ED23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCCBB1D11F6BAC8300D5ED23 /* LaunchScreen.storyboard */; };
-		DCCBB1DF1F6BAD8A00D5ED23 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBB1DE1F6BAD8A00D5ED23 /* Alamofire.framework */; };
-		DCCBB1E31F6BAD9300D5ED23 /* Apollo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBB1E21F6BAD9300D5ED23 /* Apollo.framework */; };
 		DCCBB1E51F6BADA000D5ED23 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBB1E41F6BADA000D5ED23 /* SDWebImage.framework */; };
-		DCCBB1E91F6BADAC00D5ED23 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBB1E81F6BADAC00D5ED23 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DCCBB1EB1F6BAE9000D5ED23 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCBB1EA1F6BAE9000D5ED23 /* API.swift */; };
 		DCD6B0931F81C6FF002E810C /* GirlCellOfTableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD6B0921F81C6FF002E810C /* GirlCellOfTableTableViewCell.swift */; };
 		DCD6B09A1F81CF3B002E810C /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD6B0991F81CF3B002E810C /* utils.swift */; };
-		DCDECFC31FB553D100380A86 /* Sentry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCDECFC11FB5429200380A86 /* Sentry.framework */; };
-		DCDECFC41FB553D100380A86 /* Sentry.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DCDECFC11FB5429200380A86 /* Sentry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		DC0C01821F8B46D600ED869A /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				DC0C01811F8B46D600ED869A /* SKPhotoBrowser.framework in Embed Frameworks */,
-				DCDECFC41FB553D100380A86 /* Sentry.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3401723D20752E7E00C24029 /* SKPhotoCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKPhotoCache.swift; sourceTree = "<group>"; };
@@ -103,15 +84,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCCBB1DF1F6BAD8A00D5ED23 /* Alamofire.framework in Frameworks */,
-				DCDECFC31FB553D100380A86 /* Sentry.framework in Frameworks */,
-				3419DF0122754FC200D9371C /* SDWebImageWebPCoder.framework in Frameworks */,
-				DCCBB1E31F6BAD9300D5ED23 /* Apollo.framework in Frameworks */,
+				34D6C83622A923CF0037BEC5 /* Apollo.framework in Frameworks */,
+				34D6C83722A923CF0037BEC5 /* KeychainSwift.framework in Frameworks */,
 				DCCBB1E51F6BADA000D5ED23 /* SDWebImage.framework in Frameworks */,
-				DCA0E7041F86FC240087A691 /* SKPhotoBrowser.framework in Frameworks */,
-				DCCBB1E91F6BADAC00D5ED23 /* SwiftyJSON.framework in Frameworks */,
-				3434A9792066373F0096DF73 /* SQLite.framework in Frameworks */,
-				349EAE7D206E53F000ACFB02 /* KeychainSwift.framework in Frameworks */,
+				3419DF0122754FC200D9371C /* SDWebImageWebPCoder.framework in Frameworks */,
+				34D6C83822A923CF0037BEC5 /* Sentry.framework in Frameworks */,
+				34D6C83922A923CF0037BEC5 /* SKPhotoBrowser.framework in Frameworks */,
+				34D6C83A22A923CF0037BEC5 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,10 +196,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DCCBB1D71F6BAC8300D5ED23 /* Build configuration list for PBXNativeTarget "athena-ios" */;
 			buildPhases = (
-				DCCBB1DA1F6BACD200D5ED23 /* ShellScript */,
+				DCCBB1DA1F6BACD200D5ED23 /* Run Script */,
 				DCCBB1C01F6BAC8300D5ED23 /* Frameworks */,
 				DCCBB1C11F6BAC8300D5ED23 /* Resources */,
-				DC0C01821F8B46D600ED869A /* Embed Frameworks */,
 				DCCBB1DC1F6BAD1B00D5ED23 /* Generate GraphQL API */,
 				DCCBB1BF1F6BAC8300D5ED23 /* Sources */,
 			);
@@ -284,19 +262,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		DCCBB1DA1F6BACD200D5ED23 /* ShellScript */ = {
+		DCCBB1DA1F6BACD200D5ED23 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+				"$(SRCROOT)/input.xcfilelist",
+			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Apollo.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SDWebImage.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SKPhotoBrowser.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SQLite.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/KeychainSwift.framework",
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+				"$(SRCROOT)/output.xcfilelist",
 			);
 			outputPaths = (
 			);
@@ -477,7 +455,8 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LIBTOOLFLAGS = ObjC;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -495,7 +474,10 @@
 				);
 				INFOPLIST_FILE = "athena-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.annatarhe.db;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -516,7 +498,10 @@
 				);
 				INFOPLIST_FILE = "athena-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.annatarhe.db;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

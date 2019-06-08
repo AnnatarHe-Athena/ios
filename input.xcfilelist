@@ -1,0 +1,9 @@
+$(SRCROOT)/Carthage/Build/iOS/SDWebImage.framework
+$(SRCROOT)/Carthage/Build/iOS/SKPhotoBrowser.framework
+$(SRCROOT)/Carthage/Build/iOS/SQLite.framework
+$(SRCROOT)/Carthage/Build/iOS/KeychainSwift.framework
+$(SRCROOT)/Carthage/Build/iOS/SDWebImageWebPCoder.framework
+$(SRCROOT)/Carthage/Build/iOS/Apollo.framework
+$(SRCROOT)/Carthage/Build/iOS/Sentry.framework
+$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework
+$(SRCROOT)/Carthage/Build/iOS/libwebp.framework

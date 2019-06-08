@@ -22,26 +22,33 @@ class PostDetailViewController : BaseViewController {
     
     @IBOutlet weak var imageHeighConstrant: NSLayoutConstraint!
     @IBAction func fromIdClicked(_ sender: Any) {
-        print(self.data?.fragments.fetchGirls.fromUrl)
-        guard (self.data?.fragments.fetchGirls.fromUrl?.contains("https://weibo.com"))! else {
-            print(self.data?.fragments.fetchGirls.fromUrl)
+        let isWeibo = (self.data?.fragments.fetchGirls.fromUrl?.contains("https://weibo.com"))!
+        let isJike = (self.data?.fragments.fetchGirls.fromUrl?.contains("https://web.okjike.com"))!
+        guard isWeibo || isJike else {
             self.showToast(message: "not support yet")
             return
         }
-        let urlScheme = "sinaweibo://userinfo?uid=\(data?.fragments.fetchGirls.fromId! ?? "0")"
+        var url: URL = URL(string: "https://db.annatarhe.com")!
         
-        let url = URL(string: urlScheme)
-        print(url, urlScheme)
-        if !UIApplication.shared.canOpenURL(url!) {
+        if isWeibo {
+            let urlScheme = "sinaweibo://userinfo?uid=\(data?.fragments.fetchGirls.fromId! ?? "0")"
+            url = URL(string: urlScheme)!
+        }
+        
+        if isJike {
+            let userURL = URL(string: (self.data?.fragments.fetchGirls.fromId)!)
+            let paths = userURL?.path.split(separator: "/")
+            let userID = String(paths![paths!.count - 1])
+            url = URL(string: "jike://page.jk/user/\(userID)")!
+        }
+        
+        if !UIApplication.shared.canOpenURL(url) {
             self.showToast(message: "not support yet")
             return
         }
-        
-        UIApplication.shared.open(url!, completionHandler: nil)
-        // sinaweibo://userinfo?uid=xxx
+        UIApplication.shared.open(url, completionHandler: nil)
     }
     @IBAction func fromUrlClicked(_ sender: Any) {
-        
         let fromUrl = self.data?.fragments.fetchGirls.fromUrl
         
         let urlScheme = Utils.getURLScheme(url: fromUrl!)
@@ -71,6 +78,7 @@ class PostDetailViewController : BaseViewController {
     }
     override func viewDidLoad() {
         
+        // display navigation bar if it is hidden
         if self.navigationController?.isNavigationBarHidden ?? false {
             UIView.animate(withDuration: 2.5, delay: 0, options: UIView.AnimationOptions(), animations: {
                 self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -88,13 +96,9 @@ class PostDetailViewController : BaseViewController {
         self.imgView.sd_setImage(with: URL(string: imageSrc), completed: {(image, error, cacheType, imageURL) in
             let rate = (image?.size.width)! / (image?.size.height)!
             let height = (UIScreen.main.bounds.width - 16) / rate
-//            if image?.size.height < 1000 {
-//                return
-//            }
             self.imageHeighConstrant.constant = height
             self.updateViewConstraints()
         })
-        
         
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(PostDetailViewController.imageTapped))
         self.imgView.isUserInteractionEnabled = true
@@ -107,7 +111,6 @@ class PostDetailViewController : BaseViewController {
     }
     
     @objc private func onRightBtnClicked() {
-        print("clicked right btn")
         let actionsSheets = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         actionsSheets.addAction(UIAlertAction(title: "❤️ Like", style: .default, handler: { action in
             self.showToast(message: "like not support yet")

@@ -8,6 +8,8 @@
 
 import UIKit
 import Apollo
+import SDWebImage
+import SDWebImageWebPCoder
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
