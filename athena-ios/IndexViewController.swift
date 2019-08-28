@@ -178,6 +178,9 @@ class IndexViewController: BaseViewController {
                 print("load incorrect data")
                 let event = Event(level: .warning)
                 event.message = "load incorrect data"
+                event.extra = [
+                    "error": err
+                ]
                 Client.shared?.send(event: event, completion: nil)
                 return
             }

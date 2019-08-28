@@ -24,6 +24,7 @@
 		34D6C83A22A923CF0037BEC5 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBB1E81F6BADAC00D5ED23 /* SwiftyJSON.framework */; };
 		34E9DFFC20810442000676FB /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E9DFFB20810442000676FB /* PostDetailViewController.swift */; };
 		34E9DFFE2081D4CA000676FB /* PublicDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E9DFFD2081D4CA000676FB /* PublicDataViewController.swift */; };
+		9F3E37BB22FDA65B00CDF3EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F3E37BA22FDA65B00CDF3EB /* GoogleService-Info.plist */; };
 		DC8DFE0F1F728F8000F442DE /* ModalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DFE0E1F728F8000F442DE /* ModalApp.swift */; };
 		DC8DFE111F728FFC00F442DE /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DFE101F728FFC00F442DE /* Config.swift */; };
 		DC8DFE141F72A0EE00F442DE /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DFE131F72A0EE00F442DE /* AuthViewController.swift */; };
@@ -57,6 +58,8 @@
 		34C59D9320ABF4DF006FF049 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Carthage/Build/iOS/FirebaseCore.framework; sourceTree = "<group>"; };
 		34E9DFFB20810442000676FB /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		34E9DFFD2081D4CA000676FB /* PublicDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicDataViewController.swift; sourceTree = "<group>"; };
+		9F3E37BA22FDA65B00CDF3EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9FB7732622E70441000F9B7A /* libwebp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libwebp.framework; path = Carthage/Build/iOS/libwebp.framework; sourceTree = "<group>"; };
 		DC8DFE0E1F728F8000F442DE /* ModalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalApp.swift; sourceTree = "<group>"; };
 		DC8DFE101F728FFC00F442DE /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		DC8DFE131F72A0EE00F442DE /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +158,7 @@
 				DCCBB1CC1F6BAC8300D5ED23 /* Main.storyboard */,
 				DCCBB1D11F6BAC8300D5ED23 /* LaunchScreen.storyboard */,
 				DCCBB1D41F6BAC8300D5ED23 /* Info.plist */,
+				9F3E37BA22FDA65B00CDF3EB /* GoogleService-Info.plist */,
 			);
 			path = "athena-ios";
 			sourceTree = "<group>";
@@ -162,6 +166,7 @@
 		DCCBB1DD1F6BAD8A00D5ED23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9FB7732622E70441000F9B7A /* libwebp.framework */,
 				3419DF0022754FC200D9371C /* SDWebImageWebPCoder.framework */,
 				3419DEFE22754FB300D9371C /* SDWebImageWebPCoder.framework.dSYM */,
 				34C59D9320ABF4DF006FF049 /* FirebaseCore.framework */,
@@ -223,7 +228,6 @@
 				TargetAttributes = {
 					DCCBB1C21F6BAC8300D5ED23 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = VY3AP6C55K;
 						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
@@ -254,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCCBB1D31F6BAC8300D5ED23 /* LaunchScreen.storyboard in Resources */,
+				9F3E37BB22FDA65B00CDF3EB /* GoogleService-Info.plist in Resources */,
 				344D45AA2079AAE40069F2AD /* Media.xcassets in Resources */,
 				DCCBB1CE1F6BAC8300D5ED23 /* Main.storyboard in Resources */,
 			);

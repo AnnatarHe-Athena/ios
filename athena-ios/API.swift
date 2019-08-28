@@ -11,7 +11,7 @@ public struct CellInput: GraphQLMapConvertible {
 
   public var cate: Swift.Optional<Int?> {
     get {
-      return graphQLMap["cate"] as! Swift.Optional<Int?>
+      return graphQLMap["cate"] as? Swift.Optional<Int?> ?? .none
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "cate")
@@ -20,7 +20,7 @@ public struct CellInput: GraphQLMapConvertible {
 
   public var permission: Swift.Optional<Int?> {
     get {
-      return graphQLMap["permission"] as! Swift.Optional<Int?>
+      return graphQLMap["permission"] as? Swift.Optional<Int?> ?? .none
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "permission")
@@ -29,7 +29,7 @@ public struct CellInput: GraphQLMapConvertible {
 
   public var fromId: Swift.Optional<String?> {
     get {
-      return graphQLMap["fromID"] as! Swift.Optional<String?>
+      return graphQLMap["fromID"] as? Swift.Optional<String?> ?? .none
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "fromID")
@@ -38,7 +38,7 @@ public struct CellInput: GraphQLMapConvertible {
 
   public var fromUrl: Swift.Optional<String?> {
     get {
-      return graphQLMap["fromURL"] as! Swift.Optional<String?>
+      return graphQLMap["fromURL"] as? Swift.Optional<String?> ?? .none
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "fromURL")
@@ -47,7 +47,7 @@ public struct CellInput: GraphQLMapConvertible {
 
   public var img: Swift.Optional<String?> {
     get {
-      return graphQLMap["img"] as! Swift.Optional<String?>
+      return graphQLMap["img"] as? Swift.Optional<String?> ?? .none
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "img")
@@ -56,7 +56,7 @@ public struct CellInput: GraphQLMapConvertible {
 
   public var text: Swift.Optional<String?> {
     get {
-      return graphQLMap["text"] as! Swift.Optional<String?>
+      return graphQLMap["text"] as? Swift.Optional<String?> ?? .none
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "text")
@@ -65,8 +65,19 @@ public struct CellInput: GraphQLMapConvertible {
 }
 
 public final class InitCategoriesQuery: GraphQLQuery {
+  /// query initCategories {
+  ///   categories {
+  ///     __typename
+  ///     id
+  ///     name
+  ///     src
+  ///     count
+  ///   }
+  /// }
   public let operationDefinition =
-    "query initCategories {\n  categories {\n    __typename\n    id\n    name\n    src\n    count\n  }\n}"
+    "query initCategories { categories { __typename id name src count } }"
+
+  public let operationName = "initCategories"
 
   public init() {
   }
@@ -168,8 +179,16 @@ public final class InitCategoriesQuery: GraphQLQuery {
 }
 
 public final class FetchGirlsQueryQuery: GraphQLQuery {
+  /// query fetchGirlsQuery($from: Int!, $take: Int!, $offset: Int!, $hideOnly: Boolean) {
+  ///   girls(from: $from, take: $take, offset: $offset, hideOnly: $hideOnly) {
+  ///     __typename
+  ///     ...fetchGirls
+  ///   }
+  /// }
   public let operationDefinition =
-    "query fetchGirlsQuery($from: Int!, $take: Int!, $offset: Int!, $hideOnly: Boolean) {\n  girls(from: $from, take: $take, offset: $offset, hideOnly: $hideOnly) {\n    __typename\n    ...fetchGirls\n  }\n}"
+    "query fetchGirlsQuery($from: Int!, $take: Int!, $offset: Int!, $hideOnly: Boolean) { girls(from: $from, take: $take, offset: $offset, hideOnly: $hideOnly) { __typename ...fetchGirls } }"
+
+  public let operationName = "fetchGirlsQuery"
 
   public var queryDocument: String { return operationDefinition.appending(FetchGirls.fragmentDefinition) }
 
@@ -273,8 +292,20 @@ public final class FetchGirlsQueryQuery: GraphQLQuery {
 }
 
 public final class InitialQuery: GraphQLQuery {
+  /// query initial($from: Int!, $take: Int!, $offset: Int!) {
+  ///   girls(from: $from, take: $take, offset: $offset) {
+  ///     __typename
+  ///     ...fetchGirls
+  ///   }
+  ///   categories {
+  ///     __typename
+  ///     ...fetchCategories
+  ///   }
+  /// }
   public let operationDefinition =
-    "query initial($from: Int!, $take: Int!, $offset: Int!) {\n  girls(from: $from, take: $take, offset: $offset) {\n    __typename\n    ...fetchGirls\n  }\n  categories {\n    __typename\n    ...fetchCategories\n  }\n}"
+    "query initial($from: Int!, $take: Int!, $offset: Int!) { girls(from: $from, take: $take, offset: $offset) { __typename ...fetchGirls } categories { __typename ...fetchCategories } }"
+
+  public let operationName = "initial"
 
   public var queryDocument: String { return operationDefinition.appending(FetchGirls.fragmentDefinition).appending(FetchCategories.fragmentDefinition) }
 
@@ -441,8 +472,16 @@ public final class InitialQuery: GraphQLQuery {
 }
 
 public final class AddToCollectionMutation: GraphQLMutation {
+  /// mutation addToCollection($cells: [Int]) {
+  ///   addCollection(cells: $cells) {
+  ///     __typename
+  ///     isOk
+  ///   }
+  /// }
   public let operationDefinition =
-    "mutation addToCollection($cells: [Int]) {\n  addCollection(cells: $cells) {\n    __typename\n    isOk\n  }\n}"
+    "mutation addToCollection($cells: [Int]) { addCollection(cells: $cells) { __typename isOk } }"
+
+  public let operationName = "addToCollection"
 
   public var cells: [Int?]?
 
@@ -521,8 +560,16 @@ public final class AddToCollectionMutation: GraphQLMutation {
 }
 
 public final class AddGirlCellsMutation: GraphQLMutation {
+  /// mutation addGirlCells($cells: [CellInput]) {
+  ///   addGirls(cells: $cells) {
+  ///     __typename
+  ///     ...fetchGirls
+  ///   }
+  /// }
   public let operationDefinition =
-    "mutation addGirlCells($cells: [CellInput]) {\n  addGirls(cells: $cells) {\n    __typename\n    ...fetchGirls\n  }\n}"
+    "mutation addGirlCells($cells: [CellInput]) { addGirls(cells: $cells) { __typename ...fetchGirls } }"
+
+  public let operationName = "addGirlCells"
 
   public var queryDocument: String { return operationDefinition.appending(FetchGirls.fragmentDefinition) }
 
@@ -620,8 +667,16 @@ public final class AddGirlCellsMutation: GraphQLMutation {
 }
 
 public final class RemoveGirlMutation: GraphQLMutation {
+  /// mutation removeGirl($cells: [Int], $toRemove: Boolean) {
+  ///   removeGirl(cells: $cells, toRemove: $toRemove) {
+  ///     __typename
+  ///     isOk
+  ///   }
+  /// }
   public let operationDefinition =
-    "mutation removeGirl($cells: [Int], $toRemove: Boolean) {\n  removeGirl(cells: $cells, toRemove: $toRemove) {\n    __typename\n    isOk\n  }\n}"
+    "mutation removeGirl($cells: [Int], $toRemove: Boolean) { removeGirl(cells: $cells, toRemove: $toRemove) { __typename isOk } }"
+
+  public let operationName = "removeGirl"
 
   public var cells: [Int?]?
   public var toRemove: Bool?
@@ -702,8 +757,17 @@ public final class RemoveGirlMutation: GraphQLMutation {
 }
 
 public final class AuthQuery: GraphQLQuery {
+  /// query auth($email: String!, $password: String!) {
+  ///   auth(email: $email, password: $password) {
+  ///     __typename
+  ///     token
+  ///     id
+  ///   }
+  /// }
   public let operationDefinition =
-    "query auth($email: String!, $password: String!) {\n  auth(email: $email, password: $password) {\n    __typename\n    token\n    id\n  }\n}"
+    "query auth($email: String!, $password: String!) { auth(email: $email, password: $password) { __typename token id } }"
+
+  public let operationName = "auth"
 
   public var email: String
   public var password: String
@@ -794,8 +858,16 @@ public final class AuthQuery: GraphQLQuery {
 }
 
 public final class FetchCollectionsQuery: GraphQLQuery {
+  /// query FetchCollections($id: Int!, $from: Int!, $size: Int!) {
+  ///   collections(id: $id, from: $from, size: $size) {
+  ///     __typename
+  ///     ...fetchGirls
+  ///   }
+  /// }
   public let operationDefinition =
-    "query FetchCollections($id: Int!, $from: Int!, $size: Int!) {\n  collections(id: $id, from: $from, size: $size) {\n    __typename\n    ...fetchGirls\n  }\n}"
+    "query FetchCollections($id: Int!, $from: Int!, $size: Int!) { collections(id: $id, from: $from, size: $size) { __typename ...fetchGirls } }"
+
+  public let operationName = "FetchCollections"
 
   public var queryDocument: String { return operationDefinition.appending(FetchGirls.fragmentDefinition) }
 
@@ -897,8 +969,20 @@ public final class FetchCollectionsQuery: GraphQLQuery {
 }
 
 public final class InfoQuery: GraphQLQuery {
+  /// query info {
+  ///   info {
+  ///     __typename
+  ///     userCount
+  ///     cellCount
+  ///     fee
+  ///     email
+  ///     copyright
+  ///   }
+  /// }
   public let operationDefinition =
-    "query info {\n  info {\n    __typename\n    userCount\n    cellCount\n    fee\n    email\n    copyright\n  }\n}"
+    "query info { info { __typename userCount cellCount fee email copyright } }"
+
+  public let operationName = "info"
 
   public init() {
   }
@@ -1010,8 +1094,20 @@ public final class InfoQuery: GraphQLQuery {
 }
 
 public final class FetchProfileWithCollectionsQuery: GraphQLQuery {
+  /// query FetchProfileWithCollections($id: Int!, $from: Int!, $size: Int!) {
+  ///   users(id: $id) {
+  ///     __typename
+  ///     ...profile
+  ///   }
+  ///   collections(id: $id, from: $from, size: $size) {
+  ///     __typename
+  ///     ...fetchGirls
+  ///   }
+  /// }
   public let operationDefinition =
-    "query FetchProfileWithCollections($id: Int!, $from: Int!, $size: Int!) {\n  users(id: $id) {\n    __typename\n    ...profile\n  }\n  collections(id: $id, from: $from, size: $size) {\n    __typename\n    ...fetchGirls\n  }\n}"
+    "query FetchProfileWithCollections($id: Int!, $from: Int!, $size: Int!) { users(id: $id) { __typename ...profile } collections(id: $id, from: $from, size: $size) { __typename ...fetchGirls } }"
+
+  public let operationName = "FetchProfileWithCollections"
 
   public var queryDocument: String { return operationDefinition.appending(Profile.fragmentDefinition).appending(FetchGirls.fragmentDefinition) }
 
@@ -1178,8 +1274,15 @@ public final class FetchProfileWithCollectionsQuery: GraphQLQuery {
 }
 
 public struct FetchCategories: GraphQLFragment {
+  /// fragment fetchCategories on category {
+  ///   __typename
+  ///   id
+  ///   name
+  ///   src
+  ///   count
+  /// }
   public static let fragmentDefinition =
-    "fragment fetchCategories on category {\n  __typename\n  id\n  name\n  src\n  count\n}"
+    "fragment fetchCategories on category { __typename id name src count }"
 
   public static let possibleTypes = ["category"]
 
@@ -1248,8 +1351,18 @@ public struct FetchCategories: GraphQLFragment {
 }
 
 public struct FetchGirls: GraphQLFragment {
+  /// fragment fetchGirls on girl {
+  ///   __typename
+  ///   id
+  ///   img
+  ///   text
+  ///   content
+  ///   permission
+  ///   fromID
+  ///   fromURL
+  /// }
   public static let fragmentDefinition =
-    "fragment fetchGirls on girl {\n  __typename\n  id\n  img\n  text\n  content\n  permission\n  fromID\n  fromURL\n}"
+    "fragment fetchGirls on girl { __typename id img text content permission fromID fromURL }"
 
   public static let possibleTypes = ["girl"]
 
@@ -1348,8 +1461,19 @@ public struct FetchGirls: GraphQLFragment {
 }
 
 public struct Profile: GraphQLFragment {
+  /// fragment profile on user {
+  ///   __typename
+  ///   id
+  ///   email
+  ///   name
+  ///   pwd
+  ///   avatar
+  ///   bio
+  ///   token
+  ///   role
+  /// }
   public static let fragmentDefinition =
-    "fragment profile on user {\n  __typename\n  id\n  email\n  name\n  pwd\n  avatar\n  bio\n  token\n  role\n}"
+    "fragment profile on user { __typename id email name pwd avatar bio token role }"
 
   public static let possibleTypes = ["user"]
 

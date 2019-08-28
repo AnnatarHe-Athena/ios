@@ -9,6 +9,7 @@
 import UIKit
 import LocalAuthentication
 import SQLite
+import Sentry
 import KeychainSwift
 
 class AuthViewController: BaseViewController {
@@ -66,6 +67,12 @@ class AuthViewController: BaseViewController {
             let keychain = KeychainSwift()
             keychain.set(_email, forKey: "email")
             keychain.set(_pwd, forKey: "pwd")
+            
+            // setup sentry user
+            let sentryUser = User(userId: (result?.data?.auth?.id)!)
+            sentryUser.email = _email
+            
+            Client.shared?.user = sentryUser
 
             self.indicator.stopAnimating()
             self.loading = false
