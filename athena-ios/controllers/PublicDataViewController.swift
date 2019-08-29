@@ -16,12 +16,10 @@ class PublicDataViewController: BaseViewController {
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var copyright: UILabel!
     override func viewDidLoad() {
-        Config.getApolloClient().fetch(query: InfoQuery()) { (result, err) in
-            if err != nil {
-                print(err)
-            }
-            guard let info = result?.data?.info else {
-                print("error", err)
+        
+        Config.getApolloClient().fetch(query: InfoQuery.init()) { result in
+            guard let info = try? result.get().data?.info else {
+                print("error")
                 return
             }
             

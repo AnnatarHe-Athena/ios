@@ -120,13 +120,15 @@ class PostDetailViewController : BaseViewController {
             let cellID = Int((self.data?.fragments.fetchGirls.id!)!)
             
             Config.getApolloClient()
-                .perform(mutation: AddToCollectionMutation(cells: [cellID])) { (result, err ) in
-                    if err != nil {
-                        self.showToast(message: "😭 remove data error")
-                        return
-                    }
+                .perform(mutation: AddToCollectionMutation(cells: [cellID])) { result in
                     
-                    self.showToast(message: "😁 collection saved")
+                    switch result {
+                    case .success(let result):
+                        self.showToast(message: "😁 collection saved")
+                    case .failure(let error):
+                        print(error)
+                        self.showToast(message: "😭 remove data error")
+                    }
             }
         }))
         actionsSheets.addAction(UIAlertAction(title: "Like", style: .destructive, handler: { action in

@@ -153,10 +153,10 @@ class IndexViewController: BaseViewController {
             }
             self.showToast(message: "login first")
         }
-        Config.getApolloClient().fetch(query: FetchGirlsQueryQuery(from: Int(self.categoryID!)!, take: 20, offset: self.skip, hideOnly: false)) { (result, err) in
-            self.showAlert(err: err)
-            guard let dataItems = result?.data?.girls else {
+        Config.getApolloClient().fetch(query: FetchGirlsQueryQuery(from: Int(self.categoryID!)!, take: 20, offset: self.skip, hideOnly: false)) { result in
+            guard let dataItems = try? result.get().data?.girls else {
                 print("load error")
+                self.showAlert(err: "load error" as! Error)
                 self.cellListTableView.refreshControl?.endRefreshing()
                 return
             }
@@ -172,14 +172,13 @@ class IndexViewController: BaseViewController {
     }
     
     func initialLoad() {
-        Config.getApolloClient().fetch(query: InitCategoriesQuery()) { (result, err) in
-            self.showAlert(err: err)
-            guard let categories = result?.data?.categories else {
+        Config.getApolloClient().fetch(query: InitCategoriesQuery()) { result in
+            guard let categories = try? result.get().data?.categories else {
                 print("load incorrect data")
                 let event = Event(level: .warning)
                 event.message = "load incorrect data"
                 event.extra = [
-                    "error": err
+                    "error": try? result.get().errors
                 ]
                 Client.shared?.send(event: event, completion: nil)
                 return
@@ -218,11 +217,10 @@ class IndexViewController: BaseViewController {
         
         let newOffset = (fetchMore ? cells.count : offset) + self.skip
         
-        Config.getApolloClient().fetch(query: FetchGirlsQueryQuery(from: Int(self.categoryID!)!, take: 20, offset: newOffset, hideOnly: false)) { (result, err) in
-            self.showAlert(err: err)
-            
-            guard let dataItems = result?.data?.girls else {
+        Config.getApolloClient().fetch(query: FetchGirlsQueryQuery(from: Int(self.categoryID!)!, take: 20, offset: newOffset, hideOnly: false)) { result in
+            guard let dataItems = try? result.get().data?.girls else {
                 print("load error")
+                self.showAlert(err: "load error" as! Error)
                 return
             }
             
@@ -255,10 +253,8 @@ class IndexViewController: BaseViewController {
         
         let offset = Int(arc4random_uniform(UInt32((category?.count)!)))
         
-        Config.getApolloClient().fetch(query: FetchGirlsQueryQuery(from: Int(cate!)!, take: 20, offset: offset, hideOnly: false)) { (result, err) in
-            self.showAlert(err: err)
-            
-            guard let dataItems = result?.data?.girls else {
+        Config.getApolloClient().fetch(query: FetchGirlsQueryQuery(from: Int(cate!)!, take: 20, offset: offset, hideOnly: false)) { result in
+            guard let dataItems = try? result.get().data?.girls else {
                 self.showToast(message: "😭 load data error")
                 return
             }
@@ -359,8 +355,9 @@ extension IndexViewController: UITableViewDelegate, UITableViewDataSource {
     func toDelete(index: IndexPath) {
         let cell = self.cells[index.row]
         let cellID = cell?.fragments.fetchGirls.id
-        Config.getApolloClient().perform(mutation: RemoveGirlMutation(cells: [Int(cellID!)], toRemove: false)) { (result, err) in
-            if err != nil {
+        Config.getApolloClient().perform(mutation: RemoveGirlMutation(cells: [Int(cellID!)], toRemove: false)) { result in
+            
+            if let err = try? result.get().errors {
                 self.showToast(message: "😭 remove data error")
                 return
             }

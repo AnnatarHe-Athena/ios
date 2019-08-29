@@ -10,6 +10,7 @@ import UIKit
 import Apollo
 import SDWebImage
 import SDWebImageWebPCoder
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         Utils.initApp()
+        FirebaseApp.configure()
         // Use Firebase library to configure APIs
         return true
     }

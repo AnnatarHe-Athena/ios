@@ -42,34 +42,24 @@ class AuthViewController: BaseViewController {
         }
         indicator.startAnimating()
 
-        Config.getApolloClient().fetch(query: AuthQuery(email: _email, password: _pwd)) { (result, err) in
-            if (err != nil) {
-                print(err)
-                
-                self.indicator.stopAnimating()
-                self.loading = false
-                self.showErrorMsg(title: (err?.localizedDescription)!)
+        Config.getApolloClient().fetch(query: AuthQuery.init(email: _email, password: _pwd)) { result in
+            
+            self.indicator.stopAnimating()
+            self.loading = false
+            
+            guard let data = try? result.get().data else {
+                self.showErrorMsg(title: "error")
                 return
             }
-
-            guard let token = result?.data?.auth?.token else {
-                print("token miss")
-                
-                self.showErrorMsg(title: "token miss")
-                
-                self.indicator.stopAnimating()
-                self.loading = false
-                return
-            }
-
-            Config.token = token
-            Config.userId = (result?.data?.auth?.id)!
+            
+            Config.token = (data.auth?.token)!
+            Config.userId = (data.auth?.id)!
             let keychain = KeychainSwift()
             keychain.set(_email, forKey: "email")
             keychain.set(_pwd, forKey: "pwd")
             
             // setup sentry user
-            let sentryUser = User(userId: (result?.data?.auth?.id)!)
+            let sentryUser = User(userId: (data.auth?.id)!)
             sentryUser.email = _email
             
             Client.shared?.user = sentryUser

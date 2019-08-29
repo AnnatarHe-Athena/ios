@@ -5,12 +5,12 @@
 //  Created by AnnatarHe on 20/09/2017.
 //  Copyright © 2017 AnnatarHe. All rights reserved.
 //
+import Apollo
+
 
 let devServer = "http://localhost:9009/graphql/v1"
 
 let prodServer = "https://api.dbg.annatarhe.com/graphql/v1"
-
-import Apollo
 
 class Config {
     
@@ -29,7 +29,6 @@ class Config {
         #else
             let url = URL(string: prodServer)!
         #endif
-        
-        return ApolloClient(networkTransport: HTTPNetworkTransport(url: url, configuration: configuration))
+        return ApolloClient(url: url)
     }
 }

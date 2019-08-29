@@ -9,6 +9,7 @@
 import UIKit
 import SDWebImage
 import SDWebImageWebPCoder
+import Sentry
 
 class ProfileViewController: BaseViewController {
     @IBOutlet weak var userAvatar: UIImageView!
@@ -73,12 +74,15 @@ class ProfileViewController: BaseViewController {
     }
     
     func loadProfile() {
-        Config.getApolloClient().fetch(query: FetchProfileWithCollectionsQuery(id: Int(Config.userId)!, from: self.loadFrom, size: 20)) { (result, err) in
+        
+        Config.getApolloClient().fetch(query: FetchProfileWithCollectionsQuery.init(id: Int(Config.userId)!, from: self.loadFrom, size: 20)) { result in
             self.collectionCursor += 20
-            guard let user = result?.data?.users else {
-                self.showAlert(err: err)
+            
+            guard let user = try? result.get().data?.users else {
+                self.showAlert(err: "error on load" as! Error)
                 return
             }
+
             var avatarUrl: String
             let userObj = user.fragments.profile
             self.title = userObj.name!
@@ -94,7 +98,9 @@ class ProfileViewController: BaseViewController {
             self.userBio.text = userObj.bio
             self.userEmail.text = userObj.email
             // todo: collection
-            if let collects = result?.data?.collections {
+            
+            
+            if let collects = try? result.get().data?.collections {
                 self.collections = collects
                 self.userCollectionsTableView.reloadData()
             }
@@ -112,22 +118,21 @@ class ProfileViewController: BaseViewController {
         }
         loading = true
         
-        Config.getApolloClient().fetch(query: FetchCollectionsQuery(id: Int(Config.userId)!, from: collectionCursor, size: 0)) { (result, err) in
+        Config.getApolloClient().fetch(query: FetchCollectionsQuery(id: Int(Config.userId)!, from: collectionCursor, size: 0)) { result in
             self.loading = false
-            guard err == nil else {
-                print(err)
+            
+            guard let newCollection = try? result.get().data?.collections else {
+                print("error", result)
                 return
             }
-            if let newCollection = result?.data?.collections {
-                
-                if (newCollection.count == 0) {
-                    return
-                }
-                
-                let nc = newCollection as! [FetchProfileWithCollectionsQuery.Data.Collection]
-                
-                self.collections.append(contentsOf: nc)
+            
+            if (newCollection.count == 0) {
+                return
             }
+            
+            let nc = newCollection as! [FetchProfileWithCollectionsQuery.Data.Collection]
+            
+            self.collections.append(contentsOf: nc)
             
             self.userCollectionsTableView.reloadData()
             self.collectionCursor += 20

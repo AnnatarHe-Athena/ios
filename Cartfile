@@ -1,9 +1,22 @@
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseAnalyticsBinary.json"
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseAuthBinary.json"
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseDatabaseBinary.json"
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseInAppMessagingBinary.json"
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseInAppMessagingDisplayBinary.json"
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseMessagingBinary.json"
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebasePerformanceBinary.json"
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseRemoteConfigBinary.json"
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseStorageBinary.json"
+
+
+
+
 github "Alamofire/Alamofire" ~> 4.4
 github "SwiftyJSON/SwiftyJSON"
-github "apollostack/apollo-ios"
+github "apollographql/apollo-ios"
 github "SDWebImage/SDWebImage"
 github "SDWebImage/SDWebImageWebPCoder"
 github "suzuki-0000/SKPhotoBrowser"
 github "getsentry/sentry-cocoa" "4.3.1"
-github "stephencelis/SQLite.swift" ~> 0.11.4
+github "stephencelis/SQLite.swift"
 github "evgenyneu/keychain-swift" ~> 10.0
