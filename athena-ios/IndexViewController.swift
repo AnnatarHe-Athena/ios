@@ -21,8 +21,10 @@ fileprivate enum IndexCacheProgress: String {
 
 class IndexViewController: BaseViewController {
     
+    private let STEP = 5
+    
     @IBAction func onSkipClick(_ sender: UIBarButtonItem) {
-        let alert = UIAlertController(title: "跳过", message: "请输入跳过数量", preferredStyle: .alert)
+        let alert = UIAlertController(title: "⛷", message: "请输入最后一个的 id", preferredStyle: .alert)
         alert.addTextField { (textField) in
             textField.text = ""
             textField.keyboardType = .numberPad
@@ -34,12 +36,10 @@ class IndexViewController: BaseViewController {
                 return
             }
             
-            let _skip = Int(text)
-            
-            self.skip = _skip!
-            
+            self.lastCellID = text
+            self.noMore = false
             if self.cells.count > 0 {
-                self.loadCellsData(fetchMore: true, cate: self.categoryID, offset: 0, isRandom: false)
+                self.loadCellsData(fetchMore: true, cate: self.categoryID, isRandom: false)
             }
             
             self.dismiss(animated: true, completion: nil)
@@ -57,7 +57,7 @@ class IndexViewController: BaseViewController {
     private var categoryID: GraphQLID? = defaultCategoryID
     private var cells: [FetchGirlsQueryQuery.Data.Girl?] = []
     private var noMore = false
-    private var skip = 0
+    private var lastCellID = String(1 << 30)
     
     private var selectedItemIndex = 0
     
@@ -71,6 +71,7 @@ class IndexViewController: BaseViewController {
                 
                 self.categoryID = category?.id
                 self.title = category?.name
+                self.noMore = false
                 // load data
                 self.loadCellsData(fetchMore: false, cate: self.categoryID)
                 
@@ -80,20 +81,21 @@ class IndexViewController: BaseViewController {
             }))
         }
         
-        alert.addAction(UIAlertAction(title: "随机", style: .default, handler: {action in
-            // do random something
-            self.title = "随机"
-            // TODO: load random data
-            let randomIndex = Int(arc4random_uniform(UInt32(ModalApp.categories.count)))
-            let category = ModalApp.categories[randomIndex]
-            let cate = category?.id
-            
-            let offset = Int(arc4random_uniform(UInt32((category?.count)!)))
-            print(cate, offset)
-            self.randomFetchCell(fetchMore: false)
-        }))
+//        alert.addAction(UIAlertAction(title: "随机", style: .default, handler: {action in
+//            // do random something
+//            self.title = "随机"
+//            // TODO: load random data
+//            let randomIndex = Int(arc4random_uniform(UInt32(ModalApp.categories.count)))
+//            let category = ModalApp.categories[randomIndex]
+//            let cate = category?.id
+//
+//            let offset = Int(arc4random_uniform(UInt32((category?.count)!)))
+//            print(cate, offset)
+//            self.randomFetchCell(fetchMore: false)
+//        }))
         
         alert.addAction(UIAlertAction(title: "refresh", style: .destructive, handler: { action in
+            self.noMore = false
             self.initialLoad()
             self.dismiss(animated: true, completion: nil)
         }))
@@ -109,29 +111,7 @@ class IndexViewController: BaseViewController {
         cellListTableView.dataSource = self
         cellListTableView.delegate = self
         
-        let _category = UserDefaults.standard.integer(forKey: IndexCacheProgress.category.rawValue)
-        let _offset = UserDefaults.standard.integer(forKey: IndexCacheProgress.offset.rawValue)
-        
-        if _category != 0 && _offset != 0 {
-            
-            let refreshAlert = UIAlertController(title: "继续？", message: "监测到上次有未完成的进度，是否继续", preferredStyle: .alert)
-            refreshAlert.addAction(UIAlertAction(title: "继续", style: .default, handler: { (action: UIAlertAction!) in
-                self.categoryID = GraphQLID(_category)
-                // TODO: update offset
-            }))
-            
-            refreshAlert.addAction(UIAlertAction(title: "取消", style: .cancel, handler: { (action: UIAlertAction!) in
-                self.initialLoad()
-            }))
-            
-            present(refreshAlert, animated: true, completion: nil)
-            
-        
-        } else {
-            initialLoad()
-        }
-        
-        
+        initialLoad()
         self.addRefrashControl()
         
     }
@@ -153,21 +133,27 @@ class IndexViewController: BaseViewController {
             }
             self.showToast(message: "login first")
         }
-        Config.getApolloClient().fetch(query: FetchGirlsQueryQuery(from: Int(self.categoryID!)!, take: 20, offset: self.skip, hideOnly: false)) { result in
-            guard let dataItems = try? result.get().data?.girls else {
-                print("load error")
-                self.showAlert(err: "load error" as! Error)
-                self.cellListTableView.refreshControl?.endRefreshing()
-                return
-            }
+        
+        print("pull to refreash", self.lastCellID)
+        Config.getApolloClient().fetch(
+            query: FetchGirlsQueryQuery(from: Int(self.categoryID!)!, take: self.STEP, hideOnly: false, last: self.lastCellID)
+        ) { result in
             
-            if dataItems.count == 0 {
-                self.noMore = true
-            }
-            
-            self.cells = dataItems
-            self.cellListTableView.reloadData()
             self.cellListTableView.refreshControl?.endRefreshing()
+            switch result {
+            case .success(let resultData):
+                let items = resultData.data?.girls
+                if items!.count == 0 {
+                    self.noMore = true
+                    return
+                }
+                
+                self.lastCellID = (items?.last??.fragments.fetchGirls.id)!
+                self.cells = items!
+                self.cellListTableView.reloadData()
+            case .failure(let err):
+                self.showAlert(err: err)
+            }
         }
     }
     
@@ -208,68 +194,40 @@ class IndexViewController: BaseViewController {
         self.present(alert, animated: true)
     }
     
-    private func loadCellsData(fetchMore: Bool = true, cate: GraphQLID?, offset: Int = 0, isRandom: Bool = false) {
+    private func loadCellsData(fetchMore: Bool = true, cate: GraphQLID?, theLastID: String = "", isRandom: Bool = false) {
         guard !loading else {
             return
         }
         
         loading = true
         
-        let newOffset = (fetchMore ? cells.count : offset) + self.skip
+//        let newOffset = (fetchMore ? cells.count : offset) + self.skip
         
-        Config.getApolloClient().fetch(query: FetchGirlsQueryQuery(from: Int(self.categoryID!)!, take: 20, offset: newOffset, hideOnly: false)) { result in
-            guard let dataItems = try? result.get().data?.girls else {
-                print("load error")
-                self.showAlert(err: "load error" as! Error)
-                return
-            }
+        let lastId = fetchMore ? self.lastCellID : String(1 << 30)
+        Config.getApolloClient().fetch(
+            query: FetchGirlsQueryQuery(from: Int(self.categoryID!)!, take: self.STEP, hideOnly: false, last: lastId)
+        ) { result in
             
-            if dataItems.count == 0 {
-                self.noMore = true
+            switch result {
+            case .success(let resultData):
+                let dataItems = (resultData.data?.girls)!
+                if dataItems.count == 0 {
+                    self.noMore = true
+                } else {
+                    self.lastCellID = (dataItems.last??.fragments.fetchGirls.id)!
+                }
+                
+                if fetchMore || isRandom {
+                    self.cells.append(contentsOf: dataItems)
+                } else {
+                    self.cells = dataItems
+                }
+                UserDefaults.standard.set(Int(self.categoryID!), forKey: IndexCacheProgress.category.rawValue)
+                self.cellListTableView.reloadData()
+                self.loading = false
+            case .failure(let err):
+                self.showAlert(err: err)
             }
-            
-            if fetchMore || isRandom {
-                self.cells.append(contentsOf: dataItems)
-            } else {
-                self.cells = dataItems
-            }
-            UserDefaults.standard.set(Int(self.categoryID!), forKey: IndexCacheProgress.category.rawValue)
-            UserDefaults.standard.set(offset, forKey: IndexCacheProgress.offset.rawValue)
-            self.cellListTableView.reloadData()
-            self.loading = false
-        }
-    }
-    
-    private func randomFetchCell(fetchMore: Bool = true) {
-        guard !loading else {
-            return
-        }
-        
-        loading = true
-        
-        let randomIndex = Int(arc4random_uniform(UInt32(ModalApp.categories.count)))
-        let category = ModalApp.categories[randomIndex]
-        let cate = category?.id
-        
-        let offset = Int(arc4random_uniform(UInt32((category?.count)!)))
-        
-        Config.getApolloClient().fetch(query: FetchGirlsQueryQuery(from: Int(cate!)!, take: 20, offset: offset, hideOnly: false)) { result in
-            guard let dataItems = try? result.get().data?.girls else {
-                self.showToast(message: "😭 load data error")
-                return
-            }
-            
-            if dataItems.count == 0 {
-                self.noMore = true
-            }
-            
-            if fetchMore {
-                self.cells.append(contentsOf: dataItems)
-            } else {
-                self.cells = dataItems
-            }
-            self.cellListTableView.reloadData()
-            self.loading = false
         }
     }
 
@@ -339,11 +297,7 @@ extension IndexViewController: UITableViewDelegate, UITableViewDataSource {
         let lastElement = cells.count - 1
         
         if indexPath.row == lastElement {
-            if self.title == "随机" {
-                self.randomFetchCell(fetchMore: true)
-            } else {
-                self.loadCellsData(fetchMore: true, cate: self.categoryID)
-            }
+            self.loadCellsData(fetchMore: true, cate: self.categoryID)
             print("load more at footer")
         }
     }

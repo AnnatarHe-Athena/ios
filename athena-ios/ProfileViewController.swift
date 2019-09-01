@@ -11,6 +11,17 @@ import SDWebImage
 import SDWebImageWebPCoder
 import Sentry
 
+struct CellItem {
+    let id: String
+    let img: String
+    let permission: Int
+    let text: String
+    let content: String
+    let fromID: String
+    let fromURL: String
+    
+}
+
 class ProfileViewController: BaseViewController {
     @IBOutlet weak var userAvatar: UIImageView!
     @IBOutlet weak var userName: UILabel!
@@ -19,7 +30,7 @@ class ProfileViewController: BaseViewController {
     @IBOutlet weak var userCollectionsTableView: UICollectionView!
     @IBOutlet weak var profileContainer: UIView!
     
-    var collections: [FetchProfileWithCollectionsQuery.Data.Collection?] = []
+    var collections: [CellItem] = []
     
     var loadFrom = 0;
     var profileLoaded = false
@@ -33,7 +44,6 @@ class ProfileViewController: BaseViewController {
         userCollectionsTableView.delegate = self
         
         self.checkLogin()
-        
     }
     
     @objc func touchAction(sender : UITapGestureRecognizer) {
@@ -74,41 +84,49 @@ class ProfileViewController: BaseViewController {
     }
     
     func loadProfile() {
-        
         Config.getApolloClient().fetch(query: FetchProfileWithCollectionsQuery.init(id: Int(Config.userId)!, from: self.loadFrom, size: 20)) { result in
             self.collectionCursor += 20
-            
-            guard let user = try? result.get().data?.users else {
-                self.showAlert(err: "error on load" as! Error)
-                return
-            }
-
-            var avatarUrl: String
-            let userObj = user.fragments.profile
-            self.title = userObj.name!
-            if userObj.avatar == "null" {
-                avatarUrl = "https://via.placeholder.com/300x300"
-            } else {
-                avatarUrl = userObj.avatar!
-            }
-            
-            let avatar = URL(string: avatarUrl)
-            self.userAvatar.sd_setImage(with: avatar, placeholderImage: nil, options: .allowInvalidSSLCertificates, completed: nil)
-            self.userName.text = userObj.name
-            self.userBio.text = userObj.bio
-            self.userEmail.text = userObj.email
-            // todo: collection
-            
-            
-            if let collects = try? result.get().data?.collections {
-                self.collections = collects
+            switch result {
+            case .success(let resultData):
+                var avatarUrl: String
+                let userObj = resultData.data?.users!.fragments.profile
+                self.title = userObj?.name!
+                if userObj?.avatar == "null" {
+                    avatarUrl = "https://via.placeholder.com/300x300"
+                } else {
+                    avatarUrl = (userObj?.avatar)!
+                }
+                
+                let avatar = URL(string: avatarUrl)
+                self.userAvatar.sd_setImage(with: avatar, placeholderImage: nil, options: .allowInvalidSSLCertificates, completed: nil)
+                self.userName.text = userObj?.name
+                self.userBio.text = userObj?.bio
+                self.userEmail.text = userObj?.email
+                
+                resultData.data?.collections.flatMap {
+                    $0.flatMap { c in
+                        let cell = c?.fragments.fetchGirls
+                        self.collections.append(
+                            CellItem(
+                                id:(cell?.id)!,
+                                img: (cell?.img)!,
+                                permission: (cell?.permission)!,
+                                text: (cell?.text)!,
+                                content: (cell?.content)!,
+                                fromID: (cell?.fromId)!,
+                                fromURL: (cell?.fromUrl)!
+                            )
+                        )
+                    }
+                }
+//
+//                let nc = resultData.data?.collections as! [FetchProfileWithCollectionsQuery.Data.Collection]
+//                self.collections.append(contentsOf: nc)
+//
                 self.userCollectionsTableView.reloadData()
+            case .failure(let err):
+                self.showAlert(err: err)
             }
-            
-            self.userAvatar.layer.cornerRadius = 4.0
-            self.userAvatar.layer.borderWidth = 1.0
-            self.userAvatar.layer.borderColor = UIColor.clear.cgColor
-            self.userAvatar.layer.masksToBounds = true
         }
     }
     
@@ -118,7 +136,7 @@ class ProfileViewController: BaseViewController {
         }
         loading = true
         
-        Config.getApolloClient().fetch(query: FetchCollectionsQuery(id: Int(Config.userId)!, from: collectionCursor, size: 0)) { result in
+        Config.getApolloClient().fetch(query: FetchCollectionsQuery(id: Int(Config.userId)!, from: collectionCursor, size: 5)) { result in
             self.loading = false
             
             guard let newCollection = try? result.get().data?.collections else {
@@ -130,12 +148,26 @@ class ProfileViewController: BaseViewController {
                 return
             }
             
-            let nc = newCollection as! [FetchProfileWithCollectionsQuery.Data.Collection]
+            newCollection.flatMap { c in
+                let cell = c?.fragments.fetchGirls
+                self.collections.append(
+                    CellItem(
+                        id:(cell?.id)!,
+                        img: (cell?.img)!,
+                        permission: (cell?.permission)!,
+                        text: (cell?.text)!,
+                        content: (cell?.content)!,
+                        fromID: (cell?.fromId)!,
+                        fromURL: (cell?.fromUrl)!
+                    )
+                )
+            }
+//            let nc = newCollection as! [FetchProfileWithCollectionsQuery.Data.Collection]
             
-            self.collections.append(contentsOf: nc)
+//            self.collections.append(contentsOf: nc)
             
             self.userCollectionsTableView.reloadData()
-            self.collectionCursor += 20
+            self.collectionCursor += 5
         }
     }
 }
@@ -148,7 +180,7 @@ extension ProfileViewController : UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionGirlCell", for: indexPath) as! CollectionItemCellCollectionViewCell
         let dataItem = collections[indexPath.row]
-        let img = Utils.getRealImageSrc(image: (dataItem?.fragments.fetchGirls.img!)!)
+        let img = Utils.getRealImageSrc(image: dataItem.img)
         
         print(img)
         cell.img.sd_setImage(with: URL(string: img), placeholderImage: UIImage(named: "placeholderImage.png"), options: .allowInvalidSSLCertificates, completed: { _, err, _, _ in

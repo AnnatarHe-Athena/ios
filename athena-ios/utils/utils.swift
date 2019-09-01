@@ -37,9 +37,9 @@ class Utils {
     
     public static func getRealImageSrc(image: String, type: String = "bmiddle") -> String {
         
-//        #if DEBUG
-//            return "https://via.placeholder.com/350x150"
-//        #endif
+        #if DEBUG
+            return "https://picsum.photos/400/500"
+        #endif
         let realImageUrlData = Data(base64Encoded: image)
         let realImageUrl = String(data: realImageUrlData!, encoding: .utf8)
         if (realImageUrl!.hasPrefix("http")) {

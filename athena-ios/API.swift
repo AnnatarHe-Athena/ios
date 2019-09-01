@@ -5,8 +5,26 @@ import Apollo
 public struct CellInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(cate: Swift.Optional<Int?> = nil, permission: Swift.Optional<Int?> = nil, fromId: Swift.Optional<String?> = nil, fromUrl: Swift.Optional<String?> = nil, img: Swift.Optional<String?> = nil, text: Swift.Optional<String?> = nil) {
-    graphQLMap = ["cate": cate, "permission": permission, "fromID": fromId, "fromURL": fromUrl, "img": img, "text": text]
+  public init(img: Swift.Optional<String?> = nil, text: Swift.Optional<String?> = nil, cate: Swift.Optional<Int?> = nil, permission: Swift.Optional<Int?> = nil, fromId: Swift.Optional<String?> = nil, fromUrl: Swift.Optional<String?> = nil) {
+    graphQLMap = ["img": img, "text": text, "cate": cate, "permission": permission, "fromID": fromId, "fromURL": fromUrl]
+  }
+
+  public var img: Swift.Optional<String?> {
+    get {
+      return graphQLMap["img"] as? Swift.Optional<String?> ?? .none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "img")
+    }
+  }
+
+  public var text: Swift.Optional<String?> {
+    get {
+      return graphQLMap["text"] as? Swift.Optional<String?> ?? .none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "text")
+    }
   }
 
   public var cate: Swift.Optional<Int?> {
@@ -42,24 +60,6 @@ public struct CellInput: GraphQLMapConvertible {
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "fromURL")
-    }
-  }
-
-  public var img: Swift.Optional<String?> {
-    get {
-      return graphQLMap["img"] as? Swift.Optional<String?> ?? .none
-    }
-    set {
-      graphQLMap.updateValue(newValue, forKey: "img")
-    }
-  }
-
-  public var text: Swift.Optional<String?> {
-    get {
-      return graphQLMap["text"] as? Swift.Optional<String?> ?? .none
-    }
-    set {
-      graphQLMap.updateValue(newValue, forKey: "text")
     }
   }
 }
@@ -179,14 +179,14 @@ public final class InitCategoriesQuery: GraphQLQuery {
 }
 
 public final class FetchGirlsQueryQuery: GraphQLQuery {
-  /// query fetchGirlsQuery($from: Int!, $take: Int!, $offset: Int!, $hideOnly: Boolean) {
-  ///   girls(from: $from, take: $take, offset: $offset, hideOnly: $hideOnly) {
+  /// query fetchGirlsQuery($from: Int!, $take: Int!, $hideOnly: Boolean, $last: ID!) {
+  ///   girls(from: $from, take: $take, hideOnly: $hideOnly, last: $last) {
   ///     __typename
   ///     ...fetchGirls
   ///   }
   /// }
   public let operationDefinition =
-    "query fetchGirlsQuery($from: Int!, $take: Int!, $offset: Int!, $hideOnly: Boolean) { girls(from: $from, take: $take, offset: $offset, hideOnly: $hideOnly) { __typename ...fetchGirls } }"
+    "query fetchGirlsQuery($from: Int!, $take: Int!, $hideOnly: Boolean, $last: ID!) { girls(from: $from, take: $take, hideOnly: $hideOnly, last: $last) { __typename ...fetchGirls } }"
 
   public let operationName = "fetchGirlsQuery"
 
@@ -194,25 +194,25 @@ public final class FetchGirlsQueryQuery: GraphQLQuery {
 
   public var from: Int
   public var take: Int
-  public var offset: Int
   public var hideOnly: Bool?
+  public var last: GraphQLID
 
-  public init(from: Int, take: Int, offset: Int, hideOnly: Bool? = nil) {
+  public init(from: Int, take: Int, hideOnly: Bool? = nil, last: GraphQLID) {
     self.from = from
     self.take = take
-    self.offset = offset
     self.hideOnly = hideOnly
+    self.last = last
   }
 
   public var variables: GraphQLMap? {
-    return ["from": from, "take": take, "offset": offset, "hideOnly": hideOnly]
+    return ["from": from, "take": take, "hideOnly": hideOnly, "last": last]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["RootSchema"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("girls", arguments: ["from": GraphQLVariable("from"), "take": GraphQLVariable("take"), "offset": GraphQLVariable("offset"), "hideOnly": GraphQLVariable("hideOnly")], type: .list(.object(Girl.selections))),
+      GraphQLField("girls", arguments: ["from": GraphQLVariable("from"), "take": GraphQLVariable("take"), "hideOnly": GraphQLVariable("hideOnly"), "last": GraphQLVariable("last")], type: .list(.object(Girl.selections))),
     ]
 
     public private(set) var resultMap: ResultMap
@@ -249,8 +249,8 @@ public final class FetchGirlsQueryQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: GraphQLID? = nil, img: String? = nil, text: String? = nil, content: String? = nil, permission: Int? = nil, fromId: String? = nil, fromUrl: String? = nil) {
-        self.init(unsafeResultMap: ["__typename": "girl", "id": id, "img": img, "text": text, "content": content, "permission": permission, "fromID": fromId, "fromURL": fromUrl])
+      public init(id: GraphQLID? = nil, img: String? = nil, content: String? = nil, text: String? = nil, permission: Int? = nil, fromId: String? = nil, fromUrl: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "girl", "id": id, "img": img, "content": content, "text": text, "permission": permission, "fromID": fromId, "fromURL": fromUrl])
       }
 
       public var __typename: String {
@@ -292,8 +292,8 @@ public final class FetchGirlsQueryQuery: GraphQLQuery {
 }
 
 public final class InitialQuery: GraphQLQuery {
-  /// query initial($from: Int!, $take: Int!, $offset: Int!) {
-  ///   girls(from: $from, take: $take, offset: $offset) {
+  /// query initial($from: Int!, $take: Int!, $last: ID!) {
+  ///   girls(from: $from, take: $take, last: $last) {
   ///     __typename
   ///     ...fetchGirls
   ///   }
@@ -303,7 +303,7 @@ public final class InitialQuery: GraphQLQuery {
   ///   }
   /// }
   public let operationDefinition =
-    "query initial($from: Int!, $take: Int!, $offset: Int!) { girls(from: $from, take: $take, offset: $offset) { __typename ...fetchGirls } categories { __typename ...fetchCategories } }"
+    "query initial($from: Int!, $take: Int!, $last: ID!) { girls(from: $from, take: $take, last: $last) { __typename ...fetchGirls } categories { __typename ...fetchCategories } }"
 
   public let operationName = "initial"
 
@@ -311,23 +311,23 @@ public final class InitialQuery: GraphQLQuery {
 
   public var from: Int
   public var take: Int
-  public var offset: Int
+  public var last: GraphQLID
 
-  public init(from: Int, take: Int, offset: Int) {
+  public init(from: Int, take: Int, last: GraphQLID) {
     self.from = from
     self.take = take
-    self.offset = offset
+    self.last = last
   }
 
   public var variables: GraphQLMap? {
-    return ["from": from, "take": take, "offset": offset]
+    return ["from": from, "take": take, "last": last]
   }
 
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes = ["RootSchema"]
 
     public static let selections: [GraphQLSelection] = [
-      GraphQLField("girls", arguments: ["from": GraphQLVariable("from"), "take": GraphQLVariable("take"), "offset": GraphQLVariable("offset")], type: .list(.object(Girl.selections))),
+      GraphQLField("girls", arguments: ["from": GraphQLVariable("from"), "take": GraphQLVariable("take"), "last": GraphQLVariable("last")], type: .list(.object(Girl.selections))),
       GraphQLField("categories", type: .list(.object(Category.selections))),
     ]
 
@@ -375,8 +375,8 @@ public final class InitialQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: GraphQLID? = nil, img: String? = nil, text: String? = nil, content: String? = nil, permission: Int? = nil, fromId: String? = nil, fromUrl: String? = nil) {
-        self.init(unsafeResultMap: ["__typename": "girl", "id": id, "img": img, "text": text, "content": content, "permission": permission, "fromID": fromId, "fromURL": fromUrl])
+      public init(id: GraphQLID? = nil, img: String? = nil, content: String? = nil, text: String? = nil, permission: Int? = nil, fromId: String? = nil, fromUrl: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "girl", "id": id, "img": img, "content": content, "text": text, "permission": permission, "fromID": fromId, "fromURL": fromUrl])
       }
 
       public var __typename: String {
@@ -624,8 +624,8 @@ public final class AddGirlCellsMutation: GraphQLMutation {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: GraphQLID? = nil, img: String? = nil, text: String? = nil, content: String? = nil, permission: Int? = nil, fromId: String? = nil, fromUrl: String? = nil) {
-        self.init(unsafeResultMap: ["__typename": "girl", "id": id, "img": img, "text": text, "content": content, "permission": permission, "fromID": fromId, "fromURL": fromUrl])
+      public init(id: GraphQLID? = nil, img: String? = nil, content: String? = nil, text: String? = nil, permission: Int? = nil, fromId: String? = nil, fromUrl: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "girl", "id": id, "img": img, "content": content, "text": text, "permission": permission, "fromID": fromId, "fromURL": fromUrl])
       }
 
       public var __typename: String {
@@ -926,8 +926,8 @@ public final class FetchCollectionsQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: GraphQLID? = nil, img: String? = nil, text: String? = nil, content: String? = nil, permission: Int? = nil, fromId: String? = nil, fromUrl: String? = nil) {
-        self.init(unsafeResultMap: ["__typename": "girl", "id": id, "img": img, "text": text, "content": content, "permission": permission, "fromID": fromId, "fromURL": fromUrl])
+      public init(id: GraphQLID? = nil, img: String? = nil, content: String? = nil, text: String? = nil, permission: Int? = nil, fromId: String? = nil, fromUrl: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "girl", "id": id, "img": img, "content": content, "text": text, "permission": permission, "fromID": fromId, "fromURL": fromUrl])
       }
 
       public var __typename: String {
@@ -1231,8 +1231,8 @@ public final class FetchProfileWithCollectionsQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: GraphQLID? = nil, img: String? = nil, text: String? = nil, content: String? = nil, permission: Int? = nil, fromId: String? = nil, fromUrl: String? = nil) {
-        self.init(unsafeResultMap: ["__typename": "girl", "id": id, "img": img, "text": text, "content": content, "permission": permission, "fromID": fromId, "fromURL": fromUrl])
+      public init(id: GraphQLID? = nil, img: String? = nil, content: String? = nil, text: String? = nil, permission: Int? = nil, fromId: String? = nil, fromUrl: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "girl", "id": id, "img": img, "content": content, "text": text, "permission": permission, "fromID": fromId, "fromURL": fromUrl])
       }
 
       public var __typename: String {
@@ -1355,14 +1355,14 @@ public struct FetchGirls: GraphQLFragment {
   ///   __typename
   ///   id
   ///   img
-  ///   text
   ///   content
+  ///   text
   ///   permission
   ///   fromID
   ///   fromURL
   /// }
   public static let fragmentDefinition =
-    "fragment fetchGirls on girl { __typename id img text content permission fromID fromURL }"
+    "fragment fetchGirls on girl { __typename id img content text permission fromID fromURL }"
 
   public static let possibleTypes = ["girl"]
 
@@ -1370,8 +1370,8 @@ public struct FetchGirls: GraphQLFragment {
     GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
     GraphQLField("id", type: .scalar(GraphQLID.self)),
     GraphQLField("img", type: .scalar(String.self)),
-    GraphQLField("text", type: .scalar(String.self)),
     GraphQLField("content", type: .scalar(String.self)),
+    GraphQLField("text", type: .scalar(String.self)),
     GraphQLField("permission", type: .scalar(Int.self)),
     GraphQLField("fromID", type: .scalar(String.self)),
     GraphQLField("fromURL", type: .scalar(String.self)),
@@ -1383,8 +1383,8 @@ public struct FetchGirls: GraphQLFragment {
     self.resultMap = unsafeResultMap
   }
 
-  public init(id: GraphQLID? = nil, img: String? = nil, text: String? = nil, content: String? = nil, permission: Int? = nil, fromId: String? = nil, fromUrl: String? = nil) {
-    self.init(unsafeResultMap: ["__typename": "girl", "id": id, "img": img, "text": text, "content": content, "permission": permission, "fromID": fromId, "fromURL": fromUrl])
+  public init(id: GraphQLID? = nil, img: String? = nil, content: String? = nil, text: String? = nil, permission: Int? = nil, fromId: String? = nil, fromUrl: String? = nil) {
+    self.init(unsafeResultMap: ["__typename": "girl", "id": id, "img": img, "content": content, "text": text, "permission": permission, "fromID": fromId, "fromURL": fromUrl])
   }
 
   public var __typename: String {
@@ -1414,21 +1414,21 @@ public struct FetchGirls: GraphQLFragment {
     }
   }
 
-  public var text: String? {
-    get {
-      return resultMap["text"] as? String
-    }
-    set {
-      resultMap.updateValue(newValue, forKey: "text")
-    }
-  }
-
   public var content: String? {
     get {
       return resultMap["content"] as? String
     }
     set {
       resultMap.updateValue(newValue, forKey: "content")
+    }
+  }
+
+  public var text: String? {
+    get {
+      return resultMap["text"] as? String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "text")
     }
   }
 
