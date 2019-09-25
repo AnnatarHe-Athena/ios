@@ -11,17 +11,6 @@ import SDWebImage
 import SDWebImageWebPCoder
 import Sentry
 
-struct CellItem {
-    let id: String
-    let img: String
-    let permission: Int
-    let text: String
-    let content: String
-    let fromID: String
-    let fromURL: String
-    
-}
-
 class ProfileViewController: BaseViewController {
     @IBOutlet weak var userAvatar: UIImageView!
     @IBOutlet weak var userName: UILabel!

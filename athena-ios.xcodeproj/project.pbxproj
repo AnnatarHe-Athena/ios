@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -45,6 +45,15 @@
 		9F3E331D23178171003CB1C8 /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F3E330A23178171003CB1C8 /* FirebaseDatabase.framework */; };
 		9F3E331E23178171003CB1C8 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F3E330B23178171003CB1C8 /* GTMSessionFetcher.framework */; };
 		9F3E37BB22FDA65B00CDF3EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F3E37BA22FDA65B00CDF3EB /* GoogleService-Info.plist */; };
+		9FB40BE923388C98008CDEB6 /* index.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB40BE823388C98008CDEB6 /* index.swift */; };
+		9FB40C0E2338BF46008CDEB6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB40C0D2338BF46008CDEB6 /* SceneDelegate.swift */; };
+		9FD7B2842338E9210007D14D /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD7B2832338E9210007D14D /* Store.swift */; };
+		9FD7B2872338FF600007D14D /* profileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD7B2862338FF600007D14D /* profileStore.swift */; };
+		9FD7B28923390BCF0007D14D /* server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD7B28823390BCF0007D14D /* server.swift */; };
+		9FD7B28B23390CF50007D14D /* auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD7B28A23390CF50007D14D /* auth.swift */; };
+		9FD7B28D233927780007D14D /* profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD7B28C233927780007D14D /* profile.swift */; };
+		9FD7B28F233928780007D14D /* cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD7B28E233928780007D14D /* cells.swift */; };
+		9FD7B2952339EEDA0007D14D /* QGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 9FD7B2942339EEDA0007D14D /* QGrid */; };
 		DC8DFE0F1F728F8000F442DE /* ModalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DFE0E1F728F8000F442DE /* ModalApp.swift */; };
 		DC8DFE111F728FFC00F442DE /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DFE101F728FFC00F442DE /* Config.swift */; };
 		DC8DFE141F72A0EE00F442DE /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DFE131F72A0EE00F442DE /* AuthViewController.swift */; };
@@ -98,7 +107,15 @@
 		9F3E330A23178171003CB1C8 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseDatabase.framework; path = Carthage/Build/iOS/FirebaseDatabase.framework; sourceTree = "<group>"; };
 		9F3E330B23178171003CB1C8 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTMSessionFetcher.framework; path = Carthage/Build/iOS/GTMSessionFetcher.framework; sourceTree = "<group>"; };
 		9F3E37BA22FDA65B00CDF3EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9FB40BE823388C98008CDEB6 /* index.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = index.swift; sourceTree = "<group>"; };
+		9FB40C0D2338BF46008CDEB6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9FB7732622E70441000F9B7A /* libwebp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libwebp.framework; path = Carthage/Build/iOS/libwebp.framework; sourceTree = "<group>"; };
+		9FD7B2832338E9210007D14D /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		9FD7B2862338FF600007D14D /* profileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileStore.swift; sourceTree = "<group>"; };
+		9FD7B28823390BCF0007D14D /* server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = server.swift; sourceTree = "<group>"; };
+		9FD7B28A23390CF50007D14D /* auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = auth.swift; sourceTree = "<group>"; };
+		9FD7B28C233927780007D14D /* profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profile.swift; sourceTree = "<group>"; };
+		9FD7B28E233928780007D14D /* cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cells.swift; sourceTree = "<group>"; };
 		DC8DFE0E1F728F8000F442DE /* ModalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalApp.swift; sourceTree = "<group>"; };
 		DC8DFE101F728FFC00F442DE /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		DC8DFE131F72A0EE00F442DE /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +164,7 @@
 				9F3E331E23178171003CB1C8 /* GTMSessionFetcher.framework in Frameworks */,
 				9F3E32F823178171003CB1C8 /* FirebaseCore.framework in Frameworks */,
 				34D6C83622A923CF0037BEC5 /* Apollo.framework in Frameworks */,
+				9FD7B2952339EEDA0007D14D /* QGrid in Frameworks */,
 				34D6C83722A923CF0037BEC5 /* KeychainSwift.framework in Frameworks */,
 				DCCBB1E51F6BADA000D5ED23 /* SDWebImage.framework in Frameworks */,
 				3419DF0122754FC200D9371C /* SDWebImageWebPCoder.framework in Frameworks */,
@@ -159,12 +177,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9FB40BE723388C6E008CDEB6 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				9FB40BE823388C98008CDEB6 /* index.swift */,
+				9FD7B28E233928780007D14D /* cells.swift */,
+				9FD7B28C233927780007D14D /* profile.swift */,
+				9FD7B28A23390CF50007D14D /* auth.swift */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		9FD7B2852338FF350007D14D /* store */ = {
+			isa = PBXGroup;
+			children = (
+				9FD7B2832338E9210007D14D /* Store.swift */,
+				9FD7B2862338FF600007D14D /* profileStore.swift */,
+			);
+			path = store;
+			sourceTree = "<group>";
+		};
+		9FD7B296233B86720007D14D /* vendor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = vendor;
+			sourceTree = "<group>";
+		};
 		DC8DFE0D1F728F4000F442DE /* model */ = {
 			isa = PBXGroup;
 			children = (
 				DC8DFE0E1F728F8000F442DE /* ModalApp.swift */,
 				DC8DFE101F728FFC00F442DE /* Config.swift */,
 				3434A974206621450096DF73 /* DBManager.swift */,
+				9FD7B28823390BCF0007D14D /* server.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -206,11 +252,15 @@
 		DCCBB1C51F6BAC8300D5ED23 /* athena-ios */ = {
 			isa = PBXGroup;
 			children = (
+				9FD7B296233B86720007D14D /* vendor */,
+				9FD7B2852338FF350007D14D /* store */,
+				9FB40BE723388C6E008CDEB6 /* ui */,
 				DCD6B0981F81CF2E002E810C /* utils */,
 				DC8DFE121F72A0D900F442DE /* controllers */,
 				DC8DFE0D1F728F4000F442DE /* model */,
 				DCCBB1EA1F6BAE9000D5ED23 /* API.swift */,
 				DCCBB1C61F6BAC8300D5ED23 /* AppDelegate.swift */,
+				9FB40C0D2338BF46008CDEB6 /* SceneDelegate.swift */,
 				DCCBB1C81F6BAC8300D5ED23 /* IndexViewController.swift */,
 				DCCBB1CA1F6BAC8300D5ED23 /* ProfileViewController.swift */,
 				344D45A92079AAE40069F2AD /* Media.xcassets */,
@@ -290,6 +340,9 @@
 			dependencies = (
 			);
 			name = "athena-ios";
+			packageProductDependencies = (
+				9FD7B2942339EEDA0007D14D /* QGrid */,
+			);
 			productName = "athena-ios";
 			productReference = DCCBB1C31F6BAC8300D5ED23 /* athena-ios.app */;
 			productType = "com.apple.product-type.application";
@@ -321,6 +374,9 @@
 				Base,
 			);
 			mainGroup = DCCBB1BA1F6BAC8300D5ED23;
+			packageReferences = (
+				9FD7B2932339EEDA0007D14D /* XCRemoteSwiftPackageReference "QGrid" */,
+			);
 			productRefGroup = DCCBB1C41F6BAC8300D5ED23 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -387,6 +443,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCD6B09A1F81CF3B002E810C /* utils.swift in Sources */,
+				9FD7B28B23390CF50007D14D /* auth.swift in Sources */,
+				9FD7B28F233928780007D14D /* cells.swift in Sources */,
 				34E9DFFE2081D4CA000676FB /* PublicDataViewController.swift in Sources */,
 				3401723E20752E7E00C24029 /* SKPhotoCache.swift in Sources */,
 				DCCBB1CB1F6BAC8300D5ED23 /* ProfileViewController.swift in Sources */,
@@ -394,16 +452,22 @@
 				DCCBB1EB1F6BAE9000D5ED23 /* API.swift in Sources */,
 				DC8DFE141F72A0EE00F442DE /* AuthViewController.swift in Sources */,
 				DC8DFE0F1F728F8000F442DE /* ModalApp.swift in Sources */,
+				9FD7B28D233927780007D14D /* profile.swift in Sources */,
+				9FB40C0E2338BF46008CDEB6 /* SceneDelegate.swift in Sources */,
 				34E9DFFC20810442000676FB /* PostDetailViewController.swift in Sources */,
 				349F4E6220D7B2D80045DB67 /* CollectionItemCellCollectionViewCell.swift in Sources */,
 				349800DE2203EF490081536C /* baseViewController.swift in Sources */,
 				3401724C207595F600C24029 /* SettingCell.swift in Sources */,
 				34A6A9EC208A08F8005C237B /* AthenaNavigationBar.swift in Sources */,
+				9FD7B28923390BCF0007D14D /* server.swift in Sources */,
 				DCCBB1C91F6BAC8300D5ED23 /* IndexViewController.swift in Sources */,
 				DC8DFE111F728FFC00F442DE /* Config.swift in Sources */,
 				3401724E2075984400C24029 /* AboutViewController.swift in Sources */,
+				9FD7B2842338E9210007D14D /* Store.swift in Sources */,
 				DCD6B0931F81C6FF002E810C /* GirlCellOfTableTableViewCell.swift in Sources */,
 				3434A975206621450096DF73 /* DBManager.swift in Sources */,
+				9FB40BE923388C98008CDEB6 /* index.swift in Sources */,
+				9FD7B2872338FF600007D14D /* profileStore.swift in Sources */,
 				3401724520753D8A00C24029 /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -556,7 +620,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "athena-ios/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -580,7 +644,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "athena-ios/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -614,6 +678,25 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9FD7B2932339EEDA0007D14D /* XCRemoteSwiftPackageReference "QGrid" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Q-Mobile/QGrid";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9FD7B2942339EEDA0007D14D /* QGrid */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9FD7B2932339EEDA0007D14D /* XCRemoteSwiftPackageReference "QGrid" */;
+			productName = QGrid;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DCCBB1BB1F6BAC8300D5ED23 /* Project object */;
 }
