@@ -12,7 +12,7 @@ import Sentry
 
 
 class ProfileStore: ObservableObject {
-    @Published private(set) var profile: ProfileData?;
+    @Published private(set) var profile: ProfileData = ProfileData()
     @Published private(set) var loading: Bool = false;
     @Published private(set) var collections: [CellItem] = [];
     

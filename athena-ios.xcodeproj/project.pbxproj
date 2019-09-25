@@ -54,6 +54,10 @@
 		9FD7B28D233927780007D14D /* profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD7B28C233927780007D14D /* profile.swift */; };
 		9FD7B28F233928780007D14D /* cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD7B28E233928780007D14D /* cells.swift */; };
 		9FD7B2952339EEDA0007D14D /* QGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 9FD7B2942339EEDA0007D14D /* QGrid */; };
+		9FD7B299233B86F30007D14D /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD7B298233B86F30007D14D /* ImageManager.swift */; };
+		9FD7B29B233B87290007D14D /* SDWebImageSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD7B29A233B87290007D14D /* SDWebImageSwiftUI.swift */; };
+		9FD7B29D233B875B0007D14D /* WebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD7B29C233B875B0007D14D /* WebImage.swift */; };
+		9FD7B2A0233B9D320007D14D /* UserCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD7B29F233B9D320007D14D /* UserCard.swift */; };
 		DC8DFE0F1F728F8000F442DE /* ModalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DFE0E1F728F8000F442DE /* ModalApp.swift */; };
 		DC8DFE111F728FFC00F442DE /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DFE101F728FFC00F442DE /* Config.swift */; };
 		DC8DFE141F72A0EE00F442DE /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8DFE131F72A0EE00F442DE /* AuthViewController.swift */; };
@@ -116,6 +120,10 @@
 		9FD7B28A23390CF50007D14D /* auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = auth.swift; sourceTree = "<group>"; };
 		9FD7B28C233927780007D14D /* profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profile.swift; sourceTree = "<group>"; };
 		9FD7B28E233928780007D14D /* cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cells.swift; sourceTree = "<group>"; };
+		9FD7B298233B86F30007D14D /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		9FD7B29A233B87290007D14D /* SDWebImageSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDWebImageSwiftUI.swift; sourceTree = "<group>"; };
+		9FD7B29C233B875B0007D14D /* WebImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImage.swift; sourceTree = "<group>"; };
+		9FD7B29F233B9D320007D14D /* UserCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCard.swift; sourceTree = "<group>"; };
 		DC8DFE0E1F728F8000F442DE /* ModalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalApp.swift; sourceTree = "<group>"; };
 		DC8DFE101F728FFC00F442DE /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		DC8DFE131F72A0EE00F442DE /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
@@ -180,6 +188,7 @@
 		9FB40BE723388C6E008CDEB6 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				9FD7B29E233B9D250007D14D /* components */,
 				9FB40BE823388C98008CDEB6 /* index.swift */,
 				9FD7B28E233928780007D14D /* cells.swift */,
 				9FD7B28C233927780007D14D /* profile.swift */,
@@ -200,8 +209,27 @@
 		9FD7B296233B86720007D14D /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				9FD7B297233B86CA0007D14D /* SDWebImageSwiftUI */,
 			);
 			path = vendor;
+			sourceTree = "<group>";
+		};
+		9FD7B297233B86CA0007D14D /* SDWebImageSwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				9FD7B298233B86F30007D14D /* ImageManager.swift */,
+				9FD7B29A233B87290007D14D /* SDWebImageSwiftUI.swift */,
+				9FD7B29C233B875B0007D14D /* WebImage.swift */,
+			);
+			path = SDWebImageSwiftUI;
+			sourceTree = "<group>";
+		};
+		9FD7B29E233B9D250007D14D /* components */ = {
+			isa = PBXGroup;
+			children = (
+				9FD7B29F233B9D320007D14D /* UserCard.swift */,
+			);
+			path = components;
 			sourceTree = "<group>";
 		};
 		DC8DFE0D1F728F4000F442DE /* model */ = {
@@ -444,6 +472,7 @@
 			files = (
 				DCD6B09A1F81CF3B002E810C /* utils.swift in Sources */,
 				9FD7B28B23390CF50007D14D /* auth.swift in Sources */,
+				9FD7B29D233B875B0007D14D /* WebImage.swift in Sources */,
 				9FD7B28F233928780007D14D /* cells.swift in Sources */,
 				34E9DFFE2081D4CA000676FB /* PublicDataViewController.swift in Sources */,
 				3401723E20752E7E00C24029 /* SKPhotoCache.swift in Sources */,
@@ -460,11 +489,14 @@
 				3401724C207595F600C24029 /* SettingCell.swift in Sources */,
 				34A6A9EC208A08F8005C237B /* AthenaNavigationBar.swift in Sources */,
 				9FD7B28923390BCF0007D14D /* server.swift in Sources */,
+				9FD7B2A0233B9D320007D14D /* UserCard.swift in Sources */,
 				DCCBB1C91F6BAC8300D5ED23 /* IndexViewController.swift in Sources */,
 				DC8DFE111F728FFC00F442DE /* Config.swift in Sources */,
 				3401724E2075984400C24029 /* AboutViewController.swift in Sources */,
+				9FD7B29B233B87290007D14D /* SDWebImageSwiftUI.swift in Sources */,
 				9FD7B2842338E9210007D14D /* Store.swift in Sources */,
 				DCD6B0931F81C6FF002E810C /* GirlCellOfTableTableViewCell.swift in Sources */,
+				9FD7B299233B86F30007D14D /* ImageManager.swift in Sources */,
 				3434A975206621450096DF73 /* DBManager.swift in Sources */,
 				9FB40BE923388C98008CDEB6 /* index.swift in Sources */,
 				9FD7B2872338FF600007D14D /* profileStore.swift in Sources */,

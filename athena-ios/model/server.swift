@@ -52,6 +52,20 @@ class ProfileData {
     public let bio: String
     public let role: UserRole
     
+    public var isFake: Bool {
+        return id == -1
+    }
+    
+    init() {
+        self.id = -1
+        self.email = "null@null.com"
+        self.name = "undefined"
+        self.avatar = URL(string: "https://picsum.photos/100/100")!
+        self.bio = ""
+        self.pwd = ""
+        self.role = .Tourist
+    }
+    
     init(profile: FetchProfileWithCollectionsQuery.Data.User.Fragments) {
         
         let p = profile.profile
@@ -63,16 +77,15 @@ class ProfileData {
         
         var avatarUrl: String
         
-        
-        
         if p.avatar == "null" {
-            avatarUrl = "https://via.placeholder.com/300x300"
+            avatarUrl = "https://picsum.photos/100/100"
         } else {
             avatarUrl = (p.avatar)!
         }
         self.avatar = URL(string: avatarUrl)!
         self.bio = p.bio!
         self.role = getUserRole(roleNum: p.role!)
-        
     }
+    
+    
 }

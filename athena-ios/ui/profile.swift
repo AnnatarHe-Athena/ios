@@ -10,14 +10,24 @@ import SwiftUI
 
 struct ProfileView: View {
     
-    @State private var logged = false
+    @State private var notLogged = true
+    
+    @EnvironmentObject private var profileData: ProfileStore
     
     
     var body: some View {
         VStack(alignment: .center) {
-            NavigationLink(destination: AuthView(), isActive: $logged) {
-                Text("go")
-            }
+            Group {
+                UserCard(profile: profileData.profile)
+                Divider()
+                Spacer()
+            }.sheet(isPresented: $notLogged) {
+                AuthView()
+            }.onAppear(perform: {
+                if (self.profileData.profile.isFake) {
+                    self.$notLogged.wrappedValue = true
+                }
+            })
         }
     }
 }

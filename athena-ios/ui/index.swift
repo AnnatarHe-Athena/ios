@@ -11,25 +11,27 @@ import SwiftUI
 struct IndexView: View {
     
     @State private var selection = 0
-    @EnvironmentObject private var profileData: ProfileStore
-    
     
     var body: some View {
         NavigationView {
             TabView(selection: $selection) {
                 CellsView().tabItem {
-                    Image.init("home")
+                    Image("home")
                     Text("list")
                 }.tag(0)
+                    .navigationBarTitle("lalallala")
                 ProfileView().tabItem {
                     Image.init("user")
                     Text("Me")
                 }.tag(1)
-            }.navigationBarTitle(
-                selection == 0 ? "Lists" : self.profileData.profile?.name ?? "Profile"
+            }
+            .shadow(radius: 10)
+            .navigationBarTitle(
+                selection == 0 ? "Lists" : "Profile",
+                displayMode: .inline
             )
         }
-        
+        .environmentObject(ProfileStore())
     }
 }
 
