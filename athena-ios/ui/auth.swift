@@ -10,6 +10,8 @@ import SwiftUI
 
 struct AuthView: View {
     
+    @EnvironmentObject private var profileData: ProfileStore
+    
     @State var email = "";
     @State var pwd = "";
     
@@ -31,14 +33,21 @@ struct AuthView: View {
             .cornerRadius(4)
             
             Button(action: {
-                print("did tap")
+                self.profileData.fingerCheck(onSuccess: {
+                    // TODO: dismiss
+                }, onError: { err in
+                    // TODO: dismiss
+                })
             }, label: {
                 Text("🤚 指纹登陆")
             })
             .padding()
             
-            }.navigationBarTitle("username")
+        }.navigationBarTitle("username")
     }
+    
+    
+    
 }
 
 struct auth_Previews: PreviewProvider {

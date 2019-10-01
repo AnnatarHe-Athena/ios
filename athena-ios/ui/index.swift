@@ -27,11 +27,14 @@ struct IndexView: View {
             }
             .shadow(radius: 10)
             .navigationBarTitle(
-                selection == 0 ? "Lists" : "Profile",
-                displayMode: .inline
+                selection == 0 ? "Lists" : "Profile"
             )
+                .edgesIgnoringSafeArea(.top)
+                .navigationBarItems(
+                    leading: SkipButton(), trailing: CategoriesButton())
         }
         .environmentObject(ProfileStore())
+        .environmentObject(ListStore())
     }
 }
 

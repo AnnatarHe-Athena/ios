@@ -24,6 +24,12 @@
 		34D6C83A22A923CF0037BEC5 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBB1E81F6BADAC00D5ED23 /* SwiftyJSON.framework */; };
 		34E9DFFC20810442000676FB /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E9DFFB20810442000676FB /* PostDetailViewController.swift */; };
 		34E9DFFE2081D4CA000676FB /* PublicDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E9DFFD2081D4CA000676FB /* PublicDataViewController.swift */; };
+		9F02F5032341C69F0067643E /* listStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F02F5022341C69F0067643E /* listStore.swift */; };
+		9F02F5052341DE3E0067643E /* SkipButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F02F5042341DE3E0067643E /* SkipButton.swift */; };
+		9F02F5072341DE740067643E /* CategoriesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F02F5062341DE740067643E /* CategoriesButton.swift */; };
+		9F02F5092341F0280067643E /* SkipModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F02F5082341F0280067643E /* SkipModal.swift */; };
+		9F02F50D234200520067643E /* AthenaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F02F50C234200520067643E /* AthenaError.swift */; };
+		9F02F50F234321630067643E /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F02F50E234321630067643E /* DetailView.swift */; };
 		9F3E32F823178171003CB1C8 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C59D9320ABF4DF006FF049 /* FirebaseCore.framework */; };
 		9F3E330C23178171003CB1C8 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F3E32F923178171003CB1C8 /* GoogleAppMeasurement.framework */; };
 		9F3E330D23178171003CB1C8 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F3E32FA23178171003CB1C8 /* FirebaseInstanceID.framework */; };
@@ -91,6 +97,12 @@
 		34C59D9320ABF4DF006FF049 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Carthage/Build/iOS/FirebaseCore.framework; sourceTree = "<group>"; };
 		34E9DFFB20810442000676FB /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		34E9DFFD2081D4CA000676FB /* PublicDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicDataViewController.swift; sourceTree = "<group>"; };
+		9F02F5022341C69F0067643E /* listStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listStore.swift; sourceTree = "<group>"; };
+		9F02F5042341DE3E0067643E /* SkipButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipButton.swift; sourceTree = "<group>"; };
+		9F02F5062341DE740067643E /* CategoriesButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesButton.swift; sourceTree = "<group>"; };
+		9F02F5082341F0280067643E /* SkipModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipModal.swift; sourceTree = "<group>"; };
+		9F02F50C234200520067643E /* AthenaError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthenaError.swift; sourceTree = "<group>"; };
+		9F02F50E234321630067643E /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		9F3E32F923178171003CB1C8 /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppMeasurement.framework; path = Carthage/Build/iOS/GoogleAppMeasurement.framework; sourceTree = "<group>"; };
 		9F3E32FA23178171003CB1C8 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Carthage/Build/iOS/FirebaseInstanceID.framework; sourceTree = "<group>"; };
 		9F3E32FB23178171003CB1C8 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCoreDiagnostics.framework; path = Carthage/Build/iOS/FirebaseCoreDiagnostics.framework; sourceTree = "<group>"; };
@@ -191,6 +203,7 @@
 				9FD7B29E233B9D250007D14D /* components */,
 				9FB40BE823388C98008CDEB6 /* index.swift */,
 				9FD7B28E233928780007D14D /* cells.swift */,
+				9F02F50E234321630067643E /* DetailView.swift */,
 				9FD7B28C233927780007D14D /* profile.swift */,
 				9FD7B28A23390CF50007D14D /* auth.swift */,
 			);
@@ -202,6 +215,7 @@
 			children = (
 				9FD7B2832338E9210007D14D /* Store.swift */,
 				9FD7B2862338FF600007D14D /* profileStore.swift */,
+				9F02F5022341C69F0067643E /* listStore.swift */,
 			);
 			path = store;
 			sourceTree = "<group>";
@@ -228,6 +242,9 @@
 			isa = PBXGroup;
 			children = (
 				9FD7B29F233B9D320007D14D /* UserCard.swift */,
+				9F02F5042341DE3E0067643E /* SkipButton.swift */,
+				9F02F5062341DE740067643E /* CategoriesButton.swift */,
+				9F02F5082341F0280067643E /* SkipModal.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -346,6 +363,7 @@
 			children = (
 				DCD6B0991F81CF3B002E810C /* utils.swift */,
 				3401723D20752E7E00C24029 /* SKPhotoCache.swift */,
+				9F02F50C234200520067643E /* AthenaError.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -473,12 +491,16 @@
 				DCD6B09A1F81CF3B002E810C /* utils.swift in Sources */,
 				9FD7B28B23390CF50007D14D /* auth.swift in Sources */,
 				9FD7B29D233B875B0007D14D /* WebImage.swift in Sources */,
+				9F02F50D234200520067643E /* AthenaError.swift in Sources */,
+				9F02F50F234321630067643E /* DetailView.swift in Sources */,
+				9F02F5072341DE740067643E /* CategoriesButton.swift in Sources */,
 				9FD7B28F233928780007D14D /* cells.swift in Sources */,
 				34E9DFFE2081D4CA000676FB /* PublicDataViewController.swift in Sources */,
 				3401723E20752E7E00C24029 /* SKPhotoCache.swift in Sources */,
 				DCCBB1CB1F6BAC8300D5ED23 /* ProfileViewController.swift in Sources */,
 				DCCBB1C71F6BAC8300D5ED23 /* AppDelegate.swift in Sources */,
 				DCCBB1EB1F6BAE9000D5ED23 /* API.swift in Sources */,
+				9F02F5092341F0280067643E /* SkipModal.swift in Sources */,
 				DC8DFE141F72A0EE00F442DE /* AuthViewController.swift in Sources */,
 				DC8DFE0F1F728F8000F442DE /* ModalApp.swift in Sources */,
 				9FD7B28D233927780007D14D /* profile.swift in Sources */,
@@ -489,8 +511,10 @@
 				3401724C207595F600C24029 /* SettingCell.swift in Sources */,
 				34A6A9EC208A08F8005C237B /* AthenaNavigationBar.swift in Sources */,
 				9FD7B28923390BCF0007D14D /* server.swift in Sources */,
+				9F02F5032341C69F0067643E /* listStore.swift in Sources */,
 				9FD7B2A0233B9D320007D14D /* UserCard.swift in Sources */,
 				DCCBB1C91F6BAC8300D5ED23 /* IndexViewController.swift in Sources */,
+				9F02F5052341DE3E0067643E /* SkipButton.swift in Sources */,
 				DC8DFE111F728FFC00F442DE /* Config.swift in Sources */,
 				3401724E2075984400C24029 /* AboutViewController.swift in Sources */,
 				9FD7B29B233B87290007D14D /* SDWebImageSwiftUI.swift in Sources */,
@@ -576,7 +600,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LIBTOOLFLAGS = ObjC;
@@ -630,7 +654,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LIBTOOLFLAGS = ObjC;
 				SDKROOT = iphoneos;

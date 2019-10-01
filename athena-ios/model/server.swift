@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct CellItem {
+struct CellItem: Codable, Identifiable {
     let id: String
     let img: String
     let permission: Int

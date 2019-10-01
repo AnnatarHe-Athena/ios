@@ -9,6 +9,7 @@
 import Foundation
 import KeychainSwift
 import Sentry
+import LocalAuthentication
 
 
 class ProfileStore: ObservableObject {
@@ -88,5 +89,86 @@ class ProfileStore: ObservableObject {
                 print(err)
             }
         }
+    }
+    
+    func fingerCheck(onSuccess: @escaping () -> Void, onError: @escaping (_ err: Error) -> Void) {
+        
+        let context = LAContext()
+        var err: NSError?
+        
+        guard context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &err) else {
+            print(err)
+            return
+        }
+        
+        context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "请指纹解锁", reply: { success, error in
+            guard success == true else {
+                print(error)
+                return
+            }
+            if success {
+                // dismiss and reload data
+                
+                let keychainSwift = KeychainSwift()
+                guard let email = keychainSwift.get("email"), let pwd = keychainSwift.get("pwd") else {
+                    onError(AthenaError(m: "failed to get email"))
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    self.login(_email: email, _pwd: pwd, onSuccess: onSuccess, onError: onError)
+                }
+                return
+                
+            }
+            
+            if let error = error as NSError? {
+                // 获取错误信息
+                let message = self.errorMessageForLAErrorCode(errorCode: error.code)
+                print(message)
+                onError(AthenaError(m: message))
+            }
+            
+        })
+        
+    }
+    
+    
+    
+    private func errorMessageForLAErrorCode(errorCode: Int) -> String {
+        var message = ""
+        
+        switch errorCode {
+        case LAError.appCancel.rawValue:
+            message = "Authentication was cancelled by application"
+            
+        case LAError.authenticationFailed.rawValue:
+            message = "The user failed to provide valid credentials"
+            
+        case LAError.invalidContext.rawValue:
+            message = "The context is invalid"
+            
+        case LAError.passcodeNotSet.rawValue:
+            message = "Passcode is not set on the device"
+            
+        case LAError.systemCancel.rawValue:
+            message = "Authentication was cancelled by the system"
+            
+        case LAError.biometryLockout.rawValue:
+            message = "Too many failed attempts."
+            
+        case LAError.biometryNotAvailable.rawValue:
+            message = "TouchID is not available on the device"
+            
+        case LAError.userCancel.rawValue:
+            message = "The user did cancel"
+            
+        case LAError.userFallback.rawValue:
+            message = "The user chose to use the fallback"
+            
+        default:
+            message = "Did not find error code on LAError object"
+        }
+        return message
     }
 }

@@ -30,7 +30,7 @@ class Config {
         #else
             let url = URL(string: prodServer)!
         #endif
-        var networkTransport = HTTPNetworkTransport(
+        let networkTransport = HTTPNetworkTransport(
             url: url,
             delegate: ApolloDelegate()
         )
