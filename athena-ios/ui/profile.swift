@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import QGrid
 
 struct ProfileView: View {
     
@@ -14,20 +15,24 @@ struct ProfileView: View {
     
     @EnvironmentObject private var profileData: ProfileStore
     
-    
     var body: some View {
         VStack(alignment: .center) {
             Group {
                 UserCard(profile: profileData.profile)
                 Divider()
-                Spacer()
-            }.sheet(isPresented: $notLogged) {
-                AuthView()
-            }.onAppear(perform: {
-                if (self.profileData.profile.isFake) {
-                    self.$notLogged.wrappedValue = true
+                
+                QGrid(profileData.collections, columns: 3) { c in
+                    NavigationLink(destination: DetailView(cell: c)) {
+                        WebImage(url: URL(string: c.img))
+                    }
+                    .navigationBarTitle("Detail")
                 }
+            }.sheet(isPresented: $notLogged) {
+                AuthView().environmentObject(self.profileData)
+            }.onAppear(perform: {
+                self.$notLogged.wrappedValue = self.profileData.profile.isFake
             })
+            
         }
     }
 }

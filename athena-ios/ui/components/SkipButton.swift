@@ -17,7 +17,7 @@ struct SkipButton: View {
     var body: some View {
         NavigationLink(destination: SkipModal(listStore: self.listStore)) {
             Text("➡️")
-        }
+        }.navigationBarTitle("Skip")
     }
     
     

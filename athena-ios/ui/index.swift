@@ -19,7 +19,6 @@ struct IndexView: View {
                     Image("home")
                     Text("list")
                 }.tag(0)
-                    .navigationBarTitle("lalallala")
                 ProfileView().tabItem {
                     Image.init("user")
                     Text("Me")

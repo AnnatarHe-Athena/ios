@@ -30,7 +30,7 @@ class ListStore: ObservableObject {
     private func fakeLoad() {
         for i in 1...10 {
             self.list.append(CellItem(
-                id: String(i), img: "https://picsum.photos/200/300?random=\(i)", permission: 2, text: "", content: "lorem \(i)", fromID: String(i), fromURL: String(i)
+                id: String(i), img: "https://picsum.photos/200/200?random=\(i)", permission: 2, text: "", content: "lorem \(i)", fromID: String(i), fromURL: String(i)
             ))
         }
     }

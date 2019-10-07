@@ -7,7 +7,6 @@
 //
 import Apollo
 
-
 //let devServer = "http://localhost:9009/graphql/v1"
 let devServer = "http://192.168.0.102:9009/graphql/v1"
 
@@ -15,9 +14,11 @@ let prodServer = "https://api.dbg.annatarhe.com/graphql/v1"
 
 class Config {
     
-    static var token: String = ""
+//    static var token: String = ""
+    static var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODU2NTIzNjEsImlkIjoiNSJ9.JCSocBirCI1wtPbXm0QL2YLFW2Q9G4STKAXAXRfo9FQ"
     
-    static var userId: String = ""
+//    static var userId: String = ""
+    static var userId = "6"
     
     static func getApolloClient() -> ApolloClient {
         
@@ -42,7 +43,6 @@ class ApolloDelegate: HTTPNetworkTransportPreflightDelegate {
     func networkTransport(_ networkTransport: HTTPNetworkTransport, shouldSend request: URLRequest) -> Bool {
         return true
     }
-    
     
     func networkTransport(_ networkTransport: HTTPNetworkTransport,
                           willSend request: inout URLRequest) {

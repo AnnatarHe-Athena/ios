@@ -24,6 +24,8 @@
 		34D6C83A22A923CF0037BEC5 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBB1E81F6BADAC00D5ED23 /* SwiftyJSON.framework */; };
 		34E9DFFC20810442000676FB /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E9DFFB20810442000676FB /* PostDetailViewController.swift */; };
 		34E9DFFE2081D4CA000676FB /* PublicDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E9DFFD2081D4CA000676FB /* PublicDataViewController.swift */; };
+		9F0115C323460AA500045AC7 /* Wormholy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F0115C223460AA500045AC7 /* Wormholy.framework */; };
+		9F0115C423460AA500045AC7 /* Wormholy.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9F0115C223460AA500045AC7 /* Wormholy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9F02F5032341C69F0067643E /* listStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F02F5022341C69F0067643E /* listStore.swift */; };
 		9F02F5052341DE3E0067643E /* SkipButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F02F5042341DE3E0067643E /* SkipButton.swift */; };
 		9F02F5072341DE740067643E /* CategoriesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F02F5062341DE740067643E /* CategoriesButton.swift */; };
@@ -51,6 +53,8 @@
 		9F3E331D23178171003CB1C8 /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F3E330A23178171003CB1C8 /* FirebaseDatabase.framework */; };
 		9F3E331E23178171003CB1C8 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F3E330B23178171003CB1C8 /* GTMSessionFetcher.framework */; };
 		9F3E37BB22FDA65B00CDF3EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F3E37BA22FDA65B00CDF3EB /* GoogleService-Info.plist */; };
+		9FA9F5B6234AD57E007D3326 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA9F5B5234AD57E007D3326 /* Settings.swift */; };
+		9FA9F5B8234AD7EB007D3326 /* OpenData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA9F5B7234AD7EB007D3326 /* OpenData.swift */; };
 		9FB40BE923388C98008CDEB6 /* index.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB40BE823388C98008CDEB6 /* index.swift */; };
 		9FB40C0E2338BF46008CDEB6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB40C0D2338BF46008CDEB6 /* SceneDelegate.swift */; };
 		9FD7B2842338E9210007D14D /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD7B2832338E9210007D14D /* Store.swift */; };
@@ -78,6 +82,20 @@
 		DCD6B09A1F81CF3B002E810C /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD6B0991F81CF3B002E810C /* utils.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		9F0115C523460AA500045AC7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9F0115C423460AA500045AC7 /* Wormholy.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		3401723D20752E7E00C24029 /* SKPhotoCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKPhotoCache.swift; sourceTree = "<group>"; };
 		3401724420753D8A00C24029 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +115,7 @@
 		34C59D9320ABF4DF006FF049 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Carthage/Build/iOS/FirebaseCore.framework; sourceTree = "<group>"; };
 		34E9DFFB20810442000676FB /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		34E9DFFD2081D4CA000676FB /* PublicDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicDataViewController.swift; sourceTree = "<group>"; };
+		9F0115C223460AA500045AC7 /* Wormholy.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Wormholy.framework; path = Carthage/Build/iOS/Wormholy.framework; sourceTree = "<group>"; };
 		9F02F5022341C69F0067643E /* listStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listStore.swift; sourceTree = "<group>"; };
 		9F02F5042341DE3E0067643E /* SkipButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipButton.swift; sourceTree = "<group>"; };
 		9F02F5062341DE740067643E /* CategoriesButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesButton.swift; sourceTree = "<group>"; };
@@ -123,6 +142,8 @@
 		9F3E330A23178171003CB1C8 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseDatabase.framework; path = Carthage/Build/iOS/FirebaseDatabase.framework; sourceTree = "<group>"; };
 		9F3E330B23178171003CB1C8 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTMSessionFetcher.framework; path = Carthage/Build/iOS/GTMSessionFetcher.framework; sourceTree = "<group>"; };
 		9F3E37BA22FDA65B00CDF3EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9FA9F5B5234AD57E007D3326 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		9FA9F5B7234AD7EB007D3326 /* OpenData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenData.swift; sourceTree = "<group>"; };
 		9FB40BE823388C98008CDEB6 /* index.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = index.swift; sourceTree = "<group>"; };
 		9FB40C0D2338BF46008CDEB6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9FB7732622E70441000F9B7A /* libwebp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libwebp.framework; path = Carthage/Build/iOS/libwebp.framework; sourceTree = "<group>"; };
@@ -179,6 +200,7 @@
 				9F3E331923178171003CB1C8 /* FirebaseABTesting.framework in Frameworks */,
 				9F3E331A23178171003CB1C8 /* FirebasePerformance.framework in Frameworks */,
 				9F3E331B23178171003CB1C8 /* FirebaseAuth.framework in Frameworks */,
+				9F0115C323460AA500045AC7 /* Wormholy.framework in Frameworks */,
 				9F3E331C23178171003CB1C8 /* GoogleDataTransportCCTSupport.framework in Frameworks */,
 				9F3E331D23178171003CB1C8 /* FirebaseDatabase.framework in Frameworks */,
 				9F3E331E23178171003CB1C8 /* GTMSessionFetcher.framework in Frameworks */,
@@ -206,6 +228,8 @@
 				9F02F50E234321630067643E /* DetailView.swift */,
 				9FD7B28C233927780007D14D /* profile.swift */,
 				9FD7B28A23390CF50007D14D /* auth.swift */,
+				9FA9F5B5234AD57E007D3326 /* Settings.swift */,
+				9FA9F5B7234AD7EB007D3326 /* OpenData.swift */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -320,6 +344,7 @@
 		DCCBB1DD1F6BAD8A00D5ED23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9F0115C223460AA500045AC7 /* Wormholy.framework */,
 				9F3E330123178171003CB1C8 /* FIRAnalyticsConnector.framework */,
 				9F3E330623178171003CB1C8 /* FirebaseABTesting.framework */,
 				9F3E330523178171003CB1C8 /* FirebaseAnalytics.framework */,
@@ -380,6 +405,7 @@
 				DCCBB1C11F6BAC8300D5ED23 /* Resources */,
 				DCCBB1DC1F6BAD1B00D5ED23 /* Generate GraphQL API */,
 				DCCBB1BF1F6BAC8300D5ED23 /* Sources */,
+				9F0115C523460AA500045AC7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -494,6 +520,7 @@
 				9F02F50D234200520067643E /* AthenaError.swift in Sources */,
 				9F02F50F234321630067643E /* DetailView.swift in Sources */,
 				9F02F5072341DE740067643E /* CategoriesButton.swift in Sources */,
+				9FA9F5B8234AD7EB007D3326 /* OpenData.swift in Sources */,
 				9FD7B28F233928780007D14D /* cells.swift in Sources */,
 				34E9DFFE2081D4CA000676FB /* PublicDataViewController.swift in Sources */,
 				3401723E20752E7E00C24029 /* SKPhotoCache.swift in Sources */,
@@ -506,6 +533,7 @@
 				9FD7B28D233927780007D14D /* profile.swift in Sources */,
 				9FB40C0E2338BF46008CDEB6 /* SceneDelegate.swift in Sources */,
 				34E9DFFC20810442000676FB /* PostDetailViewController.swift in Sources */,
+				9FA9F5B6234AD57E007D3326 /* Settings.swift in Sources */,
 				349F4E6220D7B2D80045DB67 /* CollectionItemCellCollectionViewCell.swift in Sources */,
 				349800DE2203EF490081536C /* baseViewController.swift in Sources */,
 				3401724C207595F600C24029 /* SettingCell.swift in Sources */,

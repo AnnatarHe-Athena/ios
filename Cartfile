@@ -21,4 +21,3 @@ github "getsentry/sentry-cocoa" "4.3.1"
 github "stephencelis/SQLite.swift"
 github "evgenyneu/keychain-swift" ~> 10.0
 github "pmusolino/Wormholy"
-github "SDWebImage/SDWebImageSwiftUI"

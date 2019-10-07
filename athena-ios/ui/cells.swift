@@ -20,12 +20,16 @@ struct CellsView: View {
 //            }
             
             ForEach(self.listStore.list) { c in
-                NavigationLink(destination: DetailView(cell: c)) {
+                
+                NavigationLink(
+                    destination: DetailView(cell: c).navigationBarTitle(Text("内容"))
+                ) {
                     Group {
                         WebImage(url: URL(string: c.img))
                             .frame(minWidth: CGFloat(0), maxWidth: .infinity, minHeight: CGFloat(0), maxHeight: CGFloat(500), alignment: .center)
                     }
-                }
+                    }.isDetailLink(true)
+                .labelsHidden()
             }
             
             if self.listStore.hasMore {

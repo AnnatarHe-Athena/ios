@@ -11,6 +11,8 @@ import SwiftUI
 struct DetailView: View {
     
     let cell: CellItem
+    @State var isAlertVisible = false
+    @State var alertText = ""
     
     var body: some View {
         VStack {
@@ -26,9 +28,7 @@ struct DetailView: View {
             HStack {
                 Text("来源").font(.caption)
                 
-                Button(action: {
-                    
-                }) {
+                Button(action: onFormIdClick) {
                     Text(cell.fromID)
                 }
             }.padding()
@@ -36,13 +36,56 @@ struct DetailView: View {
             HStack {
                 Text("链接").font(.caption)
                 
-                Button(action: {
-                    
-                }) {
+                Button(action: onFromUrlClick) {
                     Text(cell.fromURL)
                 }
             }
+        }.alert(isPresented: $isAlertVisible, content: {
+            Alert(title: Text("⚠️"), message: Text($alertText.wrappedValue))
+        })
+    }
+    
+    
+    func onFormIdClick() {
+        let isWeibo = cell.fromURL.contains("https://weibo.com")
+        let isJike = cell.fromURL.contains("https://web.okjike.com")
+        guard isWeibo || isJike else {
+            self.isAlertVisible.toggle()
+            self.alertText = "not support yet"
+            return
         }
+        var url: URL = URL(string: "https://db.annatarhe.com")!
+        
+        if isWeibo {
+            let urlScheme = "sinaweibo://userinfo?uid=\(cell.fromID)"
+            url = URL(string: urlScheme)!
+        }
+        
+        if isJike {
+            let userURL = URL(string: cell.fromID)
+            let paths = userURL?.path.split(separator: "/")
+            let userID = String(paths![paths!.count - 1])
+            url = URL(string: "jike://page.jk/user/\(userID)")!
+        }
+        
+        if !UIApplication.shared.canOpenURL(url) {
+            self.isAlertVisible.toggle()
+            self.alertText = "not support yet"
+            return
+        }
+        UIApplication.shared.open(url, completionHandler: nil)
+    }
+    
+    func onFromUrlClick() {
+        let fromUrl = cell.fromURL
+        
+        let urlScheme = Utils.getURLScheme(url: fromUrl)
+        var url = URL(string: urlScheme)
+        if !UIApplication.shared.canOpenURL(URL(string: urlScheme)!) {
+            url = URL(string: fromUrl)
+        }
+        
+        UIApplication.shared.open(url!, completionHandler: nil)
     }
 }
 
