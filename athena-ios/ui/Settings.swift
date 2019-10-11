@@ -31,8 +31,8 @@ struct Settings: View {
         }
         .onAppear(perform: {
             // FIXME:
-            let v = preference<Bool>(key: "setting:followLastRow", value: false)
-            self.settingsFollowLastRow = v
+//            let v = preference<Bool>(key: "setting:followLastRow", value: false)
+//            self.settingsFollowLastRow = v
         })
     }
 }

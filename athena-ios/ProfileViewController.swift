@@ -182,12 +182,12 @@ extension ProfileViewController : UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let dataCell = collectionView.cellForItem(at: indexPath) as! CollectionItemCellCollectionViewCell
 
-        let dataItem = collections[indexPath.row] as! FetchProfileWithCollectionsQuery.Data.Collection
+        let dataItem = collections[indexPath.row]
         
         Utils.presentBigPreview(
             view: self,
-            imageUrl: dataItem.fragments.fetchGirls.img!,
-            text: dataItem.fragments.fetchGirls.text!,
+            imageUrl: dataItem.img,
+            text: dataItem.text,
             holderImage: dataCell.img.image,
             from: dataCell
         )

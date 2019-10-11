@@ -110,10 +110,10 @@ class IndexViewController: BaseViewController {
         
         cellListTableView.dataSource = self
         cellListTableView.delegate = self
+        cellListTableView.prefetchDataSource = self
         
         initialLoad()
         self.addRefrashControl()
-        
     }
     
     private func addRefrashControl() {
@@ -124,7 +124,6 @@ class IndexViewController: BaseViewController {
     }
     
     @objc private func pullToRefrash() {
-        print("pull to refrash")
         if self.categoryID == defaultCategoryID {
             DispatchQueue.main.asyncAfter(deadline: .now() + 300) {
                 DispatchQueue.main.async {
@@ -276,10 +275,7 @@ extension IndexViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-//        let itemData = cells[indexPath.row]
-        
         self.selectedItemIndex = indexPath.row
-        
         performSegue(withIdentifier: "imageDetail", sender: nil)
     }
     
@@ -325,5 +321,12 @@ extension IndexViewController: UITableViewDelegate, UITableViewDataSource {
         if editingStyle == .delete {
             self.toDelete(index: indexPath)
         }
+    }
+}
+
+extension IndexViewController: UITableViewDataSourcePrefetching {
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        let urls = indexPaths.map { URL(string: (self.cells[$0.row]?.fragments.fetchGirls.img)!)! }
+        SDWebImagePrefetcher.shared.prefetchURLs(urls )
     }
 }

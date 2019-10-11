@@ -53,10 +53,12 @@
 		9F3E331D23178171003CB1C8 /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F3E330A23178171003CB1C8 /* FirebaseDatabase.framework */; };
 		9F3E331E23178171003CB1C8 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F3E330B23178171003CB1C8 /* GTMSessionFetcher.framework */; };
 		9F3E37BB22FDA65B00CDF3EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F3E37BA22FDA65B00CDF3EB /* GoogleService-Info.plist */; };
+		9F4A4F3B234DA0A3007BEB15 /* hello.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4A4F3A234DA0A3007BEB15 /* hello.swift */; };
 		9FA9F5B6234AD57E007D3326 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA9F5B5234AD57E007D3326 /* Settings.swift */; };
 		9FA9F5B8234AD7EB007D3326 /* OpenData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA9F5B7234AD7EB007D3326 /* OpenData.swift */; };
 		9FB40BE923388C98008CDEB6 /* index.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB40BE823388C98008CDEB6 /* index.swift */; };
 		9FB40C0E2338BF46008CDEB6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB40C0D2338BF46008CDEB6 /* SceneDelegate.swift */; };
+		9FD38649234CA31C00A04731 /* MainViewPreviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD38648234CA31C00A04731 /* MainViewPreviews.swift */; };
 		9FD7B2842338E9210007D14D /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD7B2832338E9210007D14D /* Store.swift */; };
 		9FD7B2872338FF600007D14D /* profileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD7B2862338FF600007D14D /* profileStore.swift */; };
 		9FD7B28923390BCF0007D14D /* server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD7B28823390BCF0007D14D /* server.swift */; };
@@ -142,11 +144,13 @@
 		9F3E330A23178171003CB1C8 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseDatabase.framework; path = Carthage/Build/iOS/FirebaseDatabase.framework; sourceTree = "<group>"; };
 		9F3E330B23178171003CB1C8 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTMSessionFetcher.framework; path = Carthage/Build/iOS/GTMSessionFetcher.framework; sourceTree = "<group>"; };
 		9F3E37BA22FDA65B00CDF3EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9F4A4F3A234DA0A3007BEB15 /* hello.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hello.swift; sourceTree = "<group>"; };
 		9FA9F5B5234AD57E007D3326 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		9FA9F5B7234AD7EB007D3326 /* OpenData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenData.swift; sourceTree = "<group>"; };
 		9FB40BE823388C98008CDEB6 /* index.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = index.swift; sourceTree = "<group>"; };
 		9FB40C0D2338BF46008CDEB6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9FB7732622E70441000F9B7A /* libwebp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libwebp.framework; path = Carthage/Build/iOS/libwebp.framework; sourceTree = "<group>"; };
+		9FD38648234CA31C00A04731 /* MainViewPreviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewPreviews.swift; sourceTree = "<group>"; };
 		9FD7B2832338E9210007D14D /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		9FD7B2862338FF600007D14D /* profileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileStore.swift; sourceTree = "<group>"; };
 		9FD7B28823390BCF0007D14D /* server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = server.swift; sourceTree = "<group>"; };
@@ -297,6 +301,7 @@
 				34E9DFFD2081D4CA000676FB /* PublicDataViewController.swift */,
 				34A6A9EB208A08F8005C237B /* AthenaNavigationBar.swift */,
 				349800DD2203EF490081536C /* baseViewController.swift */,
+				9FD38648234CA31C00A04731 /* MainViewPreviews.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -331,6 +336,7 @@
 				DCCBB1C61F6BAC8300D5ED23 /* AppDelegate.swift */,
 				9FB40C0D2338BF46008CDEB6 /* SceneDelegate.swift */,
 				DCCBB1C81F6BAC8300D5ED23 /* IndexViewController.swift */,
+				9F4A4F3A234DA0A3007BEB15 /* hello.swift */,
 				DCCBB1CA1F6BAC8300D5ED23 /* ProfileViewController.swift */,
 				344D45A92079AAE40069F2AD /* Media.xcassets */,
 				DCCBB1CC1F6BAC8300D5ED23 /* Main.storyboard */,
@@ -528,6 +534,7 @@
 				DCCBB1C71F6BAC8300D5ED23 /* AppDelegate.swift in Sources */,
 				DCCBB1EB1F6BAE9000D5ED23 /* API.swift in Sources */,
 				9F02F5092341F0280067643E /* SkipModal.swift in Sources */,
+				9FD38649234CA31C00A04731 /* MainViewPreviews.swift in Sources */,
 				DC8DFE141F72A0EE00F442DE /* AuthViewController.swift in Sources */,
 				DC8DFE0F1F728F8000F442DE /* ModalApp.swift in Sources */,
 				9FD7B28D233927780007D14D /* profile.swift in Sources */,
@@ -552,6 +559,7 @@
 				3434A975206621450096DF73 /* DBManager.swift in Sources */,
 				9FB40BE923388C98008CDEB6 /* index.swift in Sources */,
 				9FD7B2872338FF600007D14D /* profileStore.swift in Sources */,
+				9F4A4F3B234DA0A3007BEB15 /* hello.swift in Sources */,
 				3401724520753D8A00C24029 /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -585,7 +593,7 @@
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -614,7 +622,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -629,11 +637,12 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LIBTOOLFLAGS = ObjC;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS[arch=*]" = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -645,7 +654,7 @@
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -674,7 +683,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -699,6 +708,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VY3AP6C55K;
+				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -709,6 +719,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.annatarhe.db;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -723,6 +734,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VY3AP6C55K;
+				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -733,6 +745,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.annatarhe.db;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

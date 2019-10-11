@@ -80,10 +80,8 @@ class PostDetailViewController : BaseViewController {
         
         // display navigation bar if it is hidden
         if self.navigationController?.isNavigationBarHidden ?? false {
-            UIView.animate(withDuration: 2.5, delay: 0, options: UIView.AnimationOptions(), animations: {
-                self.navigationController?.setNavigationBarHidden(false, animated: true)
-                print("Unhide")
-            }, completion: nil)
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+            print("Unhide")
         }
         
         // loaded

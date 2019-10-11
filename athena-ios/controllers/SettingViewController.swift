@@ -28,9 +28,13 @@ class SettingViewController: UITableViewController {
     ]
     
     override func viewDidLoad() {
-        DispatchQueue.main.async {
-            self.settings.append(SettingItem(id: 3, title: "🏬 cache size: \(SDImageCache.shared.totalDiskSize()) bytes", type: .cache))
-            self.tableView.reloadData()
+        DispatchQueue.global(qos: .userInteractive).async {
+            let size = SDImageCache.shared.totalDiskSize()
+            
+            DispatchQueue.main.async {
+                self.settings.append(SettingItem(id: 3, title: "🏬 cache size: \(size) bytes", type: .cache))
+                self.tableView.reloadData()
+            }
         }
     }
     

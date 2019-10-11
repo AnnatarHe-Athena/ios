@@ -15,7 +15,7 @@ struct DetailView: View {
     @State var alertText = ""
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             Text(cell.content).font(.largeTitle)
             
             Text(cell.text).font(.caption).foregroundColor(.gray)
