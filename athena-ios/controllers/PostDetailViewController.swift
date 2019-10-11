@@ -13,6 +13,7 @@ class PostDetailViewController : BaseViewController {
     
     var data: FetchGirlsQueryQuery.Data.Girl? = nil
     
+    @IBOutlet weak var rowIDView: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var fromUrl: UIButton!
     @IBOutlet weak var fromId: UIButton!
@@ -103,6 +104,7 @@ class PostDetailViewController : BaseViewController {
         self.imgView.addGestureRecognizer(singleTap)
         self.fromId.setTitle(postDetail!.fromId, for: .normal)
         self.fromUrl.setTitle(postDetail!.fromUrl, for: .normal)
+        self.rowIDView.text = "RowID: \(postDetail?.id ?? "0")"
         
         let rightBtn = UIBarButtonItem(title: "Actions", style: .plain, target: self, action: #selector(self.onRightBtnClicked))
         self.navigationItem.rightBarButtonItem = rightBtn

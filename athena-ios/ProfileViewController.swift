@@ -73,8 +73,15 @@ class ProfileViewController: BaseViewController {
     }
     
     func loadProfile() {
+        
+        guard !loading else {
+            return
+        }
+        loading = true
+        
         Config.getApolloClient().fetch(query: FetchProfileWithCollectionsQuery.init(id: Int(Config.userId)!, from: self.loadFrom, size: 20)) { result in
             self.collectionCursor += 20
+            self.loading = false
             switch result {
             case .success(let resultData):
                 var avatarUrl: String
@@ -125,7 +132,7 @@ class ProfileViewController: BaseViewController {
         }
         loading = true
         
-        Config.getApolloClient().fetch(query: FetchCollectionsQuery(id: Int(Config.userId)!, from: collectionCursor, size: 5)) { result in
+        Config.getApolloClient().fetch(query: FetchCollectionsQuery(id: Int(Config.userId)!, from: collectionCursor, size: 10)) { result in
             self.loading = false
             
             guard let newCollection = try? result.get().data?.collections else {
@@ -156,7 +163,7 @@ class ProfileViewController: BaseViewController {
 //            self.collections.append(contentsOf: nc)
             
             self.userCollectionsTableView.reloadData()
-            self.collectionCursor += 5
+            self.collectionCursor += 10
         }
     }
 }
@@ -171,7 +178,6 @@ extension ProfileViewController : UICollectionViewDataSource, UICollectionViewDe
         let dataItem = collections[indexPath.row]
         let img = Utils.getRealImageSrc(image: dataItem.img)
         
-        print(img)
         cell.img.sd_setImage(with: URL(string: img), placeholderImage: UIImage(named: "placeholderImage.png"), options: .allowInvalidSSLCertificates, completed: { _, err, _, _ in
 //            print(err)
         })

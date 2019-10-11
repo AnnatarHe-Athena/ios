@@ -53,7 +53,6 @@
 		9F3E331D23178171003CB1C8 /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F3E330A23178171003CB1C8 /* FirebaseDatabase.framework */; };
 		9F3E331E23178171003CB1C8 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F3E330B23178171003CB1C8 /* GTMSessionFetcher.framework */; };
 		9F3E37BB22FDA65B00CDF3EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F3E37BA22FDA65B00CDF3EB /* GoogleService-Info.plist */; };
-		9F4A4F3B234DA0A3007BEB15 /* hello.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4A4F3A234DA0A3007BEB15 /* hello.swift */; };
 		9FA9F5B6234AD57E007D3326 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA9F5B5234AD57E007D3326 /* Settings.swift */; };
 		9FA9F5B8234AD7EB007D3326 /* OpenData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA9F5B7234AD7EB007D3326 /* OpenData.swift */; };
 		9FB40BE923388C98008CDEB6 /* index.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB40BE823388C98008CDEB6 /* index.swift */; };
@@ -144,7 +143,6 @@
 		9F3E330A23178171003CB1C8 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseDatabase.framework; path = Carthage/Build/iOS/FirebaseDatabase.framework; sourceTree = "<group>"; };
 		9F3E330B23178171003CB1C8 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTMSessionFetcher.framework; path = Carthage/Build/iOS/GTMSessionFetcher.framework; sourceTree = "<group>"; };
 		9F3E37BA22FDA65B00CDF3EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		9F4A4F3A234DA0A3007BEB15 /* hello.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hello.swift; sourceTree = "<group>"; };
 		9FA9F5B5234AD57E007D3326 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		9FA9F5B7234AD7EB007D3326 /* OpenData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenData.swift; sourceTree = "<group>"; };
 		9FB40BE823388C98008CDEB6 /* index.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = index.swift; sourceTree = "<group>"; };
@@ -336,7 +334,6 @@
 				DCCBB1C61F6BAC8300D5ED23 /* AppDelegate.swift */,
 				9FB40C0D2338BF46008CDEB6 /* SceneDelegate.swift */,
 				DCCBB1C81F6BAC8300D5ED23 /* IndexViewController.swift */,
-				9F4A4F3A234DA0A3007BEB15 /* hello.swift */,
 				DCCBB1CA1F6BAC8300D5ED23 /* ProfileViewController.swift */,
 				344D45A92079AAE40069F2AD /* Media.xcassets */,
 				DCCBB1CC1F6BAC8300D5ED23 /* Main.storyboard */,
@@ -559,7 +556,6 @@
 				3434A975206621450096DF73 /* DBManager.swift in Sources */,
 				9FB40BE923388C98008CDEB6 /* index.swift in Sources */,
 				9FD7B2872338FF600007D14D /* profileStore.swift in Sources */,
-				9F4A4F3B234DA0A3007BEB15 /* hello.swift in Sources */,
 				3401724520753D8A00C24029 /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

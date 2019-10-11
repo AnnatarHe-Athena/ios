@@ -69,6 +69,10 @@ class SettingViewController: UITableViewController {
                 self.settings[3].title = "🏬 cache size: 0"
                 self.tableView.reloadData()
             })
+        case .logout:
+            Config.token = ""
+            Config.userId = ""
+            self.showToast(message: "close app, please")
             
         default:
             self.showToast(message: "not support yet")

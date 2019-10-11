@@ -305,15 +305,19 @@ extension IndexViewController: UITableViewDelegate, UITableViewDataSource {
     func toDelete(index: IndexPath) {
         let cell = self.cells[index.row]
         let cellID = cell?.fragments.fetchGirls.id
+        
+        self.cells.remove(at: index.row)
+        self.cellListTableView.deleteRows(at: [index], with: .fade)
         Config.getApolloClient().perform(mutation: RemoveGirlMutation(cells: [Int(cellID!)], toRemove: false)) { result in
             
             if let err = try? result.get().errors {
                 self.showToast(message: "😭 remove data error")
+                
+                self.cells.append(cell)
+                self.cellListTableView.reloadRows(at: [IndexPath(row: self.cells.count - 1, section: 0)], with: .fade)
                 return
             }
             
-            self.cells.remove(at: index.row)
-            self.cellListTableView.deleteRows(at: [index], with: .fade)
         }
     }
     
@@ -326,7 +330,8 @@ extension IndexViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension IndexViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        let urls = indexPaths.map { URL(string: (self.cells[$0.row]?.fragments.fetchGirls.img)!)! }
+        let urls = indexPaths.map { URL(string: Utils.getRealImageSrc(image: (self.cells[$0.row]?.fragments.fetchGirls.img)!))! }
+        
         SDWebImagePrefetcher.shared.prefetchURLs(urls )
     }
 }

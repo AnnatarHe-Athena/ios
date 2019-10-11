@@ -141,6 +141,12 @@
                                             <action selector="fromUrlClicked:" destination="Ycv-2p-nC1" eventType="touchUpInside" id="EIe-Cj-LEj"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RowID: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLV-wf-TkY">
+                                        <rect key="frame" x="9" y="659" width="58" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -157,10 +163,13 @@
                                     <constraint firstAttribute="bottom" secondItem="M8e-so-WWk" secondAttribute="bottom" constant="200" id="Yyh-mL-lJC"/>
                                     <constraint firstItem="MVL-zL-ZBW" firstAttribute="width" secondItem="Tn9-dt-aAr" secondAttribute="width" id="Z8s-ph-X9P"/>
                                     <constraint firstItem="Tn9-dt-aAr" firstAttribute="top" secondItem="M8e-so-WWk" secondAttribute="bottom" constant="80" id="bCK-Q0-jOw"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SLV-wf-TkY" secondAttribute="trailing" constant="20" symbolic="YES" id="bEj-zZ-XeI"/>
                                     <constraint firstItem="Stm-fh-yzC" firstAttribute="leading" secondItem="xZM-kD-VhW" secondAttribute="leading" constant="8" id="cs6-K4-m8s"/>
                                     <constraint firstItem="M8e-so-WWk" firstAttribute="leading" secondItem="xZM-kD-VhW" secondAttribute="leading" constant="8" id="hmA-OD-ijJ"/>
+                                    <constraint firstItem="SLV-wf-TkY" firstAttribute="leading" secondItem="Tn9-dt-aAr" secondAttribute="leading" id="jh0-L0-Bze"/>
                                     <constraint firstItem="Stm-fh-yzC" firstAttribute="top" secondItem="xZM-kD-VhW" secondAttribute="top" constant="24" id="ldN-tJ-MZ5"/>
                                     <constraint firstItem="Stm-fh-yzC" firstAttribute="leading" secondItem="xZM-kD-VhW" secondAttribute="leadingMargin" id="n7F-mg-TJB"/>
+                                    <constraint firstItem="SLV-wf-TkY" firstAttribute="bottom" secondItem="M8e-so-WWk" secondAttribute="bottom" constant="40" id="uUl-6S-BIE"/>
                                     <constraint firstItem="Stm-fh-yzC" firstAttribute="centerX" secondItem="xZM-kD-VhW" secondAttribute="centerX" id="wR9-c5-6QX"/>
                                     <constraint firstItem="Tn9-dt-aAr" firstAttribute="centerX" secondItem="MVL-zL-ZBW" secondAttribute="centerX" id="wsd-OP-4yc"/>
                                 </constraints>
@@ -182,6 +191,7 @@
                         <outlet property="fromUrl" destination="MVL-zL-ZBW" id="bTO-Ax-Tuj"/>
                         <outlet property="imageHeighConstrant" destination="Iq7-uN-vuY" id="LVk-rE-gpR"/>
                         <outlet property="imgView" destination="M8e-so-WWk" id="jpb-3K-tGs"/>
+                        <outlet property="rowIDView" destination="SLV-wf-TkY" id="XP7-Ds-LiZ"/>
                         <outlet property="scrollView" destination="xZM-kD-VhW" id="3yr-Zt-Ccp"/>
                         <outlet property="textLabel" destination="nOe-nE-ZFc" id="t2P-TH-kGd"/>
                         <outlet property="titleLabel" destination="Stm-fh-yzC" id="3JL-PQ-55p"/>
