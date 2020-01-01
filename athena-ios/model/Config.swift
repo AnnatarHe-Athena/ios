@@ -22,9 +22,9 @@ class Config {
     
     static func getApolloClient() -> ApolloClient {
         
-        let configuration = URLSessionConfiguration.default
-            // Add additional headers as needed
-        configuration.httpAdditionalHeaders = ["athena-token": Config.token]
+//        let configuration = URLSessionConfiguration.default
+//            // Add additional headers as needed
+//        configuration.httpAdditionalHeaders = ["athena-token": Config.token]
 
         #if DEBUG
             let url = URL(string: devServer)!
@@ -35,7 +35,7 @@ class Config {
             url: url,
             delegate: ApolloDelegate()
         )
-        return ApolloClient(networkTransport: networkTransport)
+        return ApolloClient(networkTransport: networkTransport, store: ApolloStore(cache: InMemoryNormalizedCache()))
     }
 }
 
@@ -79,6 +79,6 @@ extension Config: HTTPNetworkTransportRetryDelegate {
                           for request: URLRequest,
                           response: URLResponse?,
                           retryHandler: @escaping (_ shouldRetry: Bool) -> Void) {
-        
+        print(error)
     }
 }

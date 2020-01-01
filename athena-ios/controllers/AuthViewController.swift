@@ -46,28 +46,25 @@ class AuthViewController: BaseViewController {
             
             self.indicator.stopAnimating()
             self.loading = false
-            
-            guard let data = try? result.get().data else {
+            switch result {
+            case .success(let data):
+                Config.token = (data.data?.auth?.token)!
+                Config.userId = (data.data?.auth?.id)!
+                let keychain = KeychainSwift()
+                keychain.set(_email, forKey: "email")
+                keychain.set(_pwd, forKey: "pwd")
+                
+                // setup sentry user
+                let sentryUser = User(userId: (data.data?.auth?.id)!)
+                sentryUser.email = _email
+                
+                Client.shared?.user = sentryUser
+                self.backToProfile()
+            case .failure(let err):
                 self.showErrorMsg(title: "error")
                 return
+                
             }
-            
-            Config.token = (data.auth?.token)!
-            Config.userId = (data.auth?.id)!
-            let keychain = KeychainSwift()
-            keychain.set(_email, forKey: "email")
-            keychain.set(_pwd, forKey: "pwd")
-            
-            // setup sentry user
-            let sentryUser = User(userId: (data.auth?.id)!)
-            sentryUser.email = _email
-            
-            Client.shared?.user = sentryUser
-
-            self.indicator.stopAnimating()
-            self.loading = false
-            
-            self.backToProfile()
 
         }
     }

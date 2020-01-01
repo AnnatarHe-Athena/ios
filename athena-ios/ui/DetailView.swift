@@ -15,7 +15,7 @@ struct DetailView: View {
     @State var alertText = ""
     
     var body: some View {
-        VStack(alignment: .leading) {
+        ScrollView() {
             Text(cell.content).font(.largeTitle)
             
             Text(cell.text).font(.caption).foregroundColor(.gray)
@@ -61,12 +61,12 @@ struct DetailView: View {
             url = URL(string: urlScheme)!
         }
         
-        if isJike {
-            let userURL = URL(string: cell.fromID)
-            let paths = userURL?.path.split(separator: "/")
-            let userID = String(paths![paths!.count - 1])
-            url = URL(string: "jike://page.jk/user/\(userID)")!
-        }
+//        if isJike {
+//            let userURL = URL(string: cell.fromID)
+//            let paths = userURL?.path.split(separator: "/")
+//            let userID = String(paths![paths!.count - 1])
+//            url = URL(string: "jike://page.jk/user/\(userID)")!
+//        }
         
         if !UIApplication.shared.canOpenURL(url) {
             self.isAlertVisible.toggle()

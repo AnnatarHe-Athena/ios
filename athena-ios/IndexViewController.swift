@@ -11,6 +11,7 @@ import Apollo
 import SDWebImage
 import SKPhotoBrowser
 import Sentry
+import SwiftUI
 
 fileprivate let defaultCategoryID = GraphQLID(0)
 
@@ -21,7 +22,7 @@ fileprivate enum IndexCacheProgress: String {
 
 class IndexViewController: BaseViewController {
     
-    private let STEP = 5
+    private let STEP = 20
     
     @IBAction func onSkipClick(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "⛷", message: "请输入最后一个的 id", preferredStyle: .alert)
@@ -277,6 +278,21 @@ extension IndexViewController: UITableViewDelegate, UITableViewDataSource {
         
         self.selectedItemIndex = indexPath.row
         performSegue(withIdentifier: "imageDetail", sender: nil)
+        // FIXME: fix me
+//        let cellDataBefore = self.cells[indexPath.row]?.fragments.fetchGirls
+//        let cellData = CellItem(
+//            id: (cellDataBefore?.id)!,
+//            img: (cellDataBefore?.img)!,
+//            permission: (cellDataBefore?.permission)!,
+//            text: (cellDataBefore?.text)!,
+//            content: (cellDataBefore?.content)!,
+//            fromID: (cellDataBefore?.fromId)!,
+//            fromURL: (cellDataBefore?.fromUrl)!
+//        )
+//
+//        let vc = UIHostingController(rootView: DetailView(cell: cellData))
+//
+//        self.navigationController?.show(vc, sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

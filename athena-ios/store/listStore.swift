@@ -14,7 +14,7 @@ class ListStore: ObservableObject {
     @Published private(set) var category: String = ""
     @Published private(set) var loading = false
     @Published private(set) var hasMore = true
-    @Published private(set) var errors: (Error) = nil
+    @Published private(set) var errors: (Error?) = nil
     
     private let STEP = 10
     

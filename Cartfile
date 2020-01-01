@@ -13,7 +13,7 @@ binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseStorageBinary.jso
 
 github "Alamofire/Alamofire" ~> 4.4
 github "SwiftyJSON/SwiftyJSON"
-github "apollographql/apollo-ios"
+github "apollographql/apollo-ios" ~> 0.15.3
 github "SDWebImage/SDWebImage"
 github "SDWebImage/SDWebImageWebPCoder"
 github "suzuki-0000/SKPhotoBrowser"

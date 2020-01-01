@@ -23,10 +23,10 @@ class PublicDataViewController: BaseViewController {
                 return
             }
             
-            self.userCount.text = "server got \(info.userCount!) users"
-            self.cellCount.text = "server got \(info.cellCount!) images"
-            self.fee.text = "you have to pay \(info.fee!) if you want to login"
-            self.email.text = "concat me with \(info.email!)"
+            self.userCount.text = "\(info.userCount!) users"
+            self.cellCount.text = "\(info.cellCount!) images"
+            self.fee.text = "pay \(info.fee!) if you want to login"
+            self.email.text = "concat me \(info.email!)"
             self.copyright.text = "copyright: \(info.copyright!)"
             
             self.runCardSequence(info: info)
